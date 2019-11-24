@@ -27,7 +27,13 @@ namespace FoodRau.HttpCode
             try
             {
                 connect();
-                SqlDataAdapter adapter = new SqlDataAdapter(sQuery, conn);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                cmd.Connection = conn;
+                cmd.CommandText = sQuery;
+                cmd.Parameters.AddRange(param);
+                adapter.SelectCommand = cmd;
+                
                 adapter.Fill(dt);
                 conn.Close();
             }

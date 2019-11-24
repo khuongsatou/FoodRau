@@ -1,14 +1,13 @@
-﻿using FoodRau.HttpCode;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using FoodRau.HttpCode;
 namespace FoodRau.Admin
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class ThemThanhVien : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,7 +16,7 @@ namespace FoodRau.Admin
 
         protected void Btn_register_Click(object sender, EventArgs e)
         {
-            
+
             if (Convert.ToInt32(ddl_user.SelectedValue) < 0)
             {
                 Response.Write("<script>alert('Bạn Chưa chọn user') </script>");
@@ -31,7 +30,7 @@ namespace FoodRau.Admin
 
             Member member = new Member();
             //nếu trả về false là chưa tồn tại
-            if (!member.existMember(txtUserName.Text))
+            if (!member.exist(txtUserName.Text))
             {
                 member.UserName = txtUserName.Text;
                 member.Name = txtName.Text;
@@ -41,7 +40,7 @@ namespace FoodRau.Admin
                 member.Role = Convert.ToInt32(ddl_user.SelectedValue);
                 member.Status = Convert.ToInt32(ddl_status.SelectedValue);
                 //thêm vào trả về số dòng tác động , thành công 1(true) , thất bại 0(false)
-                if (member.addMember())
+                if (member.add())
                 {
                     //in ra hộp thoại thông báo.
                     Response.Write("<script>alert('Thành Công') </script>");
@@ -51,7 +50,7 @@ namespace FoodRau.Admin
                     Response.Write("<script>alert('Thất Bại') </script>");
                 }
             }
-            
+
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace FoodRau.HttpCode
@@ -40,9 +42,9 @@ namespace FoodRau.HttpCode
         public int Role { get => _role; set => _role = value; }
         public int Status { get => _status; set => _status = value; }
 
-        public bool existMember(string username)
+        public bool exist(string username)
         {
-            string sQuery = "SELECT [username] FROM [dbo].[member] WHERE [username] = '@username'";
+            string sQuery = "SELECT count(*) FROM member WHERE username =@username";
             SqlParameter[] param =
             {
                 //có 2 cách 1 là truyền đối tượng vào insert
@@ -52,10 +54,10 @@ namespace FoodRau.HttpCode
                 new SqlParameter("@username",username)
             };
             //trả về true(1) hoặc false(0)
-            return DataProvider.executeNonQuery(sQuery, param);
+            return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
 
-        public bool addMember()
+        public bool add()
         {
             string sQuery = "INSERT INTO [dbo].[member] ([username] ,[pass] ,[name] ,[email] ,[phone] ,[role],[status]) VALUES (@username,@pass,@name,@email,@phone,@role,@status)";
             SqlParameter[] param =
@@ -71,7 +73,59 @@ namespace FoodRau.HttpCode
             //trả về true(1) hoặc false(0)
             return DataProvider.executeNonQuery(sQuery, param);
         }
+        public bool update()
+        {
+            string sQuery = "UPDATE [dbo].[member] SET [username] = @username,[pass] = @pass,[name] = @name ,[email] = @email ,[phone] = @phone,[role] =@role,[status] = @status WHERE [username] = '@username'";
+            SqlParameter[] param =
+             {
+                new SqlParameter("@username",this._userName),
+                new SqlParameter("@pass",this._pass),
+                new SqlParameter("@name",this._name),
+                new SqlParameter("@email",this._email),
+                new SqlParameter("@phone",this._phone),
+                new SqlParameter("@role",this._role),
+                new SqlParameter("@status",this.Status)
+            };
+            return DataProvider.executeNonQuery(sQuery, param);
+        }
+        public List<Member> getList()
+        {
+            string sQuery = "SELECT * FROM [dbo].[member]";
+            SqlParameter[] param = {};
+            List<Member> members = new List<Member>();
+            //lấy cái bảng
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            //lấy ra dòng
+            //loop qua từng cột
+            foreach (DataRow dr in dt.Rows)
+            {
+                //chuyển thành đối tượng và cho vào mảng để dẽ quản lí
+                members.Add(convertToObject(dr));
+            }
+            return members;
+        }
+        public Member getItem(string username)
+        {
+            string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username";
+            SqlParameter[] param = {
+                new SqlParameter("@username",username)
+            };
 
+            //Lấy ra mảng 1 chiều
+            return convertToObject(DataProvider.getDataTable(sQuery, param).Rows[0]);
+        }
+        private Member convertToObject(DataRow dr)
+        {
+            Member mb = new Member();
+            mb.UserName = dr["username"].ToString();
+            mb.Pass = dr["pass"].ToString();
+            mb.Name = dr["name"].ToString();
+            mb.Email = dr["email"].ToString();
+            mb.Phone = dr["phone"].ToString();
+            mb.Role = Convert.ToInt32(dr["role"]);
+            mb.Status =Convert.ToInt32(dr["status"]);
+            return mb;
+        }
 
     }
 }

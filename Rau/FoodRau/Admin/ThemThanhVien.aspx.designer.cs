@@ -11,7 +11,7 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class Register
+    public partial class ThemThanhVien
     {
 
         /// <summary>

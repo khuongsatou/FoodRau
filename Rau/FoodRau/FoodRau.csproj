@@ -74,6 +74,7 @@
     <Content Include="Admin\charts.html" />
     <Content Include="Admin\css\sb-admin-2.css" />
     <Content Include="Admin\css\sb-admin-2.min.css" />
+    <Content Include="Admin\DSThanhVien.aspx" />
     <Content Include="Admin\forgot-password.html" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
     <Content Include="Admin\index.html" />
@@ -84,9 +85,9 @@
     <Content Include="Admin\js\sb-admin-2.js" />
     <Content Include="Admin\js\sb-admin-2.min.js" />
     <Content Include="Admin\login.html" />
-    <Content Include="Admin\Register.aspx" />
     <Content Include="Admin\register.html" />
     <Content Include="Admin\tables.html" />
+    <Content Include="Admin\ThemThanhVien.aspx" />
     <Content Include="Admin\utilities-animation.html" />
     <Content Include="Admin\utilities-border.html" />
     <Content Include="Admin\utilities-color.html" />
@@ -1686,6 +1687,7 @@
     <Content Include="Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1696,12 +1698,19 @@
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="Admin\DSThanhVien.aspx.cs">
+      <DependentUpon>DSThanhVien.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="Admin\DSThanhVien.aspx.designer.cs">
+      <DependentUpon>DSThanhVien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ThemThanhVien.aspx.cs">
+      <DependentUpon>ThemThanhVien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ThemThanhVien.aspx.designer.cs">
+      <DependentUpon>ThemThanhVien.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1713,6 +1722,13 @@
     <Compile Include="HttpCode\DataProvider.cs" />
     <Compile Include="HttpCode\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin.Master" />
