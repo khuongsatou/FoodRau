@@ -101,9 +101,9 @@
                     </a>
                     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Login Screens:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/login.html">Login</a>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/Register.aspx">Đăng Kí</a>
+                            <h6 class="collapse-header">Chức Năng Đăng Nhập:</h6>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DangNhap.aspx">Đăng Nhập</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/ThemThanhVien.aspx">Đăng Kí</a>
                             <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/forgot-password.html">Forgot Password</a>
                             <div class="collapse-divider"></div>
                             <h6 class="collapse-header">Other Pages:</h6>

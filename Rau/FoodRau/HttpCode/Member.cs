@@ -88,6 +88,17 @@ namespace FoodRau.HttpCode
             };
             return DataProvider.executeNonQuery(sQuery, param);
         }
+
+        public bool delete()
+        {
+            string sQuery = "UPDATE [dbo].[member] SET [status] = @status WHERE [username] = '@username'";
+            SqlParameter[] param =
+             {
+                new SqlParameter("@username",this._userName),
+                new SqlParameter("@status",this.Status)
+            };
+            return DataProvider.executeNonQuery(sQuery, param);
+        }
         public List<Member> getList()
         {
             string sQuery = "SELECT * FROM [dbo].[member]";
@@ -104,11 +115,11 @@ namespace FoodRau.HttpCode
             }
             return members;
         }
-        public Member getItem(string username)
+        public Member getItem(Member mb)
         {
             string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username";
             SqlParameter[] param = {
-                new SqlParameter("@username",username)
+                new SqlParameter("@username",mb.UserName)
             };
 
             //Lấy ra mảng 1 chiều
