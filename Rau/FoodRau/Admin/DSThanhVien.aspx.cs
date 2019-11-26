@@ -19,26 +19,28 @@ namespace FoodRau.Admin
             }
         }
 
-        protected void rptDSThanhVien_ItemCommand(object sender, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == "CapNhat")
-            {
-                string username = e.CommandArgument.ToString();
-                Member member = new Member();
-                if (member.exist(username))
-                {
-                    Response.Write("<script>alert('có')</script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('không tồn tại')</script>");
-                }
+        //protected void rptDSThanhVien_ItemCommand(object sender, RepeaterCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "CapNhat")
+        //    {
+        //        string username = e.CommandArgument.ToString();
+        //        Member member = new Member();
+        //        if (member.exist(username))
+        //        {
+                    
 
-                //rptDSThanhVien.DataSource = member.getList();
-                //rptDSThanhVien.DataBind();
-            }
+        //            //Response.Write("<script>alert('có')</script>");
+        //        }
+        //        else
+        //        {
+        //            Response.Write("<script>alert('không tồn tại')</script>");
+        //        }
+
+        //        //rptDSThanhVien.DataSource = member.getList();
+        //        //rptDSThanhVien.DataBind();
+        //    }
            
-        }
+        //}
 
         
 

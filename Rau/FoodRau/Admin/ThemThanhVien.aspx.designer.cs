@@ -220,5 +220,19 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtKQ;
+
+        /// <summary>
+        /// PreviousPage property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new FoodRau.Admin.DSThanhVien PreviousPage
+        {
+            get
+            {
+                return ((FoodRau.Admin.DSThanhVien)(base.PreviousPage));
+            }
+        }
     }
 }

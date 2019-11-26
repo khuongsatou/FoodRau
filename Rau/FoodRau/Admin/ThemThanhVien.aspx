@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="ThemThanhVien.aspx.cs" Inherits="FoodRau.Admin.ThemThanhVien" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="ThemThanhVien.aspx.cs" Inherits="FoodRau.Admin.ThemThanhVien"
+    %>
+<%@ PreviousPageType VirtualPath="~/Admin/DSThanhVien.aspx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
@@ -6,7 +8,9 @@
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                    <h1 class='h4 text - gray - 900 mb - 4'>Update an Account!</h1>
+                  
+                    
                 </div>
                 <div class="user">
                     <div class="form-group row">

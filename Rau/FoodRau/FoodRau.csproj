@@ -1687,7 +1687,6 @@
     <Content Include="Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Default.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1719,13 +1718,6 @@
     </Compile>
     <Compile Include="Admin\ThemThanhVien.aspx.designer.cs">
       <DependentUpon>ThemThanhVien.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="HttpCode\Comment.cs" />
     <Compile Include="HttpCode\DataProvider.cs" />

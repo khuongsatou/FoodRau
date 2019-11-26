@@ -44,17 +44,22 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                         <asp:Repeater ID="rptDSThanhVien" runat="server" OnItemCommand="rptDSThanhVien_ItemCommand">
+                         <asp:Repeater ID="rptDSThanhVien" runat="server" >
                             <ItemTemplate>
                                 <tr>
-                                    <td><%# Eval("username") %></td>
+                                    
+                                    <td >
+                                        <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("username") %>'></asp:Label>
+                                    </td>
                                     <td><%# Eval("name") %></td>
                                     <td><%# Eval("email") %></td>
                                     <td><%# Eval("phone") %></td>
                                     <td><asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("role")) %>' ID="ckbRole" runat="server" /></td>
                                     <td><asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" /></td>
                                     <td>
-                                        <asp:Button ID="btnCapNhat" runat="server" Text="Cập Nhật" CommandArgument='<%# Eval("username") %>' CommandName="CapNhat" />
+                                        <asp:Button ID="Button1" runat="server" Text="Button" PostBackUrl="~/Admin/ThemThanhVien.aspx" />
+
+                                        <%--<asp:Button ID="btnCapNhat" runat="server" Text="Cập Nhật" CommandArgument='<%# Eval("username") %>' CommandName="CapNhat" PostBackUrl="ThemThanhVien.aspx" />--%>
                                         <asp:Button ID="btnXoa" runat="server" Text="Xóa" />
                                     </td>
                                 </tr>

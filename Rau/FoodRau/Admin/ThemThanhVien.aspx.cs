@@ -11,7 +11,15 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.PreviousPage != null)
+            {
+                ContentPlaceHolder content = (ContentPlaceHolder)Page.PreviousPage.Form.FindControl("cph_content");
+                Response.Write("<script>alert('NOT NULL') </script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('NULL') </script>");
+            }
         }
 
         protected void Btn_register_Click(object sender, EventArgs e)
