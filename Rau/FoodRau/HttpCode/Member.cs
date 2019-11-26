@@ -75,7 +75,7 @@ namespace FoodRau.HttpCode
         }
         public bool update()
         {
-            string sQuery = "UPDATE [dbo].[member] SET [username] = @username,[pass] = @pass,[name] = @name ,[email] = @email ,[phone] = @phone,[role] =@role,[status] = @status WHERE [username] = '@username'";
+            string sQuery = "UPDATE [dbo].[member] SET [username] = @username,[pass] = @pass,[name] = @name ,[email] = @email ,[phone] = @phone,[role] =@role,[status] = @status WHERE [username] = @username";
             SqlParameter[] param =
              {
                 new SqlParameter("@username",this._userName),
@@ -84,24 +84,23 @@ namespace FoodRau.HttpCode
                 new SqlParameter("@email",this._email),
                 new SqlParameter("@phone",this._phone),
                 new SqlParameter("@role",this._role),
-                new SqlParameter("@status",this.Status)
+                new SqlParameter("@status",this._status)
             };
             return DataProvider.executeNonQuery(sQuery, param);
         }
 
         public bool delete()
         {
-            string sQuery = "UPDATE [dbo].[member] SET [status] = @status WHERE [username] = '@username'";
+            string sQuery = "UPDATE [dbo].[member] SET [status] =0 WHERE [username] = @username";
             SqlParameter[] param =
              {
                 new SqlParameter("@username",this._userName),
-                new SqlParameter("@status",this.Status)
             };
             return DataProvider.executeNonQuery(sQuery, param);
         }
         public List<Member> getList()
         {
-            string sQuery = "SELECT * FROM [dbo].[member]";
+            string sQuery = "SELECT * FROM [dbo].[member] WHERE status = 1";
             SqlParameter[] param = {};
             List<Member> members = new List<Member>();
             //lấy cái bảng
@@ -115,11 +114,11 @@ namespace FoodRau.HttpCode
             }
             return members;
         }
-        public Member getItem(Member mb)
+        public Member getItem(string username)
         {
-            string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username";
+            string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username AND status = 1";
             SqlParameter[] param = {
-                new SqlParameter("@username",mb.UserName)
+                new SqlParameter("@username",username)
             };
 
             //Lấy ra mảng 1 chiều

@@ -11,7 +11,7 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class ThemThanhVien
+    public partial class DangKi
     {
 
         /// <summary>
@@ -211,14 +211,5 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vsGroup;
-
-        /// <summary>
-        /// txtKQ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtKQ;
     }
 }

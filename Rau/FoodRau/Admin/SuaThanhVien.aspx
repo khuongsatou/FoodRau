@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="ThemThanhVien.aspx.cs" Inherits="FoodRau.Admin.ThemThanhVien" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="SuaThanhVien.aspx.cs" Inherits="FoodRau.Admin.SuaThanhVien" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1>Create</h1>
+                    <h1>Update</h1>
                 </div>
                 <div class="user">
                     <div class="form-group row">
@@ -74,36 +74,18 @@
                     <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
-                            <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server"  Text="Register Account" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click"
+                            <asp:Button ValidationGroup="vsNotification" ID="btn_Update" runat="server"  Text="Update Account" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_update_Click"
                                 
                                 />
                         </div>
-                        <div class="col-sm-4  mb-3 mb-sm-0">
-                            <i class="fab fa-google fa-fw"></i>
-                            <asp:Button ID="btn_google" CssClass="btn btn-google btn-user btn-block" runat="server" Text="Register with Google" />
-
-                        </div>
-                        <div class="col-sm-4  mb-3 mb-sm-0">
-                            <i class="fab fa-facebook-f fa-fw"></i>
-                            <asp:Button ID="btn_fb" runat="server" Text="Register with Facebook" CssClass="btn btn-facebook btn-user btn-block" />
-
-                        </div>
-
+                     
                         <hr>
                     </div>
 
                 </div>
                 <hr>
-
-                <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                </div>
-                <div class="text-center">
-                    <a class="small" href="login.html">Already have an account? Login!</a>
-                </div>
                 <asp:ValidationSummary ID="vsGroup" runat="server" ValidationGroup="vsNotification" />
 
-                <div id="txtKQ" runat="server">KQ...</div>
             </div>
         </div>
     </div>

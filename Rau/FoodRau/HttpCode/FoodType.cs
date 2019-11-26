@@ -42,7 +42,7 @@ namespace FoodRau.HttpCode
 		}
 
 
-        public bool exist(string type_id)
+        public bool exist(int type_id)
         {
             string sQuery = "SELECT count(*) FROM [dbo].[food_type] WHERE [type_id] =@type_id";
             SqlParameter[] param =
@@ -106,11 +106,11 @@ namespace FoodRau.HttpCode
             }
             return ft;
         }
-        public FoodType getItem(FoodType ft)
+        public FoodType getItem(int type_id)
         {
             string sQuery = "SELECT [type_id]  FROM [dbo].[food_type] WHERE [type_id]=@type_id";
             SqlParameter[] param = {
-                new SqlParameter("@username",ft._type_id)
+                new SqlParameter("@username",type_id)
             };
             return convertToObject(DataProvider.getDataTable(sQuery, param).Rows[0]);
         }

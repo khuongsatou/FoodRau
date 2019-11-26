@@ -8,24 +8,19 @@ using System.Web.UI.WebControls;
 
 namespace FoodRau.Admin
 {
-    public partial class ThemThanhVien : System.Web.UI.Page
+    public partial class DangKi : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Page.PreviousPage != null)
             {
-                SetPlaceHolder();
+                //ContentPlaceHolder content = (ContentPlaceHolder)Page.PreviousPage.Form.FindControl("cph_content");
+                Response.Write("<script>alert('NOT NULL') </script>");
             }
-        }
-
-        private void SetPlaceHolder()
-        {
-            txtUserName.Attributes.Add("placeholder", "username");
-            txtName.Attributes.Add("placeholder", "name");
-            txtPassword.Attributes.Add("placeholder", "password");
-            txtRepass.Attributes.Add("placeholder", "repass");
-            txtEmail.Attributes.Add("placeholder", "email");
-            txtPhone.Attributes.Add("placeholder", "phone");
+            else
+            {
+                Response.Write("<script>alert('NULL') </script>");
+            }
         }
 
         protected void Btn_register_Click(object sender, EventArgs e)
@@ -62,10 +57,6 @@ namespace FoodRau.Admin
                 {
                     Response.Write("<script>alert('Thất Bại') </script>");
                 }
-            }
-            else
-            {
-                Response.Write("<script>alert('Tồn Tại') </script>");
             }
         }
     }

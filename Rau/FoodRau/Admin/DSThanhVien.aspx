@@ -21,9 +21,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable">
                     <thead>
                         <tr>
+                            <th>STT</th>
                             <th>Tài Khoản</th>
                             <th>Tên</th>
                             <th>Email</th>
@@ -35,6 +36,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>STT</th>
                             <th>Tài Khoản</th>
                             <th>Tên</th>
                             <th>Email</th>
@@ -44,23 +46,24 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                         <asp:Repeater ID="rptDSThanhVien" runat="server" >
+                        
+                        <asp:Repeater ID="rptDSThanhVien" runat="server" OnItemCommand="rptDSThanhVien_OnItemCommand">
                             <ItemTemplate>
                                 <tr>
-                                    
-                                    <td >
-                                        <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("username") %>'></asp:Label>
+                                    <td>
+                                        <asp:Label ID="lblID" runat="server" Text="<%#Container.ItemIndex  %>"></asp:Label>
                                     </td>
+                                    <td><%# Eval("username") %></td>
                                     <td><%# Eval("name") %></td>
                                     <td><%# Eval("email") %></td>
                                     <td><%# Eval("phone") %></td>
-                                    <td><asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("role")) %>' ID="ckbRole" runat="server" /></td>
-                                    <td><asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" /></td>
                                     <td>
-                                        <asp:Button ID="Button1" runat="server" Text="Button" PostBackUrl="~/Admin/ThemThanhVien.aspx" />
-
-                                        <%--<asp:Button ID="btnCapNhat" runat="server" Text="Cập Nhật" CommandArgument='<%# Eval("username") %>' CommandName="CapNhat" PostBackUrl="ThemThanhVien.aspx" />--%>
-                                        <asp:Button ID="btnXoa" runat="server" Text="Xóa" />
+                                        <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("role")) %>' ID="ckbRole" runat="server" /></td>
+                                    <td>
+                                        <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" /></td>
+                                    <td>
+                                        <asp:Button CausesValidation="false" ID="btnCapNhat" runat="server" Text="Sửa" CommandName="s" CommandArgument='<%# Eval("username") %>' />
+                                        <asp:Button CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("username") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')"/>
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -73,7 +76,7 @@
 
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cph_js" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     <!-- Page level plugins -->
     <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>

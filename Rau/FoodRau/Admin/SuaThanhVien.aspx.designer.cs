@@ -11,8 +11,17 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class ThemThanhVien
+    public partial class SuaThanhVien
     {
+
+        /// <summary>
+        /// lblShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblShow;
 
         /// <summary>
         /// txtUserName control.
@@ -177,31 +186,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddl_status;
 
         /// <summary>
-        /// btn_register control.
+        /// btn_Update control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_register;
-
-        /// <summary>
-        /// btn_google control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_google;
-
-        /// <summary>
-        /// btn_fb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_fb;
+        protected global::System.Web.UI.WebControls.Button btn_Update;
 
         /// <summary>
         /// vsGroup control.
@@ -211,14 +202,5 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vsGroup;
-
-        /// <summary>
-        /// txtKQ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtKQ;
     }
 }

@@ -11,11 +11,11 @@
                     <%--//form--%>
                   <div class="user">
                     <div class="form-group">
-                      <asp:TextBox placeholder="Enter User Name..." CssClass="form-control form-control-user" ID="txtUserName" runat="server" ></asp:TextBox>
+                      <asp:TextBox  CssClass="form-control form-control-user" ID="txtUserName" runat="server" ></asp:TextBox>
                      
                     </div>
                     <div class="form-group">
-                    <asp:TextBox placeholder="Password" CssClass="form-control form-control-user" ID="txtPassword" runat="server" ></asp:TextBox>
+                    <asp:TextBox CssClass="form-control form-control-user" ID="txtPassword" runat="server" ></asp:TextBox>
                     
                     </div>
                     <div class="form-group">
@@ -24,7 +24,7 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <asp:Button CssClass="btn btn-primary btn-user btn-block" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                    <asp:Button CssClass="btn btn-primary btn-user btn-block" ID="btnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
                    <%-- <a href="index.html" class="btn btn-primary btn-user btn-block">
                       Login
                     </a>--%>
@@ -47,5 +47,5 @@
               </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cph_js" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
 </asp:Content>

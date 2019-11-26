@@ -1,17 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="ThemThanhVien.aspx.cs" Inherits="FoodRau.Admin.ThemThanhVien" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="DangKi.aspx.cs" Inherits="FoodRau.Admin.DangKi" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <h1>
-        page
-    </h1>
-    <asp:Label ID="lblShow" runat="server" Text="Label"></asp:Label>
-
     <div class="row">
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1>Create</h1>
+                    <h1 class="h4 text - gray - 900 mb - 4">Create an Account!</h1>
+                  
+                    
                 </div>
                 <div class="user">
                     <div class="form-group row">
@@ -74,9 +71,8 @@
                     <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
-                            <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server"  Text="Register Account" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click"
-                                
-                                />
+                            <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server" Text="Register Account" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click" />
+
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fab fa-google fa-fw"></i>
@@ -103,7 +99,6 @@
                 </div>
                 <asp:ValidationSummary ID="vsGroup" runat="server" ValidationGroup="vsNotification" />
 
-                <div id="txtKQ" runat="server">KQ...</div>
             </div>
         </div>
     </div>
