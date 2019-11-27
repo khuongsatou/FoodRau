@@ -79,6 +79,7 @@
     <Content Include="Admin\DSLoaiSanPham.aspx" />
     <Content Include="Admin\DSThanhVien.aspx" />
     <Content Include="Admin\forgot-password.html" />
+    <Content Include="Admin\img\c.jpg" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
     <Content Include="Admin\index.html" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />

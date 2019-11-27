@@ -52,17 +52,26 @@ namespace FoodRau.HttpCode
             return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
 
-        public bool add()
+        public bool exist(string type_name)
         {
-            string sQuery = "INSERT INTO [dbo].[food_type] ([type_id] ,[type_name] ,[type_pos] ,[type_img] ,[status] ,[username] ,[modified]) VALUES (@type_id,@type_name,@type_pos,@type_img,@status,@username,@modified)";
+            string sQuery = "SELECT count(*) FROM [dbo].[food_type] WHERE [type_name] =@type_name";
             SqlParameter[] param =
             {
-                new SqlParameter("@type_id",this._type_id),
+                new SqlParameter("@type_name",type_name)
+            };
+            return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
+        }
+
+        public bool add()
+        {
+            string sQuery = "INSERT INTO [dbo].[food_type] ([type_name] ,[type_pos] ,[type_img] ,[status] ,[username] ,[modified]) VALUES (@type_name,@type_pos,@type_img,@status,@username,@modified)";
+            SqlParameter[] param =
+            {
                 new SqlParameter("@type_name",this._type_name),
                 new SqlParameter("@type_pos",this._type_post),
                 new SqlParameter("@type_img",this._type_img),
                 new SqlParameter("@status",this._status),
-                new SqlParameter("@username",this._type_name),
+                new SqlParameter("@username",this._username),
                 new SqlParameter("@modified",this._modified)
             };
             //trả về true(1) hoặc false(0)
@@ -70,15 +79,14 @@ namespace FoodRau.HttpCode
         }
         public bool update()
         {
-            string sQuery = "UPDATE [dbo].[food_type] SET [type_name] =@type_name,[type_pos] = @type_pos,[type_img] = @type_img,[status] = @status,[username] = @username,[modified] =@[modified] = @modified WHERE [type_id] = @type_id";
+            string sQuery = "UPDATE [dbo].[food_type] SET [type_pos] = @type_pos,[type_img] = @type_img,[status] = @status,[username] = @username,[modified] =@modified WHERE [type_name] = @type_name";
             SqlParameter[] param =
              {
-                new SqlParameter("@type_id",this._type_id),
                 new SqlParameter("@type_name",this._type_name),
                 new SqlParameter("@type_pos",this._type_post),
                 new SqlParameter("@type_img",this._type_img),
                 new SqlParameter("@status",this._status),
-                new SqlParameter("@username",this._type_name),
+                new SqlParameter("@username",this._username),
                 new SqlParameter("@modified",this._modified)
             };
             return DataProvider.executeNonQuery(sQuery, param);
@@ -86,18 +94,17 @@ namespace FoodRau.HttpCode
 
         public bool delete()
         {
-            string sQuery = "UPDATE [dbo].[food_type] SET [status] = @status WHERE [type_id] = @type_id";
+            string sQuery = "UPDATE [dbo].[food_type] SET [status] = 1 WHERE [type_id] = @type_id";
             SqlParameter[] param =
              {
-                
-                new SqlParameter("@status",this.Status)
+                new SqlParameter("@type_id",this._type_id)
             };
             return DataProvider.executeNonQuery(sQuery, param);
         }
         public List<FoodType> getList()
         {
-            string sQuery = "SELECT [type_id]  FROM [dbo].[food_type]";
-            SqlParameter[] param = { };
+            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE status =0";
+            SqlParameter[] param = {};
             List<FoodType> ft = new List<FoodType>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
             foreach (DataRow dr in dt.Rows)
@@ -108,12 +115,13 @@ namespace FoodRau.HttpCode
         }
         public FoodType getItem(int type_id)
         {
-            string sQuery = "SELECT [type_id]  FROM [dbo].[food_type] WHERE [type_id]=@type_id";
+            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE [type_id]=@type_id";
             SqlParameter[] param = {
-                new SqlParameter("@username",type_id)
+                new SqlParameter("@type_id",type_id)
             };
             return convertToObject(DataProvider.getDataTable(sQuery, param).Rows[0]);
         }
+
         private FoodType convertToObject(DataRow dr)
         {
             FoodType ft = new FoodType();
