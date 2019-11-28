@@ -13,14 +13,12 @@
             </div>
             <div class="user">
                 <div class="row">
-
-
                     <div class="col-md-6">
                         <div class="form-group row">
                             <div class="col-sm-12">
-
                                 <asp:TextBox ID="txtName" CssClass="form-control form-control-user" runat="server" placeholder="Tên"></asp:TextBox>
                             </div>
+
                             <div class="col-sm-12">
                                 <asp:TextBox ID="txtPost" TextMode="Number" CssClass="form-control form-control-user" runat="server" placeholder="bài viết"></asp:TextBox>
                             </div>
@@ -39,15 +37,24 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <div class="col-md-12">
-                                <asp:Image ID="imgReview" Height="50%" runat="server" ImageUrl="~/Admin/img/c.jpg" />
+                            <div class="col-md-6">
+                                <asp:Image ID="imgReview" Height="100%" Width="100%" runat="server" ImageUrl="~/Admin/img/c.jpg" />
                             </div>
                         </div>
-
                     </div>
-                    <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" OnClick="BtnThem_Click" />
-                    <asp:Button ID="btnSua" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Sửa" OnClick="BtnSua_Click" />
-                    <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="BtnHuy_Click" />
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" OnClick="BtnThem_Click" />
+                            </div>
+                            <div class="col-md-4">
+                                <asp:Button ID="btnSua" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Sửa" OnClick="BtnSua_Click" />
+                            </div>
+                            <div class="col-md-4">
+                                <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="BtnHuy_Click" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

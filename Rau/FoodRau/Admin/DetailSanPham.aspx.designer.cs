@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FoodRau
+namespace FoodRau.Admin
 {
 
 
-    public partial class Default
+    public partial class DetailSanPham
     {
     }
 }

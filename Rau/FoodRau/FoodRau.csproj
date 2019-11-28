@@ -76,7 +76,9 @@
     <Content Include="Admin\css\sb-admin-2.min.css" />
     <Content Include="Admin\DangKi.aspx" />
     <Content Include="Admin\DangNhap.aspx" />
+    <Content Include="Admin\DetailSanPham.aspx" />
     <Content Include="Admin\DSLoaiSanPham.aspx" />
+    <Content Include="Admin\DSSanPham.aspx" />
     <Content Include="Admin\DSThanhVien.aspx" />
     <Content Include="Admin\forgot-password.html" />
     <Content Include="Admin\img\c.jpg" />
@@ -92,6 +94,7 @@
     <Content Include="Admin\register.html" />
     <Content Include="Admin\SuaThanhVien.aspx" />
     <Content Include="Admin\tables.html" />
+    <Content Include="Admin\ThemSanPham.aspx" />
     <Content Include="Admin\ThemThanhVien.aspx" />
     <Content Include="Admin\utilities-animation.html" />
     <Content Include="Admin\utilities-border.html" />
@@ -1717,12 +1720,26 @@
     <Compile Include="Admin\DangNhap.aspx.designer.cs">
       <DependentUpon>DangNhap.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\DetailSanPham.aspx.cs">
+      <DependentUpon>DetailSanPham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DetailSanPham.aspx.designer.cs">
+      <DependentUpon>DetailSanPham.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\DSLoaiSanPham.aspx.cs">
       <DependentUpon>DSLoaiSanPham.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\DSLoaiSanPham.aspx.designer.cs">
       <DependentUpon>DSLoaiSanPham.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DSSanPham.aspx.cs">
+      <DependentUpon>DSSanPham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DSSanPham.aspx.designer.cs">
+      <DependentUpon>DSSanPham.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\DSThanhVien.aspx.cs">
       <DependentUpon>DSThanhVien.aspx</DependentUpon>
@@ -1737,6 +1754,13 @@
     </Compile>
     <Compile Include="Admin\SuaThanhVien.aspx.designer.cs">
       <DependentUpon>SuaThanhVien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ThemSanPham.aspx.cs">
+      <DependentUpon>ThemSanPham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ThemSanPham.aspx.designer.cs">
+      <DependentUpon>ThemSanPham.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ThemThanhVien.aspx.cs">
       <DependentUpon>ThemThanhVien.aspx</DependentUpon>

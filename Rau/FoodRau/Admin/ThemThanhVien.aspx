@@ -2,16 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <h1>
-        page
-    </h1>
-    <asp:Label ID="lblShow" runat="server" Text="Label"></asp:Label>
-
     <div class="row">
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1>Create</h1>
+                    <h1>Thêm Tài Khoản</h1>
                 </div>
                 <div class="user">
                     <div class="form-group row">

@@ -34,10 +34,7 @@ namespace FoodRau.Admin
                     }
 
                 }
-                else
-                {
-                    lblShow.Text = "NULL USERNAME";
-                }
+                
             }
         }
 
