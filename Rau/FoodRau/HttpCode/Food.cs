@@ -28,6 +28,22 @@ namespace FoodRau.HttpCode
 
         public Food()
         {
+           
+            _name = "";
+            _description = "";
+            _price = 0;
+            _price_promo = 0;
+            _thumb = "";
+            _img = "";
+            _unit = "";
+            _percent_promo = 0;
+            _rating = 0;
+            _sold = 0;
+            _point = 0;
+            _type = 0;
+            _status = 0;
+            _username = "";
+            _modified = DateTime.Now;
         }
 
         public Food(int id, string name, string description, decimal price, decimal price_promo, string thumb, string img, string unit, decimal percent_promo, int rating, int sold, decimal point, int type, int status, string username, DateTime modified)

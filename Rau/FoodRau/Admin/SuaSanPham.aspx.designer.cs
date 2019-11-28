@@ -11,7 +11,7 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class ThemSanPham
+    public partial class SuaSanPham
     {
 
         /// <summary>
@@ -132,12 +132,12 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.FileUpload fuImg;
 
         /// <summary>
-        /// btnThem control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnThem;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

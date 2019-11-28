@@ -17,28 +17,33 @@
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <asp:TextBox ID="txtName" CssClass="form-control form-control-user" runat="server" placeholder="Tên"></asp:TextBox>
+                                <br />
                             </div>
 
                             <div class="col-sm-12">
                                 <asp:TextBox ID="txtPost" TextMode="Number" CssClass="form-control form-control-user" runat="server" placeholder="bài viết"></asp:TextBox>
+                                 <br />
                             </div>
                             <div class="col-sm-12">
                                 <asp:FileUpload ID="fuImg" runat="server" />
+                                 <br />
 
                             </div>
                             <div class="col-sm-12">
+                                 <br />
                                 <asp:DropDownList ID="ddlStatus" placeholder="Trạng Thái" runat="server" CssClass="form-control">
                                     <asp:ListItem Value="-1">--Trạng Thái--</asp:ListItem>
                                     <asp:ListItem Value="1">Còn Hàng</asp:ListItem>
                                     <asp:ListItem Value="0">Hết Hàng</asp:ListItem>
                                 </asp:DropDownList>
+                                 <br />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <asp:Image ID="imgReview" Height="100%" Width="100%" runat="server" ImageUrl="~/Admin/img/c.jpg" />
+                                <asp:Image ID="imgReview" Height="250px" Width="250px" runat="server" ImageUrl="~/Admin/img/c.jpg" />
                             </div>
                         </div>
                     </div>
@@ -104,7 +109,7 @@
                                                     <%# Eval("type_name") %>
                                                 </td>
                                                 <td>
-                                                    <asp:Image Width="20%" Height="20%" ID="imgHinh" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("type_img") %>' />
+                                                    <asp:Image Width="50px" Height="50px" ID="imgHinh" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("type_img") %>' />
                                                 </td>
                                                 <td>
                                                     <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />

@@ -92,6 +92,7 @@
     <Content Include="Admin\js\sb-admin-2.min.js" />
     <Content Include="Admin\login.html" />
     <Content Include="Admin\register.html" />
+    <Content Include="Admin\SuaSanPham.aspx" />
     <Content Include="Admin\SuaThanhVien.aspx" />
     <Content Include="Admin\tables.html" />
     <Content Include="Admin\ThemSanPham.aspx" />
@@ -1748,6 +1749,13 @@
     <Compile Include="Admin\DSThanhVien.aspx.designer.cs">
       <DependentUpon>DSThanhVien.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SuaSanPham.aspx.cs">
+      <DependentUpon>SuaSanPham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SuaSanPham.aspx.designer.cs">
+      <DependentUpon>SuaSanPham.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\SuaThanhVien.aspx.cs">
       <DependentUpon>SuaThanhVien.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1782,6 +1790,7 @@
     <Compile Include="HttpCode\FoodType.cs" />
     <Compile Include="HttpCode\Member.cs" />
     <Compile Include="HttpCode\Post.cs" />
+    <Compile Include="HttpCode\StringProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

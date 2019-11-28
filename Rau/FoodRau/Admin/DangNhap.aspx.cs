@@ -17,10 +17,31 @@ namespace FoodRau.Admin
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
+            
+            Member mb = new Member();
+            string us = txtUserName.Text;
+            string pw = txtPassword.Text;
+            mb.UserName = us;
+            if (mb.exist(us))
+            {
+                if (mb.getItem(us).Pass == StringProc.MD5Hash(pw))
+                {
+                    Response.Write("<script>alert('Đăng Nhập Thành công');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Mật Khẩu Sai');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('Tài Khoản Không Tồn Tại');</script>");
+            }
+
             //Session["username"] = txtUserName.Text;
             //Session["pass"] = txtPassword.Text;
             //Member mb = new Member();
-            //string username = 
+            //string username =
             //mb.UserName = Session["username"].ToString();
             //mb.Pass = Session["pass"].ToString();
 

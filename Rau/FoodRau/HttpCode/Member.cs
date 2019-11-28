@@ -63,7 +63,8 @@ namespace FoodRau.HttpCode
             SqlParameter[] param =
             {
                 new SqlParameter("@username",this._userName),
-                new SqlParameter("@pass",this._pass),
+                //new SqlParameter("@pass",this._pass),
+                new SqlParameter("@pass",StringProc.MD5Hash(this._pass)),
                 new SqlParameter("@name",this._name),
                 new SqlParameter("@email",this._email),
                 new SqlParameter("@phone",this._phone),
@@ -79,7 +80,7 @@ namespace FoodRau.HttpCode
             SqlParameter[] param =
              {
                 new SqlParameter("@username",this._userName),
-                new SqlParameter("@pass",this._pass),
+                new SqlParameter("@pass",StringProc.MD5Hash(this._pass)),
                 new SqlParameter("@name",this._name),
                 new SqlParameter("@email",this._email),
                 new SqlParameter("@phone",this._phone),

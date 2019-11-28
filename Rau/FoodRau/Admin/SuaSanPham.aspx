@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="ThemSanPham.aspx.cs" Inherits="FoodRau.Admin.ThemSanPham" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="SuaSanPham.aspx.cs" Inherits="FoodRau.Admin.SuaSanPham" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <div class="row">
+     <div class="row">
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
@@ -88,7 +87,7 @@
                             
                            </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:Button ID="btnThem" OnClick="Btn_Them_Click" CssClass="btn btn-primary btn-user btn-block"  runat="server" Text="Thêm" />
+                            <asp:Button ID="btnUpdate" OnClick="Btn_update_Click" CssClass="btn btn-primary btn-user btn-block"  runat="server" Text="Update"/>
                         </div>
                         
                        

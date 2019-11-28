@@ -25,6 +25,8 @@ namespace FoodRau.Admin
             rptDSSP.DataBind();
         }
 
+        
+
         protected void rptDSSP_OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "s")
@@ -32,8 +34,9 @@ namespace FoodRau.Admin
                 string id = e.CommandArgument.ToString();
                 //mã hóa
                 string hash = Server.UrlEncode(id);
-                Response.Redirect("~/Admin/ThemSanPham.aspx?id=" + hash);
+                Response.Redirect("~/Admin/SuaSanPham.aspx?id=" + hash);
             }
+            //xóa
             if (e.CommandName == "x")
             {
                 Food f = new Food();
