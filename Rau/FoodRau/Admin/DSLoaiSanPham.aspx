@@ -17,12 +17,14 @@
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <asp:TextBox ID="txtName" CssClass="form-control form-control-user" runat="server" placeholder="Tên"></asp:TextBox>
+                                <asp:RequiredFieldValidator ControlToValidate="txtName" ID="rfvName" runat="server" ErrorMessage="Bạn Chưa Nhập Tên"></asp:RequiredFieldValidator>
                                 <br />
                             </div>
 
                             <div class="col-sm-12">
                                 <asp:TextBox ID="txtPost" TextMode="Number" CssClass="form-control form-control-user" runat="server" placeholder="bài viết"></asp:TextBox>
                                  <br />
+                                 <asp:RequiredFieldValidator ControlToValidate="txtPost" ID="rfvPost" runat="server" ErrorMessage="Bạn Chưa Nhập Bài Viết"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-sm-12">
                                 <asp:FileUpload ID="fuImg" runat="server" />

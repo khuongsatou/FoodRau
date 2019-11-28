@@ -12,6 +12,10 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Session["username"] != null)
+            //{
+            //    Response.Redirect("~");
+            //}
             if (!Page.IsPostBack)
             {
                 resetList();

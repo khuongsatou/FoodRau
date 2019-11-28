@@ -123,15 +123,6 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.TextBox txtRepass;
 
         /// <summary>
-        /// cvRepass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cvRepass;
-
-        /// <summary>
         /// rfvRepass control.
         /// </summary>
         /// <remarks>
@@ -139,6 +130,15 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRepass;
+
+        /// <summary>
+        /// cvRepass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvRepass;
 
         /// <summary>
         /// txtPhone control.
@@ -211,14 +211,5 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vsGroup;
-
-        /// <summary>
-        /// txtKQ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtKQ;
     }
 }

@@ -12,12 +12,15 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"] != null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            
+
             Member mb = new Member();
             string us = txtUserName.Text;
             string pw = txtPassword.Text;
@@ -26,7 +29,9 @@ namespace FoodRau.Admin
             {
                 if (mb.getItem(us).Pass == StringProc.MD5Hash(pw))
                 {
+                    Session["username"] = us;
                     Response.Write("<script>alert('Đăng Nhập Thành công');</script>");
+                    Response.Redirect("~");
                 }
                 else
                 {

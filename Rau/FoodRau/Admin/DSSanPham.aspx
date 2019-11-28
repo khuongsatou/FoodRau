@@ -78,7 +78,7 @@
                                                     <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
                                                 </td>
                                                 <td>
-                                                    <asp:Button CausesValidation="false" ID="btnChiTiet" runat="server" Text="Chi Tiết" CommandName="ct" CommandArgument='<%# Eval("id") %>' />
+                                                   <%-- <asp:Button CausesValidation="false" ID="btnChiTiet" runat="server" Text="Chi Tiết" CommandName="ct" CommandArgument='<%# Eval("id") %>' />--%>
                                                     <asp:Button CausesValidation="false" ID="btnCapNhat" runat="server" Text="Sửa" CommandName="s" CommandArgument='<%# Eval("id") %>' />
                                                     <asp:Button CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />
                                                 </td>

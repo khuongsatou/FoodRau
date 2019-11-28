@@ -13,15 +13,17 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <asp:TextBox ID="txtName" placeholder="Tên..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="Bạn Chưa Nhập Tên!" ControlToValidate="txtName"></asp:RequiredFieldValidator>
                             <br />
                         </div>
                         <div class="col-sm-4">
                             <asp:TextBox ID="txtDescription" placeholder="Mô Tả..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvDescription" runat="server" ErrorMessage="Bạn Chưa Nhập Mô Tả!" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
                             <br />
                         </div>
                         <div class="col-sm-4">
                             <asp:TextBox ID="txtPrice" runat="server" min="0" TextMode="number" placeholder="Giá..." CssClass="form-control form-control-user"></asp:TextBox>
-                          
+                            
                             <br />
 
                         </div>
@@ -32,8 +34,13 @@
                             <br />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
+                            <asp:DropDownList ID="ddl_status" runat="server" CssClass="form-control">
+                                <asp:ListItem Enabled="true" Value="-1">--Status--</asp:ListItem>
+                                <asp:ListItem Value="1">Đang Hoạt Động</asp:ListItem>
+                                <asp:ListItem Value="0">Ngưng Hoạt Động</asp:ListItem>
+                            </asp:DropDownList>
+                           <%-- <asp:TextBox ID="txtStatus" runat="server" placeholder="Status..." CssClass="form-control form-control-user"></asp:TextBox>--%>
 
-                            <asp:TextBox ID="txtStatus" runat="server" placeholder="Status..." CssClass="form-control form-control-user"></asp:TextBox>
                             <br />
                         </div>
                        <%-- <div class="col-sm-4  mb-3 mb-sm-0">
@@ -67,8 +74,10 @@
                             <br />
                         </div>
                          <div class="col-sm-4  mb-3 mb-sm-0">
-                             <asp:DropDownList ID="ddListType" runat="server">
-                             </asp:DropDownList>
+                             <asp:DropDownList ID="ddListType" runat="server" CssClass="form-control">
+                               
+                            </asp:DropDownList>
+                          
                             <%--<asp:TextBox ID="txtType" runat="server"  placeholder="Type..." CssClass="form-control form-control-user"></asp:TextBox>--%>
                              <br />
                         </div>

@@ -12,14 +12,9 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.PreviousPage != null)
+            if (Session["username"] !=null)
             {
-                //ContentPlaceHolder content = (ContentPlaceHolder)Page.PreviousPage.Form.FindControl("cph_content");
-                Response.Write("<script>alert('NOT NULL') </script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('NULL') </script>");
+                Response.Redirect("~");
             }
         }
 

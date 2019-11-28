@@ -37,11 +37,11 @@
                             <asp:RegularExpressionValidator ValidationGroup="vsNotification" ID="revPassword" runat="server" ErrorMessage="Bạn Phải Nhập 3 đến 10 kí tự" ControlToValidate="txtPassword" ValidationExpression="[A-Za-z0-9]{3,10}"></asp:RegularExpressionValidator>
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-
                             <asp:TextBox ID="txtRepass" runat="server" TextMode="password" CssClass="form-control form-control-user"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="rfvRepass" runat="server" ErrorMessage="Bạn Chưa nhập rePass" ControlToValidate="txtRepass" ValidationGroup="vsNotification"></asp:RequiredFieldValidator>
                             <asp:CompareValidator ValidationGroup="vsNotification" ID="cvRepass" runat="server" ErrorMessage="rePass Chưa giống pass" ControlToCompare="txtPassword" ControlToValidate="txtRepass" Type="String"></asp:CompareValidator>
                             <br />
-                            <asp:RequiredFieldValidator ID="rfvRepass" runat="server" ErrorMessage="Bạn Chưa nhập rePass" ControlToValidate="txtRepass" ValidationGroup="vsNotification"></asp:RequiredFieldValidator>
+                           
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <asp:TextBox ID="txtPhone" runat="server" TextMode="Number" CssClass="form-control form-control-user" Text="0" ></asp:TextBox>
@@ -98,7 +98,6 @@
                 </div>
                 <asp:ValidationSummary ID="vsGroup" runat="server" ValidationGroup="vsNotification" />
 
-                <div id="txtKQ" runat="server">KQ...</div>
             </div>
         </div>
     </div>
