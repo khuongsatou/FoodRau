@@ -25,9 +25,18 @@ namespace FoodRau.Admin
                     {
                         Food f = fo.getItem(id);
                         txtName.Text =f.Name;
+                     
+                        txtPrice.Text = f.Price.ToString();
+                        txtPrice_promo.Text = f.Price_promo.ToString();
+                        txtUnit.Text = f.Unit.ToString();
+                        txtPercent_Promo.Text = f.Percent_promo.ToString();
+                        txtRating.Text = f.Rating.ToString();
+                        txtSold.Text = f.Sold.ToString();
+                        txtPoint.Text = f.Point.ToString();
+                    
+                        ddl_status.SelectedValue = f.Status.ToString();
                         selectedDropDown(f.Type);
-                        //ddl_user.SelectedValue = m.Role.ToString();
-                        //ddl_status.SelectedValue = m.Status.ToString();
+                     
                     }
 
                 }
@@ -47,20 +56,20 @@ namespace FoodRau.Admin
 
         protected void Btn_update_Click(object sender, EventArgs e)
         {
-            //if (Convert.ToInt32(ddl_user.SelectedValue) < 0)
-            //{
-            //    Response.Write("<script>alert('Bạn Chưa chọn user') </script>");
-            //    return;
-            //}
-            //if (Convert.ToInt32(ddl_status.SelectedValue) < 0)
-            //{
-            //    Response.Write("<script>alert('Bạn Chưa chọn status') </script>");
-            //    return;
-            //}
+            if (Convert.ToInt32(ddListType.SelectedValue) < 0)
+            {
+                Response.Write("<script>alert('Bạn Chưa chọn type') </script>");
+                return;
+            }
+            if (Convert.ToInt32(ddl_status.SelectedValue) < 0)
+            {
+                Response.Write("<script>alert('Bạn Chưa chọn status') </script>");
+                return;
+            }
 
-            Food fo = new Food();
+            Food f = new Food();
             //nếu trả về false là chưa tồn tại
-            if (!fo.exist(txtName.Text))
+            if (!f.exist(txtName.Text))
             {
                 if (Request.QueryString["id"] != null)
                 {
@@ -68,11 +77,22 @@ namespace FoodRau.Admin
                     string hash = Request.QueryString["id"];
                     int id = Convert.ToInt32(HttpUtility.UrlDecode(hash));
 
-                    fo.Id = id;
-                    fo.Name = txtName.Text;
-                    fo.Type = Convert.ToInt32(ddListType.SelectedValue);
+                    f.Id = id;
+                    f.Name = txtName.Text;
+                    f.Type = Convert.ToInt32(ddListType.SelectedValue);
+                    f.Price = Convert.ToDecimal(txtPrice.Text);
+                    f.Price_promo = Convert.ToDecimal(txtPrice_promo.Text);
+                    f.Unit = txtUnit.Text;
+                    f.Percent_promo = Convert.ToDecimal(txtPercent_Promo.Text);
+                    f.Rating = Convert.ToInt32(txtRating.Text);
+                    f.Sold = Convert.ToInt32(txtSold.Text);
+                    f.Point = Convert.ToDecimal(txtPoint.Text);
+                    f.Type = Convert.ToInt32(ddListType.SelectedValue);
+                    f.Status = Convert.ToInt32(ddl_status.SelectedValue);
+                    f.Username = "ca";
+                    f.Modified = DateTime.Now;
                     //thêm vào trả về số dòng tác động , thành công 1(true) , thất bại 0(false)
-                    if (fo.update())
+                    if (f.update())
                     {
                         //in ra hộp thoại thông báo.
                         Response.Write("<script>alert('Thành Công') </script>");

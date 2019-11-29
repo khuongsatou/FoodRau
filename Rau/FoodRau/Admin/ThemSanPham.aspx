@@ -22,63 +22,58 @@
                             <br />
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtPrice" runat="server" min="0" TextMode="number" placeholder="Giá..." CssClass="form-control form-control-user"></asp:TextBox>
-                            
+                            <asp:TextBox ID="txtPrice" runat="server" min="0" step="1" TextMode="number" placeholder="Giá..." CssClass="form-control form-control-user"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Bạn Chưa Nhập Giá!" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>
                             <br />
 
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4 mb-3 mb-sm-0">
-                            <asp:TextBox ID="txtPrice_promo" runat="server" TextMode="number" placeholder="(%)Giá Khuyến mãi..." CssClass="form-control form-control-user" min="0" step="0.01" max="1"></asp:TextBox>
+                            <asp:TextBox ID="txtPrice_promo" runat="server" TextMode="number" placeholder="(%)Giá Khuyến mãi..." CssClass="form-control form-control-user" min="0" step="0.01" max="1" Text="0"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Bạn Chưa Nhập Giá Khuyến Mãi!" ControlToValidate="txtPrice_promo"></asp:RequiredFieldValidator>
                             <br />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <asp:DropDownList ID="ddl_status" runat="server" CssClass="form-control">
                                 <asp:ListItem Enabled="true" Value="-1">--Status--</asp:ListItem>
-                                <asp:ListItem Value="1">Đang Hoạt Động</asp:ListItem>
-                                <asp:ListItem Value="0">Ngưng Hoạt Động</asp:ListItem>
+                                <asp:ListItem Value="0">Đang Hoạt Động</asp:ListItem>
+                                <asp:ListItem Value="1">Ngưng Hoạt Động</asp:ListItem>
                             </asp:DropDownList>
-                           <%-- <asp:TextBox ID="txtStatus" runat="server" placeholder="Status..." CssClass="form-control form-control-user"></asp:TextBox>--%>
+                        
 
                             <br />
                         </div>
-                       <%-- <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:TextBox ID="txtUserName" runat="server" placeholder="UserName..." CssClass="form-control form-control-user"></asp:TextBox>
-                            <br />
-                        </div>--%>
-                        
+                 
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:TextBox ID="txtUnit" runat="server"   placeholder="Đơn Vị..." CssClass="form-control form-control-user"></asp:TextBox>
+                            <asp:TextBox ID="txtUnit" Text="Quả" runat="server"   placeholder="Đơn Vị..." CssClass="form-control form-control-user"></asp:TextBox>
+                            <br/>
+                        </div>
+                        <div class="col-sm-4  mb-3 mb-sm-0">
+                            <asp:TextBox ID="txtPercent_Promo" TextMode="Number" placeholder="(%)Khuyến Mãi..." runat="server" CssClass="form-control form-control-user" min="0" step="0.01" max="0.9" Text="0"></asp:TextBox>
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Bạn Chưa Nhập KM!" ControlToValidate="txtPercent_Promo"></asp:RequiredFieldValidator>
                             <br />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:TextBox ID="txtPercent_Promo" TextMode="Number" placeholder="(%)Khuyến Mãi..." runat="server" CssClass="form-control form-control-user" min="0" step="0.01" max="1"></asp:TextBox>
-                            <br />
-                        </div>
-                        <div class="col-sm-4  mb-3 mb-sm-0">
-                             <asp:TextBox ID="txtRating" runat="server" TextMode="Number" placeholder="Rating..." CssClass="form-control form-control-user"></asp:TextBox>
+                             <asp:TextBox ID="txtRating" runat="server" TextMode="Number" placeholder="Rating..." Text="0" min="0" step="1" max="10" CssClass="form-control form-control-user"></asp:TextBox>
                             <br />
                        </div>
                     </div>
                      <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                             <asp:TextBox ID="txtSold" runat="server" TextMode="Number" min="0" step="0.01" placeholder="Sold..." CssClass="form-control form-control-user"></asp:TextBox>
+                             <asp:TextBox ID="txtSold" runat="server" TextMode="Number" min="0" step="0.01" Text="0" placeholder="Sold..." CssClass="form-control form-control-user"></asp:TextBox>
                             <br />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:TextBox ID="txtPoint" runat="server" TextMode="Number" min="0" step="0.01" placeholder="Point..." CssClass="form-control form-control-user"></asp:TextBox>
+                            <asp:TextBox ID="txtPoint" runat="server" Text="0" TextMode="Number" min="0" step="0.01" placeholder="Point..." max="0.9" CssClass="form-control form-control-user"></asp:TextBox>
                           
                             <br />
                         </div>
                          <div class="col-sm-4  mb-3 mb-sm-0">
-                             <asp:DropDownList ID="ddListType" runat="server" CssClass="form-control">
-                               
-                            </asp:DropDownList>
-                          
-                            <%--<asp:TextBox ID="txtType" runat="server"  placeholder="Type..." CssClass="form-control form-control-user"></asp:TextBox>--%>
+                             <asp:DropDownList ID="ddListType" runat="server" CssClass="form-control"> </asp:DropDownList>
+                       
                              <br />
                         </div>
                     </div>
