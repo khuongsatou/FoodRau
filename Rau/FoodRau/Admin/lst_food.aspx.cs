@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace FoodRau.Admin
 {
-    public partial class DSThanhVien : System.Web.UI.Page
+    public partial class lst_food : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,25 +24,28 @@ namespace FoodRau.Admin
 
         private void resetList()
         {
-            Member member = new Member();
-            rptDSThanhVien.DataSource = member.getList();
-            rptDSThanhVien.DataBind();
+            Food f = new Food();
+            rptDSSP.DataSource = f.getList();
+            rptDSSP.DataBind();
         }
 
-        protected void rptDSThanhVien_OnItemCommand(object source, RepeaterCommandEventArgs e)
+
+
+        protected void rptDSSP_OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "s")
             {
-                string username = e.CommandArgument.ToString();
+                string id = e.CommandArgument.ToString();
                 //mã hóa
-                string hash = Server.UrlEncode(username);
-                Response.Redirect("~/Admin/SuaThanhVien.aspx?username="+hash);
+                string hash = Server.UrlEncode(id);
+                Response.Redirect("~/Admin/SuaSanPham.aspx?id=" + hash);
             }
-            if(e.CommandName == "x")
+            //xóa
+            if (e.CommandName == "x")
             {
-                Member member = new Member();
-                member.UserName = e.CommandArgument.ToString();
-                if (member.delete())
+                Food f = new Food();
+                f.Id = Convert.ToInt32(e.CommandArgument.ToString());
+                if (f.delete())
                 {
                     //in ra hộp thoại thông báo.
                     Response.Write("<script>alert('Thành Công') </script>");
@@ -54,7 +57,5 @@ namespace FoodRau.Admin
                 resetList();
             }
         }
-
-
     }
 }

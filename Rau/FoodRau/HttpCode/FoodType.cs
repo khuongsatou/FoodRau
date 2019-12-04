@@ -27,8 +27,8 @@ namespace FoodRau.HttpCode
 
 		public FoodType()
 		{
-			
-		}
+            this._modified = DateTime.Now;
+        }
 
 		public FoodType(int type_id, string type_name, int type_post, string type_img, int status, string username, DateTime modified)
 		{

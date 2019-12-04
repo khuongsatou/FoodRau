@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="DSSanPham.aspx.cs" Inherits="FoodRau.Admin.DSSanPham" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="lst_food.aspx.cs" Inherits="FoodRau.Admin.lst_food" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
      <!-- Custom styles for this page -->
@@ -105,3 +105,4 @@
     <!-- Page level custom scripts -->
     <script src="<%=Page.ResolveUrl("~") %>Admin/js/demo/datatables-demo.js"></script>
 </asp:Content>
+

@@ -8,8 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace FoodRau.Admin
 {
-    public partial class DSLoaiSanPham : System.Web.UI.Page
+    public partial class food_type : System.Web.UI.Page
     {
+        private bool isEnable = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["username"] != null)
@@ -19,31 +20,46 @@ namespace FoodRau.Admin
             if (!Page.IsPostBack)
             {
                 resetList();
+                CheckEnable();
             }
         }
 
+        public void CheckEnable()
+        {
+            btnThem.Enabled = !isEnable;
+            btnCapNhat.Enabled = isEnable;
+            btnHuy.Enabled = isEnable;
+
+            txtName.Enabled = !isEnable;
+        }
+
+        protected void Btn_cancel_Click(object sender, EventArgs e)
+        {
+            txtName.Enabled = isEnable;
+            txtName.Text = "";
+            txtPost.Text = "";
+            //img....
+            ddlStatus.SelectedIndex = -1;
+            this.isEnable = false;
+            CheckEnable();
+            resetList();
+        }
+
+
         protected void BtnThem_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddlStatus.SelectedValue) < 0)
-            {
-                Response.Write("<script>alert('Bạn Chưa chọn status') </script>");
-                return;
-            }
             FoodType ft = new FoodType();
-
-            //nếu trả về false là chưa tồn tại
             if (!ft.exist(txtName.Text))
             {
                 ft.Type_name = txtName.Text;
                 ft.Type_post = Convert.ToInt32(txtPost.Text);
-                ft.Type_img = "1";
-                ft.Username = "ca";
-                ft.Modified = DateTime.Now;
+                ft.Type_img = "1.jpg";
+                ft.Username = "khuong";
                 if (ft.add())
                 {
-                    //in ra hộp thoại thông báo.
-                    Response.Write("<script>alert('Thành Công') </script>");
+                    Btn_cancel_Click(sender, e);
                     resetList();
+                    Response.Write("<script>alert('Thành Công') </script>");
                 }
                 else
                 {
@@ -55,26 +71,16 @@ namespace FoodRau.Admin
                 Response.Write("<script>alert('Tồn Tại') </script>");
             }
         }
-        protected void BtnSua_Click(object sender, EventArgs e)
+        protected void BtnCapNhat_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddlStatus.SelectedValue) < 0)
-            {
-                Response.Write("<script>alert('Bạn Chưa chọn status') </script>");
-                return;
-            }
             FoodType ft = new FoodType();
             ft.Type_name = txtName.Text;
             ft.Type_post = Convert.ToInt32(txtPost.Text);
-            ft.Type_img = "1";
-            ft.Username = "ca";
-            ft.Modified = DateTime.Now;
-            //nếu trả về false là chưa tồn tại
+            ft.Type_img = "1.jpg";
+            ft.Username = "khuong";
             if (ft.update())
             {
-                txtName.Text = String.Empty;
-                txtPost.Text = String.Empty;
-                txtName.Enabled = true;
-                //in ra hộp thoại thông báo.
+                Btn_cancel_Click(sender, e);
                 Response.Write("<script>alert('Thành Công') </script>");
                 resetList();
             }
@@ -87,15 +93,9 @@ namespace FoodRau.Admin
 
         }
 
-        protected void BtnHuy_Click(object sender, EventArgs e)
-        {
-            txtName.Text = String.Empty;
-            txtPost.Text = String.Empty;
-            ddlStatus.SelectedValue = "-1";
-        }
-
         protected void rptDSLoaiSP_OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            
             if (e.CommandName == "c")
             {
                 int type_id = Convert.ToInt32(e.CommandArgument.ToString());
@@ -105,13 +105,14 @@ namespace FoodRau.Admin
                     FoodType f = ft.getItem(type_id);
                     txtName.Text = f.Type_name;
                     txtPost.Text = f.Type_post.ToString();
-                    txtName.Enabled = false;
+                    ddlStatus.SelectedValue = f.Status.ToString();
+                    this.isEnable = true;
+                    CheckEnable();
                 }
                 else
                 {
                     Response.Write("<script>alert('Chưa Tồn Tại') </script>");
                 }
-                resetList();
             }
 
             if (e.CommandName == "x")
@@ -139,7 +140,5 @@ namespace FoodRau.Admin
             rptDSLoaiSP.DataSource = ft.getList();
             rptDSLoaiSP.DataBind();
         }
-
-
     }
 }

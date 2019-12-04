@@ -11,7 +11,7 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class DSLoaiSanPham
+    public partial class food_type
     {
 
         /// <summary>
@@ -33,6 +33,15 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
 
         /// <summary>
+        /// revUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revUserName;
+
+        /// <summary>
         /// txtPost control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,31 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.TextBox txtPost;
 
         /// <summary>
-        /// rfvPost control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPost;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
+        /// RangeValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
         /// fuImg control.
@@ -69,6 +96,15 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// imgReview control.
         /// </summary>
         /// <remarks>
@@ -87,13 +123,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Button btnThem;
 
         /// <summary>
-        /// btnSua control.
+        /// btnCapNhat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSua;
+        protected global::System.Web.UI.WebControls.Button btnCapNhat;
 
         /// <summary>
         /// btnHuy control.

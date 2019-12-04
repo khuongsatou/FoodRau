@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="DSLoaiSanPham.aspx.cs" Inherits="FoodRau.Admin.DSLoaiSanPham" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="food_type.aspx.cs" Inherits="FoodRau.Admin.food_type" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
     <!-- Custom styles for this page -->
@@ -16,29 +16,35 @@
                     <div class="col-md-6">
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <asp:TextBox ID="txtName" CssClass="form-control form-control-user" runat="server" placeholder="Tên"></asp:TextBox>
-                                <asp:RequiredFieldValidator ControlToValidate="txtName" ID="rfvName" runat="server" ErrorMessage="Bạn Chưa Nhập Tên"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtName" CssClass="form-control form-control-user" runat="server" placeholder="Tên loại" ValidationGroup="f_them"></asp:TextBox>
                                 <br />
+                                <asp:RequiredFieldValidator ValidationGroup="f_them" ControlToValidate="txtName" ID="rfvName" runat="server" ForeColor="Red" ErrorMessage="Bạn chưa nhập tên loại"></asp:RequiredFieldValidator>
+                                <br />
+                                <asp:RegularExpressionValidator runat="server" ValidationGroup="f_them" ID="revUserName" ErrorMessage="Không chưa kí tự đặt biệt và phải 2 đến 20 kí tự" ValidationExpression="[A-Za-z0-9]{2,20}" ControlToValidate="txtName" ForeColor="Red"></asp:RegularExpressionValidator>
                             </div>
 
                             <div class="col-sm-12">
-                                <asp:TextBox ID="txtPost" TextMode="Number" CssClass="form-control form-control-user" runat="server" placeholder="bài viết"></asp:TextBox>
-                                 <br />
-                                 <asp:RequiredFieldValidator ControlToValidate="txtPost" ID="rfvPost" runat="server" ErrorMessage="Bạn Chưa Nhập Bài Viết"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtPost" TextMode="Number" CssClass="form-control form-control-user" runat="server" placeholder="Xếp loại mấy..." step="1" min="0" max="5"></asp:TextBox>
+                                <br />
+                                <asp:RequiredFieldValidator ForeColor="Red" ValidationGroup="f_them" ControlToValidate="txtPost" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Bạn chưa nhập xếp loại"></asp:RequiredFieldValidator>
+                                <br />
+                                <asp:RangeValidator ValidationGroup="f_them" ID="RangeValidator1" runat="server" ErrorMessage="Xếp hạng trong khoản 1 -> 5" ControlToValidate="txtPost" MaximumValue="5" MinimumValue="1"></asp:RangeValidator>
+                                <asp:RegularExpressionValidator ForeColor="Red" runat="server" ValidationGroup="f_them" ID="RegularExpressionValidator1" ErrorMessage="Chỉ được nhập 1 số" ValidationExpression="[0-9]+" ControlToValidate="txtPost"></asp:RegularExpressionValidator>
                             </div>
                             <div class="col-sm-12">
                                 <asp:FileUpload ID="fuImg" runat="server" />
-                                 <br />
-
+                                <br />
+                                <%--Kiểm tra hình ảnh nữa--%>
                             </div>
                             <div class="col-sm-12">
-                                 <br />
+                                <br />
                                 <asp:DropDownList ID="ddlStatus" placeholder="Trạng Thái" runat="server" CssClass="form-control">
                                     <asp:ListItem Value="-1">--Trạng Thái--</asp:ListItem>
                                     <asp:ListItem Value="1">Còn Hàng</asp:ListItem>
                                     <asp:ListItem Value="0">Hết Hàng</asp:ListItem>
                                 </asp:DropDownList>
-                                 <br />
+                                <asp:RequiredFieldValidator ValidationGroup="f_them" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Bạn chưa chọn trạng thái" InitialValue="-1" ControlToValidate="ddlStatus" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <br />
                             </div>
                         </div>
                     </div>
@@ -46,19 +52,20 @@
                         <div class="form-group">
                             <div class="col-md-6">
                                 <asp:Image ID="imgReview" Height="250px" Width="250px" runat="server" ImageUrl="~/Admin/img/c.jpg" />
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" OnClick="BtnThem_Click" />
+                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClick="BtnThem_Click" />
                             </div>
                             <div class="col-md-4">
-                                <asp:Button ID="btnSua" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Sửa" OnClick="BtnSua_Click" />
+                                <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click" />
                             </div>
                             <div class="col-md-4">
-                                <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="BtnHuy_Click" />
+                                <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="Btn_cancel_Click" />
                             </div>
                         </div>
                     </div>
@@ -79,8 +86,8 @@
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên</th>
-                                        <th>Bài Viết</th>
+                                        <th>Tên Loại</th>
+                                        <th>Xếp Loại</th>
                                         <th>Hình ảnh</th>
                                         <th>Status</th>
                                         <th></th>
@@ -89,8 +96,8 @@
                                 <tfoot>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên</th>
-                                        <th>Bài Viết</th>
+                                        <th>Tên Loại</th>
+                                        <th>Xếp Loại</th>
                                         <th>Hình ảnh</th>
                                         <th>Status</th>
                                         <th></th>
@@ -105,21 +112,22 @@
                                                     <asp:Label ID="lblID" runat="server" Text="<%#Container.ItemIndex+1  %>"></asp:Label>
                                                 </td>
                                                 <td>
-                                                    <%# Eval("type_post") %>
-                                                </td>
-                                                <td>
                                                     <%# Eval("type_name") %>
                                                 </td>
+                                                <td>
+                                                    <%# Eval("type_post") %>
+                                                </td>
+
                                                 <td>
                                                     <asp:Image Width="50px" Height="50px" ID="imgHinh" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("type_img") %>' />
                                                 </td>
                                                 <td>
-                                                    <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
+                                                    <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
 
                                                 </td>
                                                 <td>
-                                                    <asp:Button CausesValidation="false" ID="btnChon" runat="server" Text="Chọn" CommandName="c" CommandArgument='<%# Eval("type_id") %>' />
-                                                    <asp:Button CausesValidation="false" ID="btnXoa" runat="server" Text="Xoa" CommandName="x" CommandArgument='<%# Eval("type_id") %>' />
+                                                    <asp:Button CssClass="btn btn-warning" CausesValidation="false" ID="btnChon" runat="server" Text="Chọn" CommandName="c" CommandArgument='<%# Eval("type_id") %>' />
+                                                    <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" OnClientClick="return confirm('Bạn Có Muốn Xóa')" CommandArgument='<%# Eval("type_id") %>' />
                                                 </td>
 
                                             </tr>

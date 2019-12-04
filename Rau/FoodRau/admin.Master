@@ -11,7 +11,7 @@
     <title>SB Admin 2 - Blank</title>
     <!-- Custom fonts for this template-->
     <link href="<%=Page.ResolveUrl("~") %>Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <%--<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">--%>
+
     <!-- Custom styles for this template-->
     <link href="<%=Page.ResolveUrl("~") %>Admin/css/sb-admin-2.min.css" rel="stylesheet">
     <asp:ContentPlaceHolder ID="css" runat="server">
@@ -26,7 +26,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <li>
                     <!-- Sidebar - Brand -->
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%=Page.ResolveUrl("~") %>Admin/index.html">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%=Page.ResolveUrl("~") %>Default.aspx">
                         <div class="sidebar-brand-icon rotate-n-15">
                             <i class="fas fa-laugh-wink"></i>
                         </div>
@@ -62,7 +62,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Show:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DSThanhVien.aspx">Danh Sách</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/member.aspx">Danh Sách</a>
                         </div>
                     </div>
                 </li>
@@ -76,33 +76,8 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Show:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DSLoaiSanPham.aspx">Loại Sản Phẩm</a>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DSSanPham.aspx">Sản Phẩm</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Khác
-     
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Chức Năng Khác</span>
-                    </a>
-                    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Chức Năng Đăng Nhập:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DangNhap.aspx">Đăng Nhập</a>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/DangKi.aspx">Đăng Kí</a>
-                        
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/food_type.aspx">Loại Sản Phẩm</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_food.aspx">Sản Phẩm</a>
                         </div>
                     </div>
                 </li>
@@ -113,7 +88,7 @@
 
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                    <a href="#" class="btn btn-primary rounded-circle border-0" id="sidebarToggle"></a>
                 </div>
 
             </ul>

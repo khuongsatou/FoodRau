@@ -11,16 +11,16 @@ namespace FoodRau.Admin
 {
 
 
-    public partial class DSThanhVien
+    public partial class lst_food
     {
 
         /// <summary>
-        /// rptDSThanhVien control.
+        /// rptDSSP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptDSThanhVien;
+        protected global::System.Web.UI.WebControls.Repeater rptDSSP;
     }
 }
