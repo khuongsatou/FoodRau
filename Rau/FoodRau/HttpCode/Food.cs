@@ -33,9 +33,9 @@ namespace FoodRau.HttpCode
             _description = "";
             _price = 0;
             _price_promo = 0;
-            _thumb = "c.jpg";
-            _img = "c.jpg";
-            _unit = "";
+            _thumb = "10.jpg";
+            _img = "10.jpg";
+            _unit = "0";
             _percent_promo = 0;
             _rating = 0;
             _sold = 0;

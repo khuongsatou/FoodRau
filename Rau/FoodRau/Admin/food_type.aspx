@@ -28,13 +28,17 @@
                                 <br />
                                 <asp:RequiredFieldValidator ForeColor="Red" ValidationGroup="f_them" ControlToValidate="txtPost" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Bạn chưa nhập xếp loại"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RangeValidator ValidationGroup="f_them" ID="RangeValidator1" runat="server" ErrorMessage="Xếp hạng trong khoản 1 -> 5" ControlToValidate="txtPost" MaximumValue="5" MinimumValue="1"></asp:RangeValidator>
+                                <asp:RangeValidator ValidationGroup="f_them" ID="RangeValidator1" runat="server" ErrorMessage="Xếp hạng trong khoản 1 -> 5" ControlToValidate="txtPost" ForeColor="Red" MaximumValue="5" MinimumValue="1"></asp:RangeValidator>
                                 <asp:RegularExpressionValidator ForeColor="Red" runat="server" ValidationGroup="f_them" ID="RegularExpressionValidator1" ErrorMessage="Chỉ được nhập 1 số" ValidationExpression="[0-9]+" ControlToValidate="txtPost"></asp:RegularExpressionValidator>
                             </div>
-                            <div class="col-sm-12">
-                                <asp:FileUpload ID="fuImg" runat="server" />
+                            <div class="col-sm-8">
+                                <asp:FileUpload ID="fuImg" runat="server" BorderStyle="None" />
+                            </div>
+                            <div class="col-sm-4">
+                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpImg_Click" ValidationGroup="upload" ID="btnUpImg" runat="server" Text="UpLoad" />
                                 <br />
-                                <%--Kiểm tra hình ảnh nữa--%>
+                                <asp:Label ID="lblThongBao" runat="server" Text=""></asp:Label>
+                                <asp:TextBox Visible="false" ID="txtSaveNameImg" runat="server"></asp:TextBox>
                             </div>
                             <div class="col-sm-12">
                                 <br />
@@ -51,18 +55,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <asp:Image ID="imgReview" Height="250px" Width="250px" runat="server" ImageUrl="~/Admin/img/c.jpg" />
-
+                                <asp:Image ID="imgReview" Height="350px" Width="350px" runat="server" ImageUrl="~/Admin/img/10.jpg" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClick="BtnThem_Click" />
+                                <asp:Button ID="btnThem"  CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClick="BtnThem_Click" />
                             </div>
                             <div class="col-md-4">
-                                <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click" />
+                                <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click"  />
                             </div>
                             <div class="col-md-4">
                                 <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="Btn_cancel_Click" />
@@ -149,4 +152,7 @@
 
     <!-- Page level custom scripts -->
     <script src="<%=Page.ResolveUrl("~") %>Admin/js/demo/datatables-demo.js"></script>
+    <script>
+
+    </script>
 </asp:Content>

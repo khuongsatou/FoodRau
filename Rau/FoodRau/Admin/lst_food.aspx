@@ -17,7 +17,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Danh Sách</h6>
                         <div class="row">
                             <div class="col-md-3">
-                                <a class="form-control" href="<%=Page.ResolveUrl("~") %>Admin/ThemSanPham.aspx">Thêm Sản Phẩm</a>
+                                <a class="form-control" href="<%=Page.ResolveUrl("~") %>Admin/food.aspx">Thêm Sản Phẩm</a>
                             </div>
                         </div>
                     </div>
@@ -30,8 +30,13 @@
                                         <th>Tên</th>
                                         <th>Mô Tả</th>
                                         <th>Giá</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Đơn Vị</th>
+                                        <th>Giá Khuyến Mãi</th>
+                                        <th>Số Lượng</th>
+                                        <th>Xếp Hạng</th>
+                                        <th>Đã Bán</th>
+                                        <th>Thuộc Loại</th>
+                                        <th>Hình thu nhỏ </th>
+                                        <th>Hình ảnh Sản Phẩm</th>
                                         <th>Người Lập</th>
                                         <th>Trạng Thái</th>
                                         <th></th>
@@ -43,8 +48,13 @@
                                         <th>Tên</th>
                                         <th>Mô Tả</th>
                                         <th>Giá</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Đơn Vị</th>
+                                        <th>Giá Khuyến Mãi</th>
+                                        <th>Số Lượng</th>
+                                        <th>Xếp Hạng</th>
+                                        <th>Đã Bán</th>
+                                        <th>Thuộc Loại</th>
+                                        <th>Hình thu nhỏ </th>
+                                        <th>Hình ảnh Sản Phẩm</th>
                                         <th>Người Lập</th>
                                         <th>Trạng Thái</th>
                                         <th></th>
@@ -68,21 +78,35 @@
                                                     <%# Eval("price") %>
                                                 </td>
                                                 <td>
-                                                    <asp:Image ID="imgHinh" Width="50px" Height="50px" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("img") %>' />
+                                                    <%# Eval("price_promo") %>
                                                 </td>
-                                                <td><%# Eval("unit") %>
+                                                <td>
+                                                    <%# Eval("unit") %>
+                                                </td>
+                                                 <td>
+                                                    <%# Eval("rating") %>
+                                                </td>
+                                                 <td>
+                                                    <%# Eval("sold") %>
+                                                </td>
+                                                 <td>
+                                                    <%# Eval("type") %>
+                                                </td>
+                                                <td>
+                                                    <asp:Image ID="imgThumb" Width="50px" Height="50px" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("thumb") %>' />
+                                                </td>
+                                                <td>
+                                                    <asp:Image ID="imgHinh" Width="50px" Height="50px" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("img") %>' />
                                                 </td>
                                                 <td><%# Eval("username") %>
                                                 </td>
 
-
                                                 <td>
-                                                    <asp:CheckBox Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
+                                                    <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
                                                 </td>
                                                 <td>
-                                                   <%-- <asp:Button CausesValidation="false" ID="btnChiTiet" runat="server" Text="Chi Tiết" CommandName="ct" CommandArgument='<%# Eval("id") %>' />--%>
-                                                    <asp:Button CausesValidation="false" ID="btnCapNhat" runat="server" Text="Sửa" CommandName="s" CommandArgument='<%# Eval("id") %>' />
-                                                    <asp:Button CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />
+                                                    <asp:Button CssClass="btn btn-warning" CausesValidation="false" ID="btnCapNhat" runat="server" Text="Sửa" CommandName="s" CommandArgument='<%# Eval("id") %>' />
+                                                    <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />
                                                 </td>
 
                                             </tr>

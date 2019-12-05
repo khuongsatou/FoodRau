@@ -38,7 +38,7 @@ namespace FoodRau.Admin
                 string id = e.CommandArgument.ToString();
                 //mã hóa
                 string hash = Server.UrlEncode(id);
-                Response.Redirect("~/Admin/SuaSanPham.aspx?id=" + hash);
+                Response.Redirect("~/Admin/Food.aspx?id=" + hash);
             }
             //xóa
             if (e.CommandName == "x")

@@ -13,19 +13,6 @@ namespace FoodRau
         {
 
         }
-        protected void Button1_click(object sender, EventArgs e)
-        {
-            if (TextBox1.Text =="1")
-            {
-                
-                Response.Write("");
-            }
-
-
-        }
-
-
-
-        
+       
     }
 }

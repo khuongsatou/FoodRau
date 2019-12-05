@@ -73,6 +73,9 @@
     <Content Include="Admin\food_type.aspx" />
     <Content Include="Admin\icon\share.png" />
     <Content Include="Admin\img\1.jpg" />
+    <Content Include="Admin\img\10.jpg" />
+    <Content Include="Admin\img\1bec44f5-8bc7-48fd-8070-826ca2a6710b0ca.jpg" />
+    <Content Include="Admin\img\364713f2-8d14-4f32-9df2-861790a7478378385169_2552400081655310_1205933654581182464_n.jpg" />
     <Content Include="Admin\img\c.jpg" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
