@@ -5,6 +5,8 @@
     <link href="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
+
+
     <div class="row">
         <div class="col-lg-12">
             <div class="user">
@@ -15,7 +17,7 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <asp:TextBox placeholder="Tên Đăng nhập..." ID="txtUserName" runat="server" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"  ValidationGroup="vsNotification" ErrorMessage="Bạn chưa nhập tên đăng nhập" ControlToValidate="txtUserName" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="vsNotification" ErrorMessage="Bạn chưa nhập tên đăng nhập" ControlToValidate="txtUserName" ForeColor="Red"></asp:RequiredFieldValidator>
                             <br />
                             <asp:RegularExpressionValidator runat="server" ValidationGroup="vsNotification" ID="revUserName" ErrorMessage="Phải là chữ cái hoặc 3 đến 10 kí tự" ValidationExpression="[A-Za-z]{3,10}" ControlToValidate="txtUserName" ForeColor="Red"></asp:RegularExpressionValidator>
                         </div>
@@ -70,7 +72,7 @@
                                 <asp:ListItem Value="1">Đang Hoạt Động</asp:ListItem>
                                 <asp:ListItem Value="0">Ngưng Hoạt Động</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator2" ValidationGroup="vsNotification" runat="server" ErrorMessage="Bạn chưa chọn" ControlToValidate="ddl_status" InitialValue="-1" ></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator2" ValidationGroup="vsNotification" runat="server" ErrorMessage="Bạn chưa chọn" ControlToValidate="ddl_status" InitialValue="-1"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -79,13 +81,13 @@
                             <i class="fas fa-fw fa-cog"></i>
                             <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server" Text="Đăng kí" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click" />
                         </div>
-                         <div class="col-sm-4  mb-3 mb-sm-0">
+                        <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
                             <asp:Button ValidationGroup="vsNotification" ID="btn_update" runat="server" Text="Cập Nhật" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_update_Click" />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
-                            <asp:Button ID="btn_cancel" runat="server" Text="Hủy" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_cancel_Click"/>
+                            <asp:Button ID="btn_cancel" runat="server" Text="Hủy" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_cancel_Click" />
                         </div>
                         <hr>
                     </div>
@@ -150,9 +152,9 @@
                                         <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" /></td>
                                     <td>
                                         <asp:Button CssClass="btn btn-warning" CausesValidation="false" ID="btnChon" runat="server" Text="Chọn" CommandName="c" CommandArgument='<%# Eval("username") %>' />
-                                            <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("username") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />             
-             
-                                        
+                                        <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("username") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />
+
+
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -163,8 +165,6 @@
         </div>
     </div>
 
-
-   
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">

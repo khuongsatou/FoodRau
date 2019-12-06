@@ -42,32 +42,6 @@ namespace FoodRau.Admin
             {
                 Response.Write("<script>alert('Tài Khoản Không Tồn Tại');</script>");
             }
-
-            //Session["username"] = txtUserName.Text;
-            //Session["pass"] = txtPassword.Text;
-            //Member mb = new Member();
-            //string username =
-            //mb.UserName = Session["username"].ToString();
-            //mb.Pass = Session["pass"].ToString();
-
-            ////mb.UserName = txtUserName.Text;
-            ////mb.Pass = txtPassword.Text;
-            //if (mb.exist(mb.UserName))
-            //{
-            //    if (mb.getItem(mb).Pass == Session["pass"].ToString())
-            //    {
-            //        Response.Write("<script>alert('Đăng Nhập Thành công');</script>");
-            //        Response.Write(mb.getItem(mb).UserName);
-            //    }
-            //    else
-            //    {
-            //        Response.Write("<script>alert('Pass Sai');</script>");
-            //    }
-            //}
-            //else
-            //{
-            //    Response.Write("<script>alert('Đăng Nhập Thất Bại');</script>");
-            //}
         }
     }
 }

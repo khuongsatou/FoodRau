@@ -42,6 +42,15 @@ namespace FoodRau
         protected global::System.Web.UI.WebControls.Label lblUserName;
 
         /// <summary>
+        /// lblLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLogin;
+
+        /// <summary>
         /// cph_content control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,40 @@ namespace FoodRau
         protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_content;
 
         /// <summary>
-        /// Button1 control.
+        /// lblModal_title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lblModal_title;
+
+        /// <summary>
+        /// lblModal_body control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblModal_body;
+
+        /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
+        /// btnLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
         /// js control.

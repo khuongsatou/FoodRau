@@ -271,7 +271,8 @@
                                     <div class="dropdown-item" >
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         <a data-toggle="modal" data-target="#logoutModal" href="#">
-                                            Logout
+                                            
+                                            <asp:Label ID="lblLogin" runat="server" Text=""></asp:Label>
                                         </a>
                                         
                                     </div>
@@ -323,16 +324,21 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <asp:Label ID="lblModal_title" runat="server"></asp:Label>
+                        </h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">
+                        <asp:Label ID="lblModal_body" runat="server"></asp:Label>
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 
-                        <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Logout"   OnClick="BtnLogout_Click"  />
+                        <asp:Button ID="btnLogin"  CssClass="btn btn-primary" runat="server" Text="Login" OnClick="BtnLogin_Click" />
+                        <asp:Button ID="btnLogout" CssClass="btn btn-primary" runat="server" Text="Logout"   OnClick="BtnLogout_Click"  />
                         
                     </div>
                 </div>

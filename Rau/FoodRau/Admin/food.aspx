@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
@@ -119,7 +119,7 @@
                                 <asp:TextBox Visible="false" ID="txtSaveThumb" runat="server"></asp:TextBox>
                             </span>
                         </div>
-                       <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <span class="col-sm-4">
                                 <asp:FileUpload ID="fuImage" runat="server" />
                             </span>
@@ -130,7 +130,7 @@
                                 <asp:TextBox Visible="false" ID="txtSaveImage" runat="server"></asp:TextBox>
                             </span>
                         </div>
-                   </div>
+                    </div>
 
                     <div class="form-group row">
                         <div class="col-sm-12  mb-3 mb-sm-0">
@@ -142,8 +142,8 @@
                         <hr>
                     </div>
                     <asp:ValidationSummary ID="f_t" ValidationGroup="f_t" runat="server" />
-    </div>
-    <hr>
+                </div>
+                <hr>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
-
+using System.Web.Services;
 namespace FoodRau.Admin
 {
     public partial class food_type : System.Web.UI.Page
@@ -185,9 +185,51 @@ namespace FoodRau.Admin
 
         private void resetList()
         {
-            FoodType ft = new FoodType();
-            rptDSLoaiSP.DataSource = ft.getList();
-            rptDSLoaiSP.DataBind();
+            //FoodType ft = new FoodType();
+            //rptDSLoaiSP.DataSource = ft.getList();
+            //rptDSLoaiSP.DataBind();
         }
+
+        [WebMethod]
+        public static FoodType[] SelectAll()
+        {
+            FoodType ft = new FoodType();
+            return ft.getList().ToArray();
+        }
+
+        [WebMethod]
+        public static FoodType[] InsertObject(string type_name, string type_post, string status)
+        {
+            FoodType ft = new FoodType();
+            ft.Type_name = type_name;
+            ft.Type_post = Convert.ToInt32(type_post);
+            ft.Type_img = "21";
+            ft.Status = Convert.ToInt32(status);
+            ft.Username = "khuong";
+            bool exist = ft.add();
+            return ft.getList().ToArray();
+        }
+
+        [WebMethod]
+        public static string UploadImageFood(string fileName)
+        {
+            //string hashCode = Guid.NewGuid().ToString();
+            //string path = HttpContext.Current.Server.MapPath("icon\\");
+            //string imgName = hashCode + fileName;
+            //string[] files = System.IO.Directory.GetFiles(path);
+
+            //upload.SaveAs(path + imgName);
+            return "success";
+        }
+
+        [WebMethod]
+        public static FoodType[] Search(string type_name)
+        {
+            FoodType ft = new FoodType();
+            return ft.search(type_name).ToArray();
+        }
+
+        
+
     }
 }

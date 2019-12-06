@@ -6,6 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
     <!-- Page Heading -->
+
     <div class="row">
         <div class="col-lg-12">
             <div class="text-center">
@@ -35,7 +36,7 @@
                                 <asp:FileUpload ID="fuImg" runat="server" BorderStyle="None" />
                             </div>
                             <div class="col-sm-4">
-                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpImg_Click" ValidationGroup="upload" ID="btnUpImg" runat="server" Text="UpLoad" />
+                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpImg_Click" ValidationGroup="upload" ID="btnUpImg" runat="server" Text="UpLoad" OnClientClick="UploadImage();return false;" />
                                 <br />
                                 <asp:Label ID="lblThongBao" runat="server" Text=""></asp:Label>
                                 <asp:TextBox Visible="false" ID="txtSaveNameImg" runat="server"></asp:TextBox>
@@ -62,10 +63,10 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <asp:Button ID="btnThem"  CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClick="BtnThem_Click" />
+                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClientClick="Insert();return false;" />
                             </div>
                             <div class="col-md-4">
-                                <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click"  />
+                                <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click" />
                             </div>
                             <div class="col-md-4">
                                 <asp:Button ID="btnHuy" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Hủy" OnClick="Btn_cancel_Click" />
@@ -83,9 +84,16 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Danh Sách</h6>
                     </div>
+
                     <div class="card-body">
+                        <div class="card-header py-3">
+                            Tìm Kiếm
+                            <asp:TextBox ID="txtTimKiem" runat="server"></asp:TextBox>
+                            <asp:Button ID="Button1" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Tìm" ValidationGroup="f_them" OnClientClick="TimKiem();return false;" />
+                        </div>
+
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable">
+                            <table class="table table-bordered" id="dataTable_custom">
                                 <thead>
                                     <tr>
                                         <th>STT</th>
@@ -106,36 +114,7 @@
                                         <th></th>
                                     </tr>
                                 </tfoot>
-                                <tbody>
-
-                                    <asp:Repeater ID="rptDSLoaiSP" runat="server" OnItemCommand="rptDSLoaiSP_OnItemCommand">
-                                        <ItemTemplate>
-                                            <tr>
-                                                <td>
-                                                    <asp:Label ID="lblID" runat="server" Text="<%#Container.ItemIndex+1  %>"></asp:Label>
-                                                </td>
-                                                <td>
-                                                    <%# Eval("type_name") %>
-                                                </td>
-                                                <td>
-                                                    <%# Eval("type_post") %>
-                                                </td>
-
-                                                <td>
-                                                    <asp:Image Width="50px" Height="50px" ID="imgHinh" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("type_img") %>' />
-                                                </td>
-                                                <td>
-                                                    <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" />
-
-                                                </td>
-                                                <td>
-                                                    <asp:Button CssClass="btn btn-warning" CausesValidation="false" ID="btnChon" runat="server" Text="Chọn" CommandName="c" CommandArgument='<%# Eval("type_id") %>' />
-                                                    <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" OnClientClick="return confirm('Bạn Có Muốn Xóa')" CommandArgument='<%# Eval("type_id") %>' />
-                                                </td>
-
-                                            </tr>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
+                                <tbody id="repeater">
                                 </tbody>
                             </table>
                         </div>
@@ -144,6 +123,7 @@
             </div>
         </div>
     </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     <!-- Page level plugins -->
@@ -152,7 +132,5 @@
 
     <!-- Page level custom scripts -->
     <script src="<%=Page.ResolveUrl("~") %>Admin/js/demo/datatables-demo.js"></script>
-    <script>
-
-    </script>
+    <script src="js/ajax/food_type.js"></script>
 </asp:Content>

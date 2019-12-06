@@ -15,7 +15,7 @@
                       
                     </div>
                     <div class="form-group">
-                    <asp:TextBox CssClass="form-control form-control-user" ID="txtPassword" runat="server" ></asp:TextBox>
+                    <asp:TextBox TextMode="Password" CssClass="form-control form-control-user" ID="txtPassword" runat="server" ></asp:TextBox>
                     
                     </div>
                     <div class="form-group">
