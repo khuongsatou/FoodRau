@@ -26,9 +26,12 @@ namespace FoodRau.HttpCode
         private string _username;
         private DateTime _modified;
 
+        private string _type_name;
+
+        
+
         public Food()
         {
-           
             _name = "";
             _description = "";
             _price = 0;
@@ -44,9 +47,10 @@ namespace FoodRau.HttpCode
             _status = 0;
             _username = "";
             _modified = DateTime.Now;
+            _type_name = "";
         }
 
-        public Food(int id, string name, string description, decimal price, decimal price_promo, string thumb, string img, string unit, decimal percent_promo, int rating, int sold, decimal point, int type, int status, string username, DateTime modified)
+        public Food(int id, string name, string description, decimal price, decimal price_promo, string thumb, string img, string unit, decimal percent_promo, int rating, int sold, decimal point, int type, int status, string username, DateTime modified,string type_name)
         {
             _id = id;
             _name = name;
@@ -64,6 +68,7 @@ namespace FoodRau.HttpCode
             _status = status;
             _username = username;
             _modified = modified;
+            _type_name = type_name;
         }
 
         public int Id { get => _id; set => _id = value; }
@@ -82,8 +87,7 @@ namespace FoodRau.HttpCode
         public int Status { get => _status; set => _status = value; }
         public string Username { get => _username; set => _username = value; }
         public DateTime Modified { get => _modified; set => _modified = value; }
-
-
+        public string TypeName { get => _type_name; set => _type_name = value; }
 
         public bool exist(int id)
         {
@@ -165,13 +169,26 @@ namespace FoodRau.HttpCode
         }
         public List<Food> getList()
         {
-            string sQuery = "SELECT *  FROM [dbo].[food] WHERE status =0";
-            SqlParameter[] param = {};
+            string sQuery = "SELECT *  FROM [dbo].[food] WHERE status =0 ";
+            SqlParameter[] param = { };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
             foreach (DataRow dr in dt.Rows)
             {
                 ft.Add(convertToObject(dr));
+            }
+            return ft;
+        }
+
+        public List<Food> getListFoodType()
+        {
+            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] ,food.[username] ,food.[modified] FROM [dbo].[food],food_type Where type=type_id";
+            SqlParameter[] param = {};
+            List<Food> ft = new List<Food>();
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            foreach (DataRow dr in dt.Rows)
+            {
+                ft.Add(convertToObjectFoodType(dr));
             }
             return ft;
         }
@@ -200,11 +217,36 @@ namespace FoodRau.HttpCode
             f.Sold = Convert.ToInt32(dr["sold"].ToString());
             f.Point = Convert.ToDecimal(dr["point"].ToString());
             f.Type = Convert.ToInt32(dr["type"].ToString());
+            
             f.Status = Convert.ToInt32(dr["status"].ToString());
             f.Username = dr["username"].ToString();
             f.Modified = Convert.ToDateTime(dr["modified"].ToString());
             return f;
         }
+
+        private Food convertToObjectFoodType(DataRow dr)
+        {
+            Food f = new Food();
+            f.Id = Convert.ToInt32(dr["id"].ToString());
+            f.Name = dr["name"].ToString();
+            f.Description = dr["description"].ToString();
+            f.Price = Convert.ToDecimal(dr["price"].ToString());
+            f.Price_promo = Convert.ToDecimal(dr["price_promo"].ToString());
+            f.Thumb = dr["thumb"].ToString();
+            f.Img = dr["img"].ToString();
+            f.Unit = dr["unit"].ToString();
+            f.Percent_promo = Convert.ToDecimal(dr["percent_promo"].ToString());
+            f.Rating = Convert.ToInt32(dr["rating"].ToString());
+            f.Sold = Convert.ToInt32(dr["sold"].ToString());
+            f.Point = Convert.ToDecimal(dr["point"].ToString());
+            f.Type = Convert.ToInt32(dr["type"].ToString());
+            f.TypeName = dr["type_name_f"].ToString();
+            f.Status = Convert.ToInt32(dr["status"].ToString());
+            f.Username = dr["username"].ToString();
+            f.Modified = Convert.ToDateTime(dr["modified"].ToString());
+            return f;
+        }
+
 
 
     }

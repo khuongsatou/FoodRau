@@ -90,7 +90,7 @@
                                                     <%# Eval("sold") %>
                                                 </td>
                                                  <td>
-                                                    <%# Eval("type") %>
+                                                    <%# Eval("typename") %>
                                                 </td>
                                                 <td>
                                                     <asp:Image ID="imgThumb" Width="50px" Height="50px" runat="server" ImageUrl='<%# "~/Admin/img/"+Eval("thumb") %>' />

@@ -7,5 +7,6 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    
+    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1"></asp:DataList>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 </asp:Content>

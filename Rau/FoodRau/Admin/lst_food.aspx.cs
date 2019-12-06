@@ -25,7 +25,9 @@ namespace FoodRau.Admin
         private void resetList()
         {
             Food f = new Food();
-            rptDSSP.DataSource = f.getList();
+            List<Food> fl = new List<Food>();
+            fl.AddRange(f.getListFoodType());
+            rptDSSP.DataSource =fl;
             rptDSSP.DataBind();
         }
 
