@@ -1,6 +1,6 @@
 ﻿
 $(this).ready(function () {
-    SelectList();
+    //SelectList();
 });
 
 function SelectList() {
@@ -19,28 +19,6 @@ function SelectList() {
     });
 }
 
-function UploadImage() {
-    var fileName = $('#cph_content_fuImg').val().replace(/C:\\fakepath\\/i, '');
-    $('#cph_content_imgReview').attr('src', '/Admin/img/1.jpg');
-    alert(fileName);
-    var param = "'fileName':'" + fileName + "'";
-    $.ajax({
-        type: 'post',
-        url: "food_type.aspx/UploadImageFood",
-        data: "{"+param+"}",
-        contentType: 'application/json;charset=utf-8',
-        datatype: 'json',
-        success: function (response) {
-            alert(response.d);
-            ResetList(response);
-        },
-        error: function (err) {
-            alert("Error" + err.d);
-        }
-    });
-}
-
-
 
 
 function TimKiem() {
@@ -48,7 +26,7 @@ function TimKiem() {
     var param = "'type_name':'" + type_name + "'";
     alert(param);
     $.ajax({
-        type: 'post',
+        type: 'get',
         url: "food_type.aspx/Search",
         data: "{" + param + "}",
         contentType: 'application/json;charset=utf-8',

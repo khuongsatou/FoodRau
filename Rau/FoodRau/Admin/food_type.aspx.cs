@@ -210,22 +210,14 @@ namespace FoodRau.Admin
             return ft.getList().ToArray();
         }
 
-        [WebMethod]
-        public static string UploadImageFood(string fileName)
-        {
-            //string hashCode = Guid.NewGuid().ToString();
-            //string path = HttpContext.Current.Server.MapPath("icon\\");
-            //string imgName = hashCode + fileName;
-            //string[] files = System.IO.Directory.GetFiles(path);
-
-            //upload.SaveAs(path + imgName);
-            return "success";
-        }
+      
 
         [WebMethod]
         public static FoodType[] Search(string type_name)
         {
             FoodType ft = new FoodType();
+            FileUpload file = new FileUpload();
+            //file = FindControl("fuImg");
             return ft.search(type_name).ToArray();
         }
 

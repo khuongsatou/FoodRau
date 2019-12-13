@@ -63,7 +63,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClientClick="Insert();return false;" />
+                                <asp:Button ID="btnThem" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" ValidationGroup="f_them" OnClick="BtnThem_Click"/>
                             </div>
                             <div class="col-md-4">
                                 <asp:Button ID="btnCapNhat" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Cập Nhật" ValidationGroup="f_them" OnClick="BtnCapNhat_Click" />
