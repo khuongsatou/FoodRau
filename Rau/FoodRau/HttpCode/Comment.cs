@@ -18,7 +18,14 @@ namespace FoodRau.HttpCode
 
 		public Comment()
 		{
-
+			_comment_id = 0;
+			_cus_email = "";
+			_cus_name = "";
+			_des = "";
+			_status = 0;
+			_created = DateTime.Now;
+			_post_id = 0;
+			_rep_Id = 0;
 		}
 
 		public Comment(int comment_id, string cus_email, string cus_name, string des, int status, DateTime created, int post_id, int rep_Id)

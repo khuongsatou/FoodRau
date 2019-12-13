@@ -19,6 +19,15 @@ namespace FoodRau.HttpCode
 
 		public Post()
 		{
+			_post_id = 0;
+			_title = "";
+			_short = "";
+			_des = "";
+			_img = "";
+			_status = 0;
+			_username = "";
+			_modified = DateTime.Now;
+			_created = DateTime.Now;
 		}
 
 		public Post(int post_id, string title, string @short, string des, string img, int status, string username, DateTime modified, DateTime created)

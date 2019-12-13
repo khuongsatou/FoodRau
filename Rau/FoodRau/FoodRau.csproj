@@ -1683,6 +1683,96 @@
     <Content Include="Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="Home\about.aspx" />
+    <Content Include="Home\blog-single.aspx" />
+    <Content Include="Home\blog.aspx" />
+    <Content Include="Home\cart.aspx" />
+    <Content Include="Home\checkout.aspx" />
+    <Content Include="Home\contact.aspx" />
+    <Content Include="Home\css\ajax-loader.gif" />
+    <Content Include="Home\css\animate.css" />
+    <Content Include="Home\css\aos.css" />
+    <Content Include="Home\css\bootstrap-datepicker.css" />
+    <Content Include="Home\css\bootstrap.min.css" />
+    <Content Include="Home\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Home\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Home\css\css\bootstrap-reboot.css" />
+    <Content Include="Home\css\css\mixins\_text-hide.css" />
+    <Content Include="Home\css\flaticon.css" />
+    <Content Include="Home\css\icomoon.css" />
+    <Content Include="Home\css\ionicons.min.css" />
+    <Content Include="Home\css\jquery.timepicker.css" />
+    <Content Include="Home\css\magnific-popup.css" />
+    <Content Include="Home\css\open-iconic-bootstrap.min.css" />
+    <Content Include="Home\css\owl.carousel.min.css" />
+    <Content Include="Home\css\owl.theme.default.min.css" />
+    <Content Include="Home\css\style.css" />
+    <Content Include="Home\Default.aspx" />
+    <Content Include="Home\fonts\flaticon\backup.txt" />
+    <Content Include="Home\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Home\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Home\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Home\fonts\icomoon\icomoon.svg" />
+    <Content Include="Home\fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="Home\fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="Home\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="Home\images\about.jpg" />
+    <Content Include="Home\images\bg_1.jpg" />
+    <Content Include="Home\images\bg_2.jpg" />
+    <Content Include="Home\images\bg_3.jpg" />
+    <Content Include="Home\images\category-1.jpg" />
+    <Content Include="Home\images\category-2.jpg" />
+    <Content Include="Home\images\category-3.jpg" />
+    <Content Include="Home\images\category-4.jpg" />
+    <Content Include="Home\images\category.jpg" />
+    <Content Include="Home\images\image_1.jpg" />
+    <Content Include="Home\images\image_2.jpg" />
+    <Content Include="Home\images\image_3.jpg" />
+    <Content Include="Home\images\image_4.jpg" />
+    <Content Include="Home\images\image_5.jpg" />
+    <Content Include="Home\images\image_6.jpg" />
+    <Content Include="Home\images\partner-1.png" />
+    <Content Include="Home\images\partner-2.png" />
+    <Content Include="Home\images\partner-3.png" />
+    <Content Include="Home\images\partner-4.png" />
+    <Content Include="Home\images\partner-5.png" />
+    <Content Include="Home\images\person_1.jpg" />
+    <Content Include="Home\images\person_2.jpg" />
+    <Content Include="Home\images\person_3.jpg" />
+    <Content Include="Home\images\person_4.jpg" />
+    <Content Include="Home\images\product-1.jpg" />
+    <Content Include="Home\images\product-10.jpg" />
+    <Content Include="Home\images\product-11.jpg" />
+    <Content Include="Home\images\product-12.jpg" />
+    <Content Include="Home\images\product-2.jpg" />
+    <Content Include="Home\images\product-3.jpg" />
+    <Content Include="Home\images\product-4.jpg" />
+    <Content Include="Home\images\product-5.jpg" />
+    <Content Include="Home\images\product-6.jpg" />
+    <Content Include="Home\images\product-7.jpg" />
+    <Content Include="Home\images\product-8.jpg" />
+    <Content Include="Home\images\product-9.jpg" />
+    <Content Include="Home\index.aspx" />
+    <Content Include="Home\js\aos.js" />
+    <Content Include="Home\js\bootstrap-datepicker.js" />
+    <Content Include="Home\js\bootstrap.min.js" />
+    <Content Include="Home\js\google-map.js" />
+    <Content Include="Home\js\jquery-3.2.1.min.js" />
+    <Content Include="Home\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Home\js\jquery.animateNumber.min.js" />
+    <Content Include="Home\js\jquery.easing.1.3.js" />
+    <Content Include="Home\js\jquery.magnific-popup.min.js" />
+    <Content Include="Home\js\jquery.min.js" />
+    <Content Include="Home\js\jquery.stellar.min.js" />
+    <Content Include="Home\js\jquery.waypoints.min.js" />
+    <Content Include="Home\js\main.js" />
+    <Content Include="Home\js\owl.carousel.min.js" />
+    <Content Include="Home\js\popper.min.js" />
+    <Content Include="Home\js\range.js" />
+    <Content Include="Home\js\scrollax.min.js" />
+    <Content Include="Home\product-single.aspx" />
+    <Content Include="Home\shop.aspx" />
+    <Content Include="Home\wishlist.aspx" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1736,12 +1826,103 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="home.Master.cs">
+      <DependentUpon>home.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home.Master.designer.cs">
+      <DependentUpon>home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Home\about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\blog-single.aspx.cs">
+      <DependentUpon>blog-single.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\blog-single.aspx.designer.cs">
+      <DependentUpon>blog-single.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\blog.aspx.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\blog.aspx.designer.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\product-single.aspx.cs">
+      <DependentUpon>product-single.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\product-single.aspx.designer.cs">
+      <DependentUpon>product-single.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\shop.aspx.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\shop.aspx.designer.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\wishlist.aspx.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\wishlist.aspx.designer.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HttpCode\Comment.cs" />
+    <Compile Include="HttpCode\Customer.cs" />
     <Compile Include="HttpCode\DataProvider.cs" />
     <Compile Include="HttpCode\Food.cs" />
     <Compile Include="HttpCode\FoodType.cs" />
+    <Compile Include="HttpCode\LogActivity.cs" />
     <Compile Include="HttpCode\Member.cs" />
+    <Compile Include="HttpCode\Order.cs" />
+    <Compile Include="HttpCode\OrderDetail.cs" />
     <Compile Include="HttpCode\Post.cs" />
+    <Compile Include="HttpCode\RelativePost.cs" />
+    <Compile Include="HttpCode\Setting.cs" />
+    <Compile Include="HttpCode\Slider.cs" />
     <Compile Include="HttpCode\StringProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1891,6 +2072,35 @@
     <Content Include="Admin\vendor\jquery\jquery.min.map" />
     <Content Include="Admin\vendor\jquery\jquery.slim.min.map" />
     <Content Include="admin.Master" />
+    <Content Include="Home\css\.DS_Store" />
+    <Content Include="Home\css\bootstrap\.DS_Store" />
+    <Content Include="Home\css\css\.DS_Store" />
+    <Content Include="Home\css\css\mixins\.DS_Store" />
+    <Content Include="Home\fonts\.DS_Store" />
+    <Content Include="Home\fonts\flaticon\.DS_Store" />
+    <Content Include="Home\fonts\flaticon\font\.DS_Store" />
+    <Content Include="Home\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Home\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Home\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Home\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Home\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Home\fonts\flaticon\license\license.pdf" />
+    <Content Include="Home\fonts\icomoon\icomoon.eot" />
+    <Content Include="Home\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Home\fonts\icomoon\icomoon.woff" />
+    <Content Include="Home\fonts\ionicons\css\_ionicons.scss" />
+    <Content Include="Home\fonts\ionicons\fonts\.DS_Store" />
+    <Content Include="Home\fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="Home\fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Home\fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="Home\fonts\ionicons\fonts\ionicons.woff2" />
+    <Content Include="Home\fonts\open-iconic\open-iconic.eot" />
+    <Content Include="Home\fonts\open-iconic\open-iconic.otf" />
+    <Content Include="Home\fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="Home\fonts\open-iconic\open-iconic.woff" />
+    <Content Include="Home\images\.DS_Store" />
+    <Content Include="Home\js\.DS_Store" />
+    <Content Include="home.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
