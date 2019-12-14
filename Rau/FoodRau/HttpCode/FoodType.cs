@@ -27,6 +27,12 @@ namespace FoodRau.HttpCode
 
 		public FoodType()
 		{
+            _type_id = 0;
+            _type_name = "";
+            _type_post = 0;
+            _type_img = "";
+            _status = 1;
+            _username = "";
             this._modified = DateTime.Now;
         }
 

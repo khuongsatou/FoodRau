@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodRau.HttpCode;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace FoodRau.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Food food = new Food();
+            rptSanPham.DataSource = food.getList();
+            rptSanPham.DataBind();
         }
+
+
     }
 }

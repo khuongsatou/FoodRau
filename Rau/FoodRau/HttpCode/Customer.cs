@@ -24,7 +24,7 @@ namespace FoodRau.HttpCode
             _username = "";
             _password = "";
             _name = "";
-            _phone = 0;
+            _phone = "";
             _email = "";
             _numOrder = 0;
             _numSuccessfulOrder = 0;

@@ -71,6 +71,8 @@
     <Content Include="Admin\css\sb-admin-2.min.css" />
     <Content Include="Admin\food.aspx" />
     <Content Include="Admin\food_type.aspx" />
+    <Content Include="Admin\icon\delete.png" />
+    <Content Include="Admin\icon\edit.png" />
     <Content Include="Admin\icon\share.png" />
     <Content Include="Admin\img\1.jpg" />
     <Content Include="Admin\img\10.jpg" />
@@ -1683,6 +1685,7 @@
     <Content Include="Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="DefaultTest.aspx" />
     <Content Include="Home\about.aspx" />
     <Content Include="Home\blog-single.aspx" />
     <Content Include="Home\blog.aspx" />
@@ -1825,6 +1828,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultTest.aspx.cs">
+      <DependentUpon>DefaultTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultTest.aspx.designer.cs">
+      <DependentUpon>DefaultTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.Master.cs">
       <DependentUpon>home.Master</DependentUpon>
