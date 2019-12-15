@@ -347,6 +347,7 @@
 
         <!-- Bootstrap core JavaScript-->
         <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/jquery/jquery.min.js"></script>
+        <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/jquery/jquery.validate.js"></script>
         <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->

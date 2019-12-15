@@ -15,6 +15,10 @@ namespace FoodRau.Home
             Food food = new Food();
             rptSanPham.DataSource = food.getList();
             rptSanPham.DataBind();
+
+            FoodType ft = new FoodType();
+            rptLoaiSP.DataSource = ft.getList();
+            rptLoaiSP.DataBind();
         }
 
 

@@ -160,7 +160,7 @@ namespace FoodRau.HttpCode
 
         public bool delete()
         {
-            string sQuery = "UPDATE [dbo].[food] SET [status] = 1 WHERE [id] = @id";
+            string sQuery = "UPDATE [dbo].[food] SET [status] = 0 WHERE [id] = @id";
             SqlParameter[] param =
              {
                 new SqlParameter("@id",this._id)
@@ -169,7 +169,7 @@ namespace FoodRau.HttpCode
         }
         public List<Food> getList()
         {
-            string sQuery = "SELECT *  FROM [dbo].[food] WHERE status =0 ";
+            string sQuery = "SELECT *  FROM [dbo].[food] WHERE status =1 ";
             SqlParameter[] param = { };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);

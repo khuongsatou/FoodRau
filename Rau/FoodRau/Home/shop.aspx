@@ -19,10 +19,16 @@
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
                         <li><a href="#" class="active">All</a></li>
+                        <asp:Repeater ID="rptLoaiSP" runat="server">
+                            <ItemTemplate>
+                                <li><a href="#"><%# Eval("Type_name") %></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <%--<li><a href="#" class="active">All</a></li>
                         <li><a href="#">Vegetables</a></li>
                         <li><a href="#">Fruits</a></li>
                         <li><a href="#">Juice</a></li>
-                        <li><a href="#">Dried</a></li>
+                        <li><a href="#">Dried</a></li>--%>
                     </ul>
                 </div>
             </div>
@@ -31,8 +37,8 @@
                     <ItemTemplate>
                         <div class="col-md-6 col-lg-3 ftco-animate">
                             <div class="product">
-                                <a href="#" class="img-prod">
-                                    <img class="img-fluid" src='<%# "/Home/images/"+Eval("img") %>' alt="Colorlib Template">
+                                <a href="product-single.aspx?id=<%#Eval("Id") %>" class="img-prod">
+                                    <img class="img-fluid" src='<%# "/Home/images/"+Eval("Thumb") %>' alt="Colorlib Template">
                                     <span class="status"><%# (int)(Convert.ToDecimal(Eval("percent_promo"))*100)+"%" %></span>
                                     <div class="overlay"></div>
                                 </a>

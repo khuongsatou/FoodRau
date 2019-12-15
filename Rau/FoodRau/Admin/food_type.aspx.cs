@@ -12,7 +12,6 @@ namespace FoodRau.Admin
 {
     public partial class food_type : System.Web.UI.Page
     {
-        private static bool isEnable = false;
         private static string hashNameImage = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,14 +19,19 @@ namespace FoodRau.Admin
             //{
             //    Response.Redirect("~");
             //}
-            if (!Page.IsPostBack)
-            {
-                btnThem.Enabled = !isEnable;
-                btnCapNhat.Enabled = isEnable;
-                btnHuy.Enabled = isEnable;
-                txtName.Enabled = !isEnable;
-            }
+
+         
         }
+
+        [WebMethod]
+        public static string HandleUploadImage(string filename)
+        {
+            hashNameImage = Guid.NewGuid().ToString() + filename;
+            
+            return "success";
+        }
+
+
 
         protected void BtnUpImg_Click(object sender, EventArgs e)
         {
@@ -55,21 +59,14 @@ namespace FoodRau.Admin
                 lblThongBao.Text = "Tìm 1 file mà chọn";
                 lblThongBao.ForeColor = Color.Red;
             }
-            
-        }
 
-        protected void BtnThem_Click(object sender, EventArgs e)
-        {
-            
         }
-        
 
         [WebMethod]
         public static FoodType GetObject(int type_id)
         {
             FoodType ft = new FoodType();
-            ft = ft.getItem(type_id);
-            return ft;
+            return ft.getItem(type_id);
         }
 
         [WebMethod]
@@ -101,20 +98,20 @@ namespace FoodRau.Admin
         }
 
         [WebMethod]
-        public static FoodType[] UpdateObject(string type_name, string type_post, string status)
+        public static FoodType[] UpdateObject(string type_name, string type_post, string status, string img)
         {
             FoodType ft = new FoodType();
             ft.Type_name = type_name;
             ft.Type_post = Convert.ToInt32(type_post);
-            ft.Type_img = hashNameImage;
+            ft.Type_img = img;
             ft.Status = Convert.ToInt32(status);
             ft.Username = "khuong";
-            bool exist = ft.add();
+            bool exist = ft.update();
             return ft.getList().ToArray();
         }
 
 
-        
+
 
 
 

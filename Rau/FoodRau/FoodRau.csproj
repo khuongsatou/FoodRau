@@ -1680,6 +1680,7 @@
     <Content Include="Admin\vendor\jquery-easing\jquery.easing.compatibility.js" />
     <Content Include="Admin\vendor\jquery-easing\jquery.easing.js" />
     <Content Include="Admin\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Admin\vendor\jquery\jquery.validate.js" />
     <Content Include="Admin\vendor\jquery\jquery.js" />
     <Content Include="Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Admin\vendor\jquery\jquery.slim.js" />

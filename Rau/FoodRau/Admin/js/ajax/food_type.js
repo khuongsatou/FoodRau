@@ -1,12 +1,15 @@
 ﻿
+//init
 $(this).ready(function () {
     SelectList();
     CheckEnable();
 });
 
+
 function CheckEnable() {
     $('#cph_content_lblThongBao').text("");
     $('#cph_content_lblThongBao').hide();
+    $('#cph_content_btnCapNhat').prop("disabled", true);
 }
 
 function SelectList() {
@@ -36,6 +39,8 @@ function Chon(type_id) {
             $('#cph_content_ddlStatus').val(response.d.Status);
             $('#cph_content_imgReview').attr("src", "img/" + response.d.Type_img);
             $('#cph_content_hfNameImg').val(response.d.Type_img);
+            $('#cph_content_btnCapNhat').prop("disabled", false);
+            
         },
         error: function (err) {
             alert("error" + err.d);
@@ -67,7 +72,7 @@ function ResetList(response) {
         row += c_td;
         row += o_td;
 
-        row += "<input id='Checkbox1' type='checkbox'" + ((arrObj[i].Status > 0) ? 'checked' : '') + " disabled />";
+        row += "<input type='checkbox'" + ((arrObj[i].Status > 0) ? 'checked' : '') + " disabled />";
         row += c_td;
 
         row += o_td;
@@ -120,29 +125,78 @@ function TimKiem() {
 }
 
 function Insert() {
-    var checkUpImg = $('#cph_content_hfNameImg').val();
-    if (checkUpImg == '') {
-        $('#cph_content_lblThongBao').text('Bạn Chưa Upload');
-        $('#cph_content_lblThongBao').show();
-        return;
+    if (Page_ClientValidate("f_them")) {
+        var checkUpImg = $('#cph_content_hfNameImg').val();
+        if (checkUpImg == '') {
+            $('#cph_content_lblThongBao').text('Bạn Chưa Upload');
+            $('#cph_content_lblThongBao').show();
+            return;
+        }
+        var type_name = $('#cph_content_txtName').val();
+        var type_post = $('#cph_content_txtPost').val();
+        var status = $('#cph_content_ddlStatus').val();
+        var param = "type_name:'" + type_name + "',type_post:'" + type_post + "',status:'" + status + "'";
+        alert(param);
+        $.ajax({
+            type: 'post',
+            url: "food_type.aspx/InsertObject",
+            data: "{" + param + "}",
+            contentType: 'application/json;charset=utf-8',
+            datatype: 'json',
+            success: function (response) {
+                ResetList(response);
+            },
+            error: function (err) {
+                alert("error" + err.d);
+            }
+        });
     }
-    var type_name = $('#cph_content_txtName').val();
-    var type_post = $('#cph_content_txtPost').val();
-    var status = $('#cph_content_ddlStatus').val();
-    var param = "type_name:'" + type_name + "',type_post:'" + type_post + "',status:'" + status + "'";
-    alert(param);
+}
+
+function Update() {
+    if (Page_ClientValidate("f_them")) {
+        var checkUpImg = $('#cph_content_hfNameImg').val();
+        if (checkUpImg == '') {
+            $('#cph_content_lblThongBao').text('Bạn Chưa Upload');
+            $('#cph_content_lblThongBao').show();
+            return;
+        }
+        var type_name = $('#cph_content_txtName').val();
+        var type_post = $('#cph_content_txtPost').val();
+        var status = $('#cph_content_ddlStatus').val();
+        var param = "type_name:'" + type_name + "',type_post:'" + type_post + "',status:'" + status + "',img:'" +checkUpImg+"'";
+        alert(param);
+        $.ajax({
+            type: 'post',
+            url: "food_type.aspx/UpdateObject",
+            data: "{" + param + "}",
+            contentType: 'application/json;charset=utf-8',
+            datatype: 'json',
+            success: function (response) {
+                ResetList(response);
+                alert();
+            },
+            error: function (err) {
+                alert("error" + err.d);
+            }
+        });
+    }
+}
+
+
+function UploadImage() {
+    var filename = $('#cph_content_fuImg').val();
     $.ajax({
         type: 'post',
-        url: "food_type.aspx/InsertObject",
-        data: "{"+param+"}",
+        url: "food_type.aspx/HandleUploadImage",
+        data: "{filename:'" + filename + "'}",
         contentType: 'application/json;charset=utf-8',
-        datatype: 'json',
         success: function (response) {
-            ResetList(response);
+            alert("success");
+
         },
         error: function (err) {
             alert("error" + err.d);
         }
     });
 }
-

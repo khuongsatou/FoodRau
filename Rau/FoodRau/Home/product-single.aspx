@@ -18,12 +18,18 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-6 mb-5 ftco-animate">
-    				<a href="images/product-1.jpg" class="image-popup"><img src="images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
+
+    				<%--<a href="images/product-1.jpg" class="image-popup"><img src="images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>--%>
+					<div class="image-popup">
+						<asp:Image ID="imgReview" runat="server" CssClass="img-fluid" />
+					</div>
+					
     			</div>
     			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-    				<h3>Bell Pepper</h3>
+    				<h3><asp:Label ID="lblName" runat="server" Text="Label"></asp:Label></h3>
     				<div class="rating d-flex">
 							<p class="text-left mr-4">
+							<asp:Label ID="lblPoint" runat="server" Text="Label"></asp:Label>
 								<a href="#" class="mr-2">5.0</a>
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -32,15 +38,16 @@
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 							</p>
 							<p class="text-left mr-4">
-								<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+								<a href="#" class="mr-2" style="color: #000;"><asp:Label ID="lblRating" runat="server" Text="Label"></asp:Label> <span style="color: #bbb;">Rating</span></a>
 							</p>
 							<p class="text-left">
-								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+								<a href="#" class="mr-2" style="color: #000;"><asp:Label ID="lblSold" runat="server" Text="Label"></asp:Label> <span style="color: #bbb;">Sold</span></a>
 							</p>
 						</div>
-    				<p class="price"><span>$120.00</span></p>
-    				<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until.
-						</p>
+    				<p class="price"><asp:Label ID="lblPrice" runat="server" Text="Label"></asp:Label></p>
+    				<p>
+                        <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
+					</p>
 						<div class="row mt-4">
 							<div class="col-md-6">
 								<div class="form-group d-flex">
@@ -71,7 +78,7 @@
 	          	</div>
 	          	<div class="w-100"></div>
 	          	<div class="col-md-12">
-	          		<p style="color: #000;">600 kg available</p>
+	          		<p style="color: #000;">600 <asp:Label ID="lblUnit" runat="server" Text="Label"></asp:Label>kg available</p>
 	          	</div>
           	</div>
           	<p><a href="cart.html" class="btn btn-black py-3 px-5">Add to Cart</a></p>
@@ -99,7 +106,11 @@
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a href="#">Bell Pepper</a></h3>
+    						<h3>
+								<%--<a href="#">Bell Pepper</a>--%>
+								<%--<asp:Label ID="lblName" runat="server" Text="Label"></asp:Label>--%>
+    						</h3>
+
     						<div class="d-flex">
     							<div class="pricing">
 		    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
