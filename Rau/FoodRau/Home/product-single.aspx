@@ -50,8 +50,13 @@
                                 <span style="color: #bbb;">Sold</span></a>
                         </p>
                     </div>
-                    <p class="price">
-                        <asp:Label ID="lblPrice" runat="server" Text="Label"></asp:Label></p>
+
+                    <p class="pricing">
+                        <del>$<asp:Label CssClass="mr-2 price-dc" ID="lblPrice" runat="server" Text="Label"></asp:Label></del>
+                    </p>
+                    <div class="price">
+                        $<asp:Label ID="lblPrice_promo" runat="server" Text="Label"></asp:Label>
+                    </div>
                     <p>
                         <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
                     </p>
@@ -60,37 +65,46 @@
                             <div class="form-group d-flex">
                                 <div class="select-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Small</option>
-                                        <option value="">Medium</option>
-                                        <option value="">Large</option>
-                                        <option value="">Extra Large</option>
-                                    </select>
+                                    <asp:DropDownList ID="ddlUnit" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="-1">Select Unit</asp:ListItem>
+                                        <asp:ListItem Value="1">KG</asp:ListItem>
+                                        <asp:ListItem Value="2">Box</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="input-group col-md-6 d-flex mb-3">
-                            <span class="input-group-btn mr-2">
+                            <%--<span class="input-group-btn mr-2">
                                 <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
                                     <i class="ion-ios-remove"></i>
                                 </button>
-                            </span>
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                            <span class="input-group-btn ml-2">
+                            </span>--%>
+                            Quatity:
+                            <br />
+                            <asp:TextBox CssClass="form-control input-number" name="quantity" ID="quantity" runat="server" TextMode="Number" Text="1" min="1" max="100" placeholder="quatity"></asp:TextBox>
+                           <%-- <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">--%>
+                           <%-- <span class="input-group-btn ml-2">
                                 <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
                                     <i class="ion-ios-add"></i>
                                 </button>
-                            </span>
+                            </span>--%>
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-12">
-                            <p style="color: #000;">600
+                            <p style="color: #000;">
+                                9000
                                 <asp:Label ID="lblUnit" runat="server" Text="Label"></asp:Label>
-                                available</p>
+                                available
+                            </p>
                         </div>
                     </div>
-                    <p><a href="cart.aspx" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+                    <p>
+                        <asp:HiddenField ID="hf_ID" runat="server" />
+                        <asp:HiddenField ID="hf_Img" runat="server" />
+                        <asp:Button ID="btnAddToCart" CssClass="btn btn-black py-3 px-5" runat="server" Text="Add to Cart" OnClick="BtnAddToCart_Click" />
+                        <%-- <a href="cart.aspx" class="btn btn-black py-3 px-5">Add to Cart</a>--%>
+                    </p>
                 </div>
             </div>
         </div>
@@ -148,7 +162,7 @@
     </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_js" runat="server">
-    <script>
+   <%-- <script>
         $(document).ready(function () {
 
             var quantitiy = 0;
@@ -183,5 +197,5 @@
             });
 
         });
-	</script>
+	</script>--%>
 </asp:Content>

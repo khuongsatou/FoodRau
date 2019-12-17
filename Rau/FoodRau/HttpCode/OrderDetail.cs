@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -33,5 +34,24 @@ namespace FoodRau.HttpCode
             _price = price;
             _total = total;
         }
+
+        public bool add()
+        {
+            string sQuery = "INSERT INTO [dbo].[order_detail] ([order_id] ,[food_id] ,[quan] ,[unit] ,[price] ,[total]) VALUES (@order_id,@food_id,@quan,@unit,@price,@total)";
+            SqlParameter[] sParams =
+            {
+                new SqlParameter("@order_id",this._orderID),
+                new SqlParameter("@food_id",this._foodID),
+                new SqlParameter("@quan",this._quan),
+                new SqlParameter("@unit",this._unit),
+                new SqlParameter("@price",this._price),
+                new SqlParameter("@total",this._total)
+            };
+            return DataProvider.executeNonQuery(sQuery, sParams);
+        }
+
+
+        
+
     }
 }

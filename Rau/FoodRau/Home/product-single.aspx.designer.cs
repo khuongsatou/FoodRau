@@ -78,6 +78,15 @@ namespace FoodRau.Home
         protected global::System.Web.UI.WebControls.Label lblPrice;
 
         /// <summary>
+        /// lblPrice_promo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPrice_promo;
+
+        /// <summary>
         /// lblDescription control.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,24 @@ namespace FoodRau.Home
         protected global::System.Web.UI.WebControls.Label lblDescription;
 
         /// <summary>
+        /// ddlUnit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUnit;
+
+        /// <summary>
+        /// quantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox quantity;
+
+        /// <summary>
         /// lblUnit control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,33 @@ namespace FoodRau.Home
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUnit;
+
+        /// <summary>
+        /// hf_ID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_ID;
+
+        /// <summary>
+        /// hf_Img control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_Img;
+
+        /// <summary>
+        /// btnAddToCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddToCart;
 
         /// <summary>
         /// rptRelated control.

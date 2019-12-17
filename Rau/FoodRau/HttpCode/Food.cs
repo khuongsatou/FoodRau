@@ -25,8 +25,8 @@ namespace FoodRau.HttpCode
         private int _status;
         private string _username;
         private DateTime _modified;
-
         private string _type_name;
+        
 
         
 

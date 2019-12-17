@@ -77,7 +77,6 @@ namespace FoodRau.HttpCode
                 cmd.Parameters.AddRange(param);
                 cmd.ExecuteNonQuery();
 
-               
                 string sQueryIdentity = "SELECT @@IDENTITY";
                 SqlCommand cmdScalar = new SqlCommand(sQueryIdentity, conn);
                 id = (int)cmdScalar.ExecuteScalar();

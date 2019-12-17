@@ -17,7 +17,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
+						<div class="billing-form">
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
@@ -97,7 +97,7 @@
 									</div>
                 </div>
 	            </div>
-	          </form><!-- END -->
+	          </div><!-- END -->
 					</div>
 					<div class="col-xl-5">
 	          <div class="row mt-5 pt-3">

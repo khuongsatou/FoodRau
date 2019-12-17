@@ -29,11 +29,6 @@
                                     ><%# Eval("Type_name") %></a></li>
                             </ItemTemplate>
                         </asp:Repeater>
-                        <%--<li><a href="#" class="active">All</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruits</a></li>
-                        <li><a href="#">Juice</a></li>
-                        <li><a href="#">Dried</a></li>--%>
                     </ul>
                 </div>
             </div>

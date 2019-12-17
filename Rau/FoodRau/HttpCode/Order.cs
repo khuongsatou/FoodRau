@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -22,32 +24,65 @@ namespace FoodRau.HttpCode
 
         public Order()
         {
-            _orderID = 0;
-            _cusName = "";
-            _cusPhone = "";
-            _cusAdd = "";
-            _quan = 0;
-            _sum = 0;
-            _status = 0;
-            _username = "";
-            _modified = DateTime.Now;
-            _creted = DateTime.Now;
-            _cusUserName = "";
+            OrderID = 0;
+            CusName = "";
+            CusPhone = "";
+            CusAdd = "";
+            Quan = 0;
+            Sum = 0;
+            Status = 0;
+            Username = "";
+            Modified = DateTime.Now;
+            Creted = DateTime.Now;
+            CusUserName = "";
         }
 
-        public Order(int orderID, string cusName, string cusPhone, string cusAdd, int quan, decimal sum, int status, string username, DateTime modified, DateTime creted, string cusUserName)
+        public Order(int OrderID, string cusName, string cusPhone, string cusAdd, int quan, decimal sum, int status, string username, DateTime modified, DateTime creted, string cusUserName)
         {
-            _orderID = orderID;
-            _cusName = cusName;
-            _cusPhone = cusPhone;
-            _cusAdd = cusAdd;
-            _quan = quan;
-            _sum = sum;
-            _status = status;
-            _username = username;
-            _modified = modified;
-            _creted = creted;
-            _cusUserName = cusUserName;
+            this.OrderID = OrderID;
+            CusName = cusName;
+            CusPhone = cusPhone;
+            CusAdd = cusAdd;
+            Quan = quan;
+            Sum = sum;
+            Status = status;
+            Username = username;
+            Modified = modified;
+            Creted = creted;
+            CusUserName = cusUserName;
         }
+
+        public int OrderID { get => _orderID; set => _orderID = value; }
+        public string CusName { get => _cusName; set => _cusName = value; }
+        public string CusPhone { get => _cusPhone; set => _cusPhone = value; }
+        public string CusAdd { get => _cusAdd; set => _cusAdd = value; }
+        public int Quan { get => _quan; set => _quan = value; }
+        public decimal Sum { get => _sum; set => _sum = value; }
+        public int Status { get => _status; set => _status = value; }
+        public string Username { get => _username; set => _username = value; }
+        public DateTime Modified { get => _modified; set => _modified = value; }
+        public DateTime Creted { get => _creted; set => _creted = value; }
+        public string CusUserName { get => _cusUserName; set => _cusUserName = value; }
+
+        public int add()
+        {
+            string sQuery = "INSERT INTO [dbo].[order] ([cus_name] ,[cus_phone] ,[cus_add] ,[quan] ,[sum] ,[status] ,[username] ,[modified] ,[created] ,[cus_username]) VALUES (@cus_name,@cus_phone,@cus_add ,@quan,@sum,@status,@username,@modified,@created,@cus_username)";
+            SqlParameter[] sParams =
+            {
+                new SqlParameter("@cus_name",this.OrderID),
+                new SqlParameter("@cus_phone",this.CusPhone),
+                new SqlParameter("@cus_add",this.CusAdd),
+                new SqlParameter("@quan",this.Quan),
+                new SqlParameter("@sum",this.Sum),
+                new SqlParameter("@status",this.Status),
+                new SqlParameter("@username",this.Username),
+                new SqlParameter("@modified",this.Modified),
+                new SqlParameter("@created",this.Creted),
+                new SqlParameter("@cus_username",this.CusUserName)
+            };
+            return DataProvider.executeScalar(sQuery,sParams);
+        }
+
+      
     }
 }
