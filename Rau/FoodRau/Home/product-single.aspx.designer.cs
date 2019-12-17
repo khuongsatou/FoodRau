@@ -15,6 +15,15 @@ namespace FoodRau.Home
     {
 
         /// <summary>
+        /// hlZoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlZoom;
+
+        /// <summary>
         /// imgReview control.
         /// </summary>
         /// <remarks>
@@ -85,5 +94,14 @@ namespace FoodRau.Home
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUnit;
+
+        /// <summary>
+        /// rptRelated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptRelated;
     }
 }

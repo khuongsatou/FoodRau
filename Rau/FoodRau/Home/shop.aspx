@@ -18,10 +18,15 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
-                        <li><a href="#" class="active">All</a></li>
+                        <li><a href='shop.aspx' class='<%if (Request["type_id"] == null) Response.Write("active"); %>'>All</a></li>
                         <asp:Repeater ID="rptLoaiSP" runat="server">
                             <ItemTemplate>
-                                <li><a href="#"><%# Eval("Type_name") %></a></li>
+                                <li><a href='?type_id=<%# Eval("Type_Id") %>' 
+                                    class='<%#
+                                        ((Request["type_id"] != null &&
+                                           Convert.ToInt32(Request["type_id"]) ==Convert.ToInt32(Eval("type_id"))) ? "active" : "")
+%>'
+                                    ><%# Eval("Type_name") %></a></li>
                             </ItemTemplate>
                         </asp:Repeater>
                         <%--<li><a href="#" class="active">All</a></li>
@@ -73,13 +78,17 @@
                 <div class="col text-center">
                     <div class="block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&gt;</a></li>
+                            <asp:Repeater ID="rptSoTrang" runat="server">
+                                <ItemTemplate>
+                                   <li class="<%#((Convert.ToInt32(Eval("active")) == 1) ? "active" : "")  %>"><a href='?page=<%#Eval("index") %>'
+                                       >
+                                      
+                                       <%#Eval("index") %>
+                            
+                                       </a></li> 
+                                </ItemTemplate>
+                            </asp:Repeater>
+
                         </ul>
                     </div>
                 </div>

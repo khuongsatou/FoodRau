@@ -180,6 +180,22 @@ namespace FoodRau.HttpCode
             return ft;
         }
 
+        public List<Food> getList(int type_id)
+        {
+            string sQuery = "SELECT *  FROM [dbo].[food] WHERE [type] = @type_id AND status =1 ";
+            SqlParameter[] param = {
+                new SqlParameter("@type_id",type_id)
+            };
+            List<Food> ft = new List<Food>();
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            foreach (DataRow dr in dt.Rows)
+            {
+                ft.Add(convertToObject(dr));
+            }
+            return ft;
+        }
+
+        //kết bảng food và type
         public List<Food> getListFoodType()
         {
             string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] ,food.[username] ,food.[modified] FROM [dbo].[food],food_type Where type=type_id";

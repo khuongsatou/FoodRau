@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -53,5 +55,14 @@ namespace FoodRau.HttpCode
             _username = username;
             _modified = modified;
         }
+
+        public DataTable getList()
+        {
+            string sQuery = "SELECT [slide_id] ,[id_object] ,[slider].[img] ,[caption] ,[rank] ,[slider].[status] ,[slider].[username] ,[slider].[modified],post.title FROM [dbo].[slider],[dbo].post WHERE [id_object]=[post_id] AND [slider].status = 1";
+            SqlParameter[] param = { };           
+            return DataProvider.getDataTable(sQuery, param);
+        }
+
+        
     }
 }
