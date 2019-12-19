@@ -3,11 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
     <!-- Custom styles for this page -->
     <link href="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <style>
-        .tbError {
-            color: red;
-        }
-    </style>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
   <div class="row" id="chon">
@@ -24,7 +20,7 @@
                             <asp:Label ID="lblErrorUserName" CssClass="tbError" runat="server" Text=""></asp:Label>
                             <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ValidationGroup="vsNotification" ErrorMessage="Bạn chưa nhập" ControlToValidate="txtUserName" ForeColor="Red"></asp:RequiredFieldValidator>
                             <br />
-                            <asp:RegularExpressionValidator runat="server" ValidationGroup="vsNotification" ID="revUserName" ErrorMessage="Không dấu và Phải từ 3 đến 20 kí tự" ValidationExpression="[A-Za-z0-9]{3,20}" ControlToValidate="txtUserName" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator runat="server" ValidationGroup="vsNotification" ID="revUserName" ErrorMessage="Không dấu và Phải từ 3 đến 20 kí tự" ValidationExpression="[\w]{3,20}" ControlToValidate="txtUserName" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
                         </div>
 
                         <div class="col-sm-4">
@@ -139,7 +135,7 @@
                             <th></th>
                         </tr>
                     </tfoot>
-                    <tbody class="rptDSThanhVien">
+                    <tbody class="rptDS">
                     </tbody>
                 </table>
                 <div class="dataTables_paginate paging_simple_numbers">

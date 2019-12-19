@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Web.Services;
+using System.Web.Script.Serialization;
+
 namespace FoodRau.Admin
 {
     public partial class food_type : System.Web.UI.Page
@@ -19,20 +21,50 @@ namespace FoodRau.Admin
             //{
             //    Response.Redirect("~");
             //}
-
-         
         }
 
         [WebMethod]
-        public static string HandleUploadImage(string filename)
+        public static string searchCode(string key, string page)
         {
-            hashNameImage = Guid.NewGuid().ToString() + filename;
-            
-            return "success";
+            FoodType f = new FoodType();
+            List<FoodType> foodTypes = f.getList();
+            if (key != null && key.Length > 0)
+            {
+                foodTypes = f.getList(key);
+            }
+            int limit = 3;
+            int soTrang = foodTypes.Count / limit + (foodTypes.Count % limit == 0 ? 0 : 1);
+            int trang = Convert.ToInt32(page);
+            int from = (trang - 1) * limit;
+            int to = (trang * limit) - 1;
+            for (int i = foodTypes.Count - 1; i >= 0; i--)
+            {
+                if (i < from || to < i)
+                {
+                    foodTypes.RemoveAt(i);
+                }
+            }
+            int[] index = new int[soTrang];
+            int[] active = new int[soTrang];
+
+            for (int i = 0; i < soTrang; i++)
+            {
+                index[i] = i;
+                if (i + 1 == trang)
+                {
+                    active[i] = 1;
+                }
+                else
+                {
+                    active[i] = 0;
+                }
+            }
+            Dictionary<string, object> json = new Dictionary<string, object>();
+            json.Add("obj", foodTypes);
+            json.Add("record", index);
+            json.Add("active", active);
+            return new JavaScriptSerializer().Serialize(json);
         }
-
-
-
         protected void BtnUpImg_Click(object sender, EventArgs e)
         {
             lblThongBao.Text = "";
@@ -42,8 +74,8 @@ namespace FoodRau.Admin
                 if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                 {
                     hashNameImage = Guid.NewGuid().ToString() + fuImg.FileName;
-                    fuImg.SaveAs(Server.MapPath("img\\") + hashNameImage);
-                    imgReview.ImageUrl = "~/Admin/img/" + hashNameImage;
+                    fuImg.SaveAs(Server.MapPath("..\\Home\\images\\") + hashNameImage);
+                    imgReview.ImageUrl = "~/Home/images/" + hashNameImage;
                     hfNameImg.Value = hashNameImage;
                     lblThongBao.Text = "Đã Lưu";
                     lblThongBao.ForeColor = Color.Blue;
@@ -62,139 +94,91 @@ namespace FoodRau.Admin
 
         }
 
-        [WebMethod]
-        public static FoodType GetObject(int type_id)
+        protected void BtnThem_Click(object sender, EventArgs e)
+        {
+            FoodType f = new FoodType();
+            if (!f.exist(txtName.Text))
+            {
+                f.Type_name = txtName.Text;
+                f.Type_post =Convert.ToInt32(txtPost.Text);
+                f.Type_img = hashNameImage;
+                f.Status = Convert.ToInt32(ddlStatus.SelectedValue);
+                f.Username = "khuong";
+                if (f.add())
+                {
+                    lblMessage.Text = "Thêm Thành Công";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+                    Btn_cancel_Click(sender, e);
+                }
+                else
+                {
+                    Response.Write("<script>alert('Thất Bại') </script>");
+                }
+            }
+            else
+            {
+                lblMessage.Text = "Đã Tồn Tại";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+            }
+        }
+
+        protected void Btn_update_Click(object sender, EventArgs e)
         {
             FoodType ft = new FoodType();
-            return ft.getItem(type_id);
+            if (ft.Type_id ==0)
+            {
+                ft.Type_id = Convert.ToInt32(hfTypeID.Value);
+                ft.Type_name = txtName.Text;
+                ft.Type_post = Convert.ToInt32(txtPost.Text);
+                ft.Type_img = hfNameImg.Value;
+                ft.Status = Convert.ToInt32(ddlStatus.SelectedValue);
+                ft.Username = "khuong";
+                if (ft.update())
+                {
+                    lblMessage.Text = "Cập Nhật Thành Công";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+                    Btn_cancel_Click(sender, e);
+                }
+                else
+                {
+                    Response.Write("<script>alert('Thất Bại') </script>");
+                }
+            }
+        }
+
+
+        protected void Btn_cancel_Click(object sender, EventArgs e)
+        {
+            hfTypeID.Value = "";
+            hfNameImg.Value = "";
+            txtName.Text = "";
+            txtPost.Text = "";
+            lblThongBao.Text = "";
+            imgReview.ImageUrl = "~/Admin/img/10.jpg";
+            ddlStatus.SelectedValue = "-1";
+        }
+
+
+        [WebMethod]
+        public static FoodType getObject(string type_id)
+        {
+            return new FoodType().getItem(Convert.ToInt32(type_id));
         }
 
         [WebMethod]
-        public static FoodType[] SelectAll()
+        public static bool existN(string type_name)
         {
-            FoodType ft = new FoodType();
-            return ft.getList().ToArray();
+            return new FoodType().exist(type_name);
         }
-
         [WebMethod]
-        public static FoodType[] Search(string type_name)
+        public static bool setStatusdelete(string type_id)
         {
             FoodType ft = new FoodType();
-            return ft.search(type_name).ToArray();
+            ft.Type_id = Convert.ToInt32(type_id);
+            return ft.delete();
         }
 
-        [WebMethod]
-        public static FoodType[] InsertObject(string type_name, string type_post, string status)
-        {
-            FoodType ft = new FoodType();
-            ft.Type_name = type_name;
-            ft.Type_post = Convert.ToInt32(type_post);
-            ft.Type_img = hashNameImage;
-            ft.Status = Convert.ToInt32(status);
-            ft.Username = "khuong";
-            bool exist = ft.add();
-
-            return ft.getList().ToArray();
-        }
-
-        [WebMethod]
-        public static FoodType[] UpdateObject(string type_name, string type_post, string status, string img)
-        {
-            FoodType ft = new FoodType();
-            ft.Type_name = type_name;
-            ft.Type_post = Convert.ToInt32(type_post);
-            ft.Type_img = img;
-            ft.Status = Convert.ToInt32(status);
-            ft.Username = "khuong";
-            bool exist = ft.update();
-            return ft.getList().ToArray();
-        }
-
-
-
-
-
-
-        //protected void Btn_cancel_Click(object sender, EventArgs e)
-        //{
-        //    txtName.Enabled = isEnable;
-        //    txtName.Text = "";
-        //    txtPost.Text = "";
-        //    lblThongBao.Text = "";
-        //    imgReview.ImageUrl = "~/Admin/img/10.jpg";
-        //    //img....
-        //    ddlStatus.SelectedIndex = -1;
-        //    this.isEnable = false;
-        //    CheckEnable();
-        //}
-
-
-        //protected void BtnCapNhat_Click(object sender, EventArgs e)
-        //{
-        //    FoodType ft = new FoodType();
-        //    ft.Type_name = txtName.Text;
-        //    ft.Type_post = Convert.ToInt32(txtPost.Text);
-        //    ft.Type_img = txtSaveNameImg.Text;
-        //    ft.Username = "khuong";
-        //    if (ft.update())
-        //    {
-        //        Btn_cancel_Click(sender, e);
-        //        Response.Write("<script>alert('Thành Công') </script>");
-        //        resetList();
-        //    }
-        //    else
-        //    {
-        //        Response.Write("<script>alert('Thất Bại') </script>");
-        //    }
-        //}
-
-
-
-
-        //protected void rptDSLoaiSP_OnItemCommand(object source, RepeaterCommandEventArgs e)
-        //{
-
-        //    if (e.CommandName == "c")
-        //    {
-        //        int type_id = Convert.ToInt32(e.CommandArgument.ToString());
-        //        FoodType ft = new FoodType();
-        //        if (ft.exist(type_id))
-        //        {
-        //            FoodType f = ft.getItem(type_id);
-        //            txtName.Text = f.Type_name;
-        //            txtPost.Text = f.Type_post.ToString();
-        //            txtSaveNameImg.Text = f.Type_img;
-        //            imgReview.ImageUrl = "~/Admin/img/" + f.Type_img.ToString();
-        //            ddlStatus.SelectedValue = f.Status.ToString();
-        //            this.isEnable = true;
-        //            CheckEnable();
-        //        }
-        //        else
-        //        {
-        //            Response.Write("<script>alert('Chưa Tồn Tại') </script>");
-        //        }
-        //    }
-
-        //    if (e.CommandName == "x")
-        //    {
-        //        string type_id = e.CommandArgument.ToString();
-        //        FoodType ft = new FoodType();
-        //        ft.Type_id = Convert.ToInt32(type_id);
-        //        if (ft.delete())
-        //        {
-        //            Response.Write("<script>alert('Thành Công') </script>");
-        //            resetList();
-        //        }
-        //        else
-        //        {
-        //            Response.Write("<script>alert('Thất Bại') </script>");
-        //        }
-        //    }
-        //}
-
-
-
-
+        
 
     }
 }

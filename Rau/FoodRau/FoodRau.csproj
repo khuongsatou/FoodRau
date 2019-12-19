@@ -83,6 +83,7 @@
     <Content Include="Admin\img\undraw_posting_photo.svg" />
     <Content Include="Admin\js\ajax\food_type.js" />
     <Content Include="Admin\js\ajax\member.js" />
+    <Content Include="Admin\js\custom\moment.js" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
     <Content Include="Admin\js\demo\chart-bar-demo.js" />
     <Content Include="Admin\js\demo\chart-pie-demo.js" />

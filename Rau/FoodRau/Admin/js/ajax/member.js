@@ -171,7 +171,7 @@ function resetList(lst_json) {
         table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].UserName + "\"" + ");'/></a></td>";
         table += "</tr>";
     }
-    $('.rptDSThanhVien').html(table);
+    $('.rptDS').html(table);
     var index = lst_json["record"];
     var active = lst_json["active"];
     var result = "";

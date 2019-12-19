@@ -1,45 +1,72 @@
-﻿
-//init
+﻿var checkUpdate = false;
+
 $(this).ready(function () {
-    SelectList();
-    CheckEnable();
+    search(1);
+    checkEnable(false);
+    initValidator();
 });
 
-
-function CheckEnable() {
-    $('#cph_content_lblThongBao').text("");
-    $('#cph_content_lblThongBao').hide();
-    $('#cph_content_btnCapNhat').prop("disabled", true);
+function initValidator() {
+    this.checkUpdate = false;
 }
 
-function SelectList() {
+function Valid() {
+    if ($('#cph_content_hfNameImg').val() == "") {
+        $('#cph_content_lblThongBao').text("Bạn Chưa Upload");
+    }
+    if (Page_ClientValidate('vsNotification')) {
+        return !($('#cph_content_lblErrorName').text().length > 0 || $('#cph_content_hfNameImg').val() == "");
+    }
+    return true;
+}
+
+function search(page) {
+    var key = $('.txtSearch').val();
     $.ajax({
-        type: 'post',
-        url: "food_type.aspx/SelectAll",
-        data: {},
+        url: 'food_type.aspx/searchCode',
+        type: "post",
+        data: "{key:'" + key + "',page:'" + page + "'}",
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
-            ResetList(response);
+            resetList(JSON.parse(response.d));
         },
-        error: function (err) {
-            alert("Error" + err.d);
+        error: function (error) {
+            alert(error.d);
         }
     });
+}
+
+function existName() {
+    if (!checkUpdate) {
+        $.ajax({
+            type: 'post',
+            url: "food_type.aspx/existN",
+            data: "{type_name:'" + $('.txtName').val() + "'}",
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                if (response.d) {
+                    $('#cph_content_lblErrorName').text("Đã tồn tại");
+                } else {
+                    $('#cph_content_lblErrorName').text("");
+                }
+            },
+            error: function (err) {
+                alert("error" + err.d);
+            }
+        });
+    }
 }
 
 function Chon(type_id) {
     $.ajax({
         type: 'post',
-        url: "food_type.aspx/GetObject",
+        url: "food_type.aspx/getObject",
         data: "{type_id:'" + type_id + "'}",
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
-            $('#cph_content_txtName').val(response.d.Type_name);
-            $('#cph_content_txtPost').val(response.d.Type_post);
-            $('#cph_content_ddlStatus').val(response.d.Status);
-            $('#cph_content_imgReview').attr("src", "img/" + response.d.Type_img);
-            $('#cph_content_hfNameImg').val(response.d.Type_img);
-           
+            setValues(response.d);
+            checkEnable(true);
+            clearError();
         },
         error: function (err) {
             alert("error" + err.d);
@@ -47,152 +74,27 @@ function Chon(type_id) {
     });
 }
 
-
-function ResetList(response) {
-    var arrObj = response.d;
-    var row = "";
-    var o_td = "<td>";
-    var c_td = "</td>";
-    for (var i = 0; i < arrObj.length; i++) {
-        row += "<tr>";
-        row += o_td;
-        row += i;
-        row += c_td;
-
-        row += o_td;
-        row += arrObj[i].Type_name;
-        row += c_td;
-
-        row += o_td;
-        row += arrObj[i].Type_post;
-        row += c_td;
-
-        row += o_td;
-        row += "<img id='imgHinh' alt='' width='50' height='50' src='/Admin/img/" + arrObj[i].Type_img + "' />";
-        row += c_td;
-        row += o_td;
-
-        row += "<input type='checkbox'" + ((arrObj[i].Status > 0) ? 'checked' : '') + " disabled />";
-        row += c_td;
-
-        row += o_td;
-        row += arrObj[i].Username;
-        row += c_td;
-
-        row += o_td;
-        row += "<a href='#chon'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png' onClick='Chon(" + arrObj[i].Type_id + ");' /></a>";
-        row += c_td;
-
-        row += o_td;
-        row += "<a href='#chon'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='Chon(" + arrObj[i].Type_name + ");' /></a>";
-        row += c_td;
-        row += "</tr>";
-
-    }
-    $('#repeater').html(row);
+function xoa(type_id) {
+    $('#cph_content_lblMessage').text("Bạn có muốn xóa?");
+    $('#cph_content_hfUserNameConfirm').val(type_id);
+    $('.btnConfỉrm').show();
+    showModal();
 }
 
-function PhanTrang() {
+function xacNhanXoa() {
+    var type_id = $('#cph_content_hfUserNameConfirm').val();
     $.ajax({
         type: 'post',
-        url: "food_type.aspx/SelectAll",
-        data: {},
-        contentType: 'application/json;charset=utf-8',
-        datatype: 'json',
-        success: function (response) {
-            ResetList(response);
-        },
-        error: function (err) {
-            alert("Error" + err.d);
-        }
-    });
-}
-
-function TimKiem() {
-    var type_name = $('#cph_content_txtTimKiem').val();
-    $.ajax({
-        type: 'post',
-        url: "food_type.aspx/Search",
-        data: "{type_name:'" + type_name + "'}",
+        url: "food_type.aspx/setStatusdelete",
+        data: "{type_id:'" + type_id + "'}",
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
-            ResetList(response);
-        },
-        error: function (err) {
-            alert("error" + err.d);
-        }
-    });
-}
-
-function Insert() {
-    if (Page_ClientValidate("f_them")) {
-        var checkUpImg = $('#cph_content_hfNameImg').val();
-        if (checkUpImg == '') {
-            $('#cph_content_lblThongBao').text('Bạn Chưa Upload');
-            $('#cph_content_lblThongBao').show();
-            return;
-        }
-        var type_name = $('#cph_content_txtName').val();
-        var type_post = $('#cph_content_txtPost').val();
-        var status = $('#cph_content_ddlStatus').val();
-        var param = "type_name:'" + type_name + "',type_post:'" + type_post + "',status:'" + status + "'";
-        alert(param);
-        $.ajax({
-            type: 'post',
-            url: "food_type.aspx/InsertObject",
-            data: "{" + param + "}",
-            contentType: 'application/json;charset=utf-8',
-            datatype: 'json',
-            success: function (response) {
-                ResetList(response);
-            },
-            error: function (err) {
-                alert("error" + err.d);
+            if (response.d) {
+                search(1);
+                $("#myModal").modal('hide');
+            } else {
+                alert("Xóa Thất Bại");
             }
-        });
-    }
-}
-
-function Update() {
-    if (Page_ClientValidate("f_them")) {
-        var checkUpImg = $('#cph_content_hfNameImg').val();
-        if (checkUpImg == '') {
-            $('#cph_content_lblThongBao').text('Bạn Chưa Upload');
-            $('#cph_content_lblThongBao').show();
-            return;
-        }
-        var type_name = $('#cph_content_txtName').val();
-        var type_post = $('#cph_content_txtPost').val();
-        var status = $('#cph_content_ddlStatus').val();
-        var param = "type_name:'" + type_name + "',type_post:'" + type_post + "',status:'" + status + "',img:'" +checkUpImg+"'";
-        alert(param);
-        $.ajax({
-            type: 'post',
-            url: "food_type.aspx/UpdateObject",
-            data: "{" + param + "}",
-            contentType: 'application/json;charset=utf-8',
-            datatype: 'json',
-            success: function (response) {
-                ResetList(response);
-                alert();
-            },
-            error: function (err) {
-                alert("error" + err.d);
-            }
-        });
-    }
-}
-
-
-function UploadImage() {
-    var filename = $('#cph_content_fuImg').val();
-    $.ajax({
-        type: 'post',
-        url: "food_type.aspx/HandleUploadImage",
-        data: "{filename:'" + filename + "'}",
-        contentType: 'application/json;charset=utf-8',
-        success: function (response) {
-            alert("success");
 
         },
         error: function (err) {
@@ -201,3 +103,58 @@ function UploadImage() {
     });
 }
 
+function setValues(obj) {
+    $('#cph_content_hfTypeID').val(obj.Type_id);
+    $('#cph_content_txtName').val(obj.Type_name);
+    $('#cph_content_txtPost').val(obj.Type_post);
+    $('#cph_content_imgReview').attr('src', "../Home/images/" + obj.Type_img);
+    $('#cph_content_hfNameImg').val(obj.Type_img);
+    $('#cph_content_ddlStatus').val(obj.Status);
+}
+
+function clearError() {
+    $('.tbError').text('');
+    $('.lblThongBao').text('');
+}
+
+function resetList(lst_json) {
+    var obj = lst_json["obj"];
+    var table = "";
+    for (i = 0; i < obj.length; i++) {
+        table += "<tr>"
+        table += "<td>" + obj[i].Type_id    + "</td>";
+        table += "<td>" + obj[i].Type_name  + "</td>";
+        table += "<td>" + obj[i].Type_post  + "</td>";
+        table += "<td><img id='imgHinh' alt='' width='50' height='50' src='/Home/images/" + obj[i].Type_img + "' /></td>";
+        table += "<td><input type='checkbox'" + ((obj[i].Status > 0) ? 'checked' : '') + " disabled /></td>";
+        table += "<td>" + moment(obj[i].Modified).format('MM/DD/YYYY')+"</td>";
+
+        table += "<td><a href='#chon'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png' onClick='Chon(" + "\"" + obj[i].Type_id + "\"" + ");'/></a>";
+        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Type_id + "\"" + ");'/></a></td>";
+        table += "</tr>";
+    }
+    $('.rptDS').html(table);
+    var index = lst_json["record"];
+    var active = lst_json["active"];
+    var result = "";
+    for (var i = 0; i < index.length; i++) {
+        var stt = (Number(index[i]) + 1);
+        var current = ((Number(active[i])) == 1 ? 'active' : '');
+        result += "<li class='paginate_button page-item " + current + "'>";
+        result += "<input  class='page-link' type='button' value='" + stt + "' onclick='search(" + stt + ")'/>";
+        result += "</li>";
+    }
+    $('.record').html(result);
+}
+
+function checkEnable(check) {
+    this.checkUpdate = check;
+    $('#cph_content_btnThem').prop("disabled", check);
+    $('#cph_content_btnCapNhat').prop("disabled", !check);
+    $('.btnConfỉrm').hide();
+}
+
+//modal
+function showModal() {
+    $("#myModal").modal('show');
+}

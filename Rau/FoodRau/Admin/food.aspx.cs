@@ -57,21 +57,21 @@ namespace FoodRau.Admin
 
         private void resetDropDownType()
         {
-            FoodType ft = new FoodType();
-            ddListType.DataSource = ft.getList();
-            ddListType.DataTextField = "type_name";
-            ddListType.DataValueField = "type_id";
-            ddListType.DataBind();
+            //FoodType ft = new FoodType();
+            //ddListType.DataSource = ft.getList();
+            //ddListType.DataTextField = "type_name";
+            //ddListType.DataValueField = "type_id";
+            //ddListType.DataBind();
         }
 
         private void selectedDropDown(int value)
         {
-            FoodType ft = new FoodType();
-            ddListType.DataSource = ft.getList();
-            ddListType.DataTextField = "type_name";
-            ddListType.DataValueField = "type_id";
-            ddListType.DataBind();
-            ddListType.SelectedValue = value.ToString();
+            //FoodType ft = new FoodType();
+            //ddListType.DataSource = ft.getList();
+            //ddListType.DataTextField = "type_name";
+            //ddListType.DataValueField = "type_id";
+            //ddListType.DataBind();
+            //ddListType.SelectedValue = value.ToString();
         }
         protected void Btn_Them_Click(object sender, EventArgs e)
         {

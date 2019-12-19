@@ -15,6 +15,11 @@
     <!-- Custom styles for this template-->
     <link href="<%=Page.ResolveUrl("~") %>Admin/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="Admin/css/custom.css" rel="stylesheet" />
+    <style>
+        .tbError {
+            color: red;
+        }
+    </style>
     <asp:ContentPlaceHolder ID="css" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -348,7 +353,6 @@
 
         <!-- Bootstrap core JavaScript-->
         <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/jquery/jquery.min.js"></script>
-        <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/jquery/jquery.validate.js"></script>
         <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
@@ -356,6 +360,7 @@
 
         <!-- Custom scripts for all pages-->
         <script src="<%=Page.ResolveUrl("~") %>Admin/js/sb-admin-2.min.js"></script>
+        
         <asp:ContentPlaceHolder ID="js" runat="server">
         </asp:ContentPlaceHolder>
     </form>
