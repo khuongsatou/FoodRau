@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\css\custom.css" />
     <Content Include="Admin\css\sb-admin-2.css" />
     <Content Include="Admin\css\sb-admin-2.min.css" />
     <Content Include="Admin\food.aspx" />
@@ -81,6 +82,7 @@
     <Content Include="Admin\img\c.jpg" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
     <Content Include="Admin\js\ajax\food_type.js" />
+    <Content Include="Admin\js\ajax\member.js" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
     <Content Include="Admin\js\demo\chart-bar-demo.js" />
     <Content Include="Admin\js\demo\chart-pie-demo.js" />
@@ -1778,7 +1780,9 @@
     <Content Include="Home\shop.aspx" />
     <Content Include="Home\wishlist.aspx" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="Test.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.Master.cs">
@@ -1936,6 +1940,20 @@
     <Compile Include="HttpCode\Slider.cs" />
     <Compile Include="HttpCode\StringProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.js.map" />

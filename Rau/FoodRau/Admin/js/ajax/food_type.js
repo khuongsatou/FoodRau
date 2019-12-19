@@ -39,14 +39,14 @@ function Chon(type_id) {
             $('#cph_content_ddlStatus').val(response.d.Status);
             $('#cph_content_imgReview').attr("src", "img/" + response.d.Type_img);
             $('#cph_content_hfNameImg').val(response.d.Type_img);
-            $('#cph_content_btnCapNhat').prop("disabled", false);
-            
+           
         },
         error: function (err) {
             alert("error" + err.d);
         }
     });
 }
+
 
 function ResetList(response) {
     var arrObj = response.d;
@@ -200,3 +200,4 @@ function UploadImage() {
         }
     });
 }
+

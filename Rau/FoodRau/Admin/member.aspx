@@ -3,11 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
     <!-- Custom styles for this page -->
     <link href="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <style>
+        .tbError {
+            color: red;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-
-
-    <div class="row">
+  <div class="row" id="chon">
         <div class="col-lg-12">
             <div class="user">
                 <div class="text-center">
@@ -16,70 +19,73 @@
                 <div class="user">
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <asp:TextBox placeholder="Tên Đăng nhập..." ID="txtUserName" runat="server" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="vsNotification" ErrorMessage="Bạn chưa nhập tên đăng nhập" ControlToValidate="txtUserName" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox placeholder="Tên Đăng nhập..." ID="txtUserName" runat="server" CssClass="txtUser form-control form-control-user" AutoPostBack="false" ValidationGroup="vsNotification" onfocusout="existUserName();"></asp:TextBox>
+                            <asp:HiddenField ID="hfUserName" runat="server"/>
+                            <asp:Label ID="lblErrorUserName" CssClass="tbError" runat="server" Text=""></asp:Label>
+                            <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ValidationGroup="vsNotification" ErrorMessage="Bạn chưa nhập" ControlToValidate="txtUserName" ForeColor="Red"></asp:RequiredFieldValidator>
                             <br />
-                            <asp:RegularExpressionValidator runat="server" ValidationGroup="vsNotification" ID="revUserName" ErrorMessage="Phải là chữ cái hoặc 3 đến 10 kí tự" ValidationExpression="[A-Za-z]{3,10}" ControlToValidate="txtUserName" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator runat="server" ValidationGroup="vsNotification" ID="revUserName" ErrorMessage="Không dấu và Phải từ 3 đến 20 kí tự" ValidationExpression="[A-Za-z0-9]{3,20}" ControlToValidate="txtUserName" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
                         </div>
 
                         <div class="col-sm-4">
-                            <asp:TextBox placeholder="Họ & Tên..." ID="txtName" runat="server" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="rfvName" runat="server" ErrorMessage="Bạn chưa nhập họ và tên" ControlToValidate="txtName" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox placeholder="Họ & Tên..." ID="txtName" runat="server" CssClass="form-control form-control-user" AutoPostBack="false" ValidationGroup="vsNotification"></asp:TextBox>
+                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="rfvName" runat="server" ErrorMessage="Bạn chưa nhập" ControlToValidate="txtName" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox placeholder="Email..." ID="txtEmail" runat="server" TextMode="email" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Bạn chưa nhập email" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox AutoPostBack="false" ValidationGroup="vsNotification" placeholder="Email..." ID="txtEmail" runat="server" TextMode="email" CssClass="txtEmail form-control form-control-user" onfocusout="existEmail();"></asp:TextBox>
+                            <asp:Label ID="lblErrorEmail" CssClass="tbError" runat="server" Text=""></asp:Label>
+                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Bạn chưa nhập email" ControlToValidate="txtEmail" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <br />
-                            <asp:RegularExpressionValidator ID="rev_email" runat="server" ErrorMessage="Email chưa đúng định dạng" ValidationGroup="vsNotification" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="rev_email" runat="server" ErrorMessage="Sai định dạng" ValidationGroup="vsNotification" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4 mb-3 mb-sm-0">
-
-                            <asp:TextBox placeholder="Mật Khẩu..." ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="rvPass" runat="server" ErrorMessage="Bạn chưa nhập mật khẩu" ControlToValidate="txtPassword" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox placeholder="Mật Khẩu..." AutoPostBack="false" ValidationGroup="vsNotification" ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control form-control-user"></asp:TextBox>
+                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="rvPass" runat="server" ErrorMessage="Bạn chưa nhập mật khẩu" ControlToValidate="txtPassword" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <br />
-                            <asp:RegularExpressionValidator ValidationGroup="vsNotification" ID="revPassword" runat="server" ErrorMessage="Bạn mật khẩu từ 3 đến 10 kí tự" ControlToValidate="txtPassword" ValidationExpression="[A-Za-z0-9]{3,10}" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ValidationGroup="vsNotification" ID="revPassword" runat="server" ErrorMessage="từ 3 đến 10 kí tự" ControlToValidate="txtPassword" ValidationExpression="[A-Za-z0-9]{3,10}" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <asp:TextBox placeholder="Nhập Lại Mật Khẩu..." ID="txtRepass" runat="server" TextMode="password" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvRepass" runat="server" ErrorMessage="Mật khẩu xác thực không được để trống" ControlToValidate="txtRepass" ValidationGroup="vsNotification" ForeColor="Red"></asp:RequiredFieldValidator><br />
-                            <asp:CompareValidator ValidationGroup="vsNotification" ID="cvRepass" runat="server" ErrorMessage="Mật Khẩu xác thực không khớp" ControlToCompare="txtPassword" ControlToValidate="txtRepass" Type="String" ForeColor="Red"></asp:CompareValidator>
+                            <asp:RequiredFieldValidator ID="rfvRepass" runat="server" ErrorMessage="Mật khẩu xác thực không được để trống" ControlToValidate="txtRepass" ValidationGroup="vsNotification" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                            <asp:CompareValidator ValidationGroup="vsNotification" ID="cvRepass" runat="server" ErrorMessage="Mật Khẩu xác thực không khớp" ControlToCompare="txtPassword" ControlToValidate="txtRepass" Type="String" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
                             <br />
 
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:TextBox placeholder="Số Điện Thoại..." ID="txtPhone" runat="server" TextMode="Number" CssClass="form-control form-control-user"></asp:TextBox>
-                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Bạn chưa nhập Số điện thoại" ControlToValidate="txtPhone" ForeColor="Red"></asp:RequiredFieldValidator><br />
-                            <asp:RegularExpressionValidator ValidationGroup="vsNotification" ID="revPhone" runat="server" ErrorMessage="Số điện thoại phải có 10 và phải đúng định dạng " ControlToValidate="txtPhone" ValidationExpression="0[0-9]{9}" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox AutoPostBack="false" ValidationGroup="vsNotification" placeholder="Số Điện Thoại..." ID="txtPhone" runat="server" TextMode="Number" CssClass="txtSDT form-control form-control-user" onfocusout="existSDT();"></asp:TextBox>
+                            <asp:Label ID="lblErrorSDT" runat="server" Text="" CssClass="tbError"></asp:Label>
+                            <asp:RequiredFieldValidator ValidationGroup="vsNotification" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Bạn chưa nhập Số điện thoại" ControlToValidate="txtPhone" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                            <asp:RegularExpressionValidator ValidationGroup="vsNotification" ID="revPhone" runat="server" ErrorMessage="Sai định dạng" ControlToValidate="txtPhone" ValidationExpression="0[0-9]{9}" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
                         </div>
 
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:DropDownList ID="ddl_user" runat="server" CssClass="form-control">
+                            <asp:DropDownList AutoPostBack="false" ValidationGroup="vsNotification" ID="ddlRole" runat="server" CssClass="form-control">
                                 <asp:ListItem Enabled="true" Value="-1">--Role--</asp:ListItem>
                                 <asp:ListItem Value="1">Admin</asp:ListItem>
                                 <asp:ListItem Value="0">User</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ForeColor="Red" InitialValue="-1" ID="Req_ID" Display="Dynamic"
-                                ValidationGroup="vsNotification" runat="server" ControlToValidate="ddl_user"
-                                ErrorMessage="Bạn chưa chọn"></asp:RequiredFieldValidator>
+                                ValidationGroup="vsNotification" runat="server" ControlToValidate="ddlRole"
+                                ErrorMessage="Bạn chưa chọn" SetFocusOnError="True"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
-                            <asp:DropDownList ID="ddl_status" runat="server" CssClass="form-control">
+                            <asp:DropDownList AutoPostBack="false" ValidationGroup="vsNotification" ID="ddlStatus" runat="server" CssClass="form-control">
                                 <asp:ListItem Enabled="true" Value="-1">--Status--</asp:ListItem>
                                 <asp:ListItem Value="1">Đang Hoạt Động</asp:ListItem>
                                 <asp:ListItem Value="0">Ngưng Hoạt Động</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator2" ValidationGroup="vsNotification" runat="server" ErrorMessage="Bạn chưa chọn" ControlToValidate="ddl_status" InitialValue="-1"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator2" ValidationGroup="vsNotification" runat="server" ErrorMessage="Bạn chưa chọn" ControlToValidate="ddlStatus" InitialValue="-1" SetFocusOnError="True"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
-                            <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server" Text="Đăng kí" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click" />
+                            <asp:Button ValidationGroup="vsNotification" ID="btn_register" runat="server" Text="Đăng kí" CssClass="btn btn-primary btn-user btn-block" OnClick="Btn_register_Click" OnClientClick="return Valid();" />
                         </div>
                         <div class="col-sm-4  mb-3 mb-sm-0">
                             <i class="fas fa-fw fa-cog"></i>
@@ -94,8 +100,6 @@
 
                 </div>
                 <hr>
-                <asp:ValidationSummary ID="vsGroup" runat="server" ValidationGroup="vsNotification" />
-
             </div>
         </div>
     </div>
@@ -103,16 +107,18 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Danh Sách Thành Viên</h1>
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+  <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Danh Sách Thành Viên</h6>
+            <div class="form-group col-md-4">
+                <input class="txtSearch form-control" onkeydown="if (event.keyCode == 13) return false;" type="text" onfocusout="search(1);" placeholder="Search..." />
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable">
+                <table class="table table-bordered" id="dataTable1">
                     <thead>
                         <tr>
-                            <th>STT</th>
                             <th>Tài Khoản</th>
                             <th>Tên</th>
                             <th>Email</th>
@@ -124,7 +130,6 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>STT</th>
                             <th>Tài Khoản</th>
                             <th>Tên</th>
                             <th>Email</th>
@@ -134,38 +139,38 @@
                             <th></th>
                         </tr>
                     </tfoot>
-                    <tbody>
-
-                        <asp:Repeater ID="rptDSThanhVien" runat="server" OnItemCommand="rptDSThanhVien_OnItemCommand">
-                            <ItemTemplate>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lblID" runat="server" Text="<%#Container.ItemIndex  %>"></asp:Label>
-                                    </td>
-                                    <td><%# Eval("username") %></td>
-                                    <td><%# Eval("name") %></td>
-                                    <td><%# Eval("email") %></td>
-                                    <td><%# Eval("phone") %></td>
-                                    <td>
-                                        <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("role")) %>' ID="ckbRole" runat="server" /></td>
-                                    <td>
-                                        <asp:CheckBox Enabled="false" Checked='<%#Convert.ToBoolean(Eval("status")) %>' ID="ckbStatus" runat="server" /></td>
-                                    <td>
-                                        <asp:Button CssClass="btn btn-warning" CausesValidation="false" ID="btnChon" runat="server" Text="Chọn" CommandName="c" CommandArgument='<%# Eval("username") %>' />
-                                        <asp:Button CssClass="btn btn-danger" CausesValidation="false" ID="btnXoa" runat="server" Text="Xóa" CommandName="x" CommandArgument='<%# Eval("username") %>' OnClientClick="return confirm('Bạn Có Muốn Xóa')" />
-
-
-                                    </td>
-                                </tr>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                    <tbody class="rptDSThanhVien">
                     </tbody>
                 </table>
+                <div class="dataTables_paginate paging_simple_numbers">
+                    <ul class="record pagination">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+      <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thông báo</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                        <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btnConfỉrm btn btn-danger" onclick="xacNhanXoa();">
+                            Có
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
+  
+    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     <!-- Page level plugins -->
@@ -174,8 +179,5 @@
 
     <!-- Page level custom scripts -->
     <script src="<%=Page.ResolveUrl("~") %>Admin/js/demo/datatables-demo.js"></script>
-
-    <script>
-
-</script>
+    <script src="js/ajax/member.js"></script>
 </asp:Content>

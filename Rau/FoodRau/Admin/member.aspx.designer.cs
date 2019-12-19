@@ -24,13 +24,31 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
 
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// hfUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.HiddenField hfUserName;
+
+        /// <summary>
+        /// lblErrorUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorUserName;
+
+        /// <summary>
+        /// rfvUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserName;
 
         /// <summary>
         /// revUserName control.
@@ -67,6 +85,15 @@ namespace FoodRau.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// lblErrorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorEmail;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -150,6 +177,15 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
+        /// lblErrorSDT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorSDT;
+
+        /// <summary>
         /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
@@ -168,13 +204,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revPhone;
 
         /// <summary>
-        /// ddl_user control.
+        /// ddlRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_user;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRole;
 
         /// <summary>
         /// Req_ID control.
@@ -186,13 +222,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Req_ID;
 
         /// <summary>
-        /// ddl_status control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_status;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -231,21 +267,21 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Button btn_cancel;
 
         /// <summary>
-        /// vsGroup control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsGroup;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// rptDSThanhVien control.
+        /// hfUserNameConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptDSThanhVien;
+        protected global::System.Web.UI.WebControls.HiddenField hfUserNameConfirm;
     }
 }

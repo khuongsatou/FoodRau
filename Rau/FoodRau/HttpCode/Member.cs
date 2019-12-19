@@ -57,6 +57,29 @@ namespace FoodRau.HttpCode
             return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
 
+        public bool existEmail(string email)
+        {
+            string sQuery = "SELECT count(*) FROM member WHERE email =@email";
+            SqlParameter[] param =
+            {
+                new SqlParameter("@email",email)
+            };
+            //trả về true(1) hoặc false(0)
+            return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
+        }
+
+        public bool existSDT(string sdt)
+        {
+            string sQuery = "SELECT count(*) FROM member WHERE phone =@phone";
+            SqlParameter[] param =
+            {
+                new SqlParameter("@phone",sdt)
+            };
+            //trả về true(1) hoặc false(0)
+            return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
+        }
+        
+
         public bool add()
         {
             string sQuery = "INSERT INTO [dbo].[member] ([username] ,[pass] ,[name] ,[email] ,[phone] ,[role],[status]) VALUES (@username,@pass,@name,@email,@phone,@role,@status)";
@@ -115,13 +138,31 @@ namespace FoodRau.HttpCode
             }
             return members;
         }
+
+        public List<Member> getList(string key)
+        {
+            string sQuery = "SELECT * FROM [member] WHERE ((([username] LIKE '%' + @username + '%') OR ([name] LIKE '%' + @name + '%') OR ([email] LIKE '%' + @email + '%') OR ([phone] LIKE '%' + @phone + '%')) AND status = 1)";
+            SqlParameter[] param =
+             {
+                new SqlParameter("@username",key),
+                new SqlParameter("@name",key),
+                new SqlParameter("@email",key),
+                new SqlParameter("@phone",key)
+            };
+            List<Member> members = new List<Member>();
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            foreach (DataRow dr in dt.Rows)
+            {
+                members.Add(convertToObject(dr));
+            }
+            return members;
+        }
         public Member getItem(string username)
         {
-            string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username AND status = 1";
+            string sQuery = "SELECT * FROM [dbo].[member] WHERE [username] = @username";
             SqlParameter[] param = {
                 new SqlParameter("@username",username)
             };
-
             //Lấy ra mảng 1 chiều
             return convertToObject(DataProvider.getDataTable(sQuery, param).Rows[0]);
         }

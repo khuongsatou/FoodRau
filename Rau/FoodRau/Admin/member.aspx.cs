@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -10,76 +12,115 @@ namespace FoodRau.Admin
 {
     public partial class member : System.Web.UI.Page
     {
-
-        private bool isEnable = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["username"] != null)
             //{
             //    Response.Redirect("~");
             //}
-            if (!Page.IsPostBack)
-            {
-                resetList();
-                CheckEnable();
-            }
-
         }
 
-        public void CheckEnable()
+
+        [WebMethod]
+        public static Member getObject(string username)
         {
-            btn_register.Enabled = !isEnable;
-            btn_update.Enabled = isEnable;
-            btn_cancel.Enabled = isEnable;
+            return new Member().getItem(username);
+        }
+
+
+        [WebMethod]
+        public static bool existUser(string username)
+        {
+            return new Member().exist(username);
+        }
+
+        [WebMethod]
+        public static bool existE(string email)
+        {
+            return new Member().existEmail(email);
+        }
+
+        [WebMethod]
+        public static bool existS(string sdt)
+        {
+            return new Member().existSDT(sdt);
+        }
+
+        [WebMethod]
+        public static string searchCode(string key, string page)
+        {
+            Member mb = new Member();
+            List<Member> members = mb.getList();
+            if (key != null && key.Length > 0)
+            {
+                members = mb.getList(key);
+            }
+            int limit = 10;
+            int soTrang = members.Count / limit + (members.Count % limit == 0 ? 0 : 1);
+            int trang = Convert.ToInt32(page);
+            int from = (trang - 1) * limit;
+            int to = (trang * limit) - 1;
+            for (int i = members.Count - 1; i >= 0; i--)
+            {
+                if (i < from || to < i)
+                {
+                    members.RemoveAt(i);
+                }
+            }
+            int[] index = new int[soTrang];
+            int[] active = new int[soTrang];
+
+            for (int i = 0; i < soTrang; i++)
+            {
+                index[i] = i;
+                if (i + 1 == trang)
+                {
+                    active[i] = 1;
+                }
+                else
+                {
+                    active[i] = 0;
+                }
+            }
+            Dictionary<string, object> json = new Dictionary<string, object>();
+            json.Add("obj", members);
+            json.Add("record", index);
+            json.Add("active", active);
+            return new JavaScriptSerializer().Serialize(json);
         }
 
 
         protected void Btn_cancel_Click(object sender, EventArgs e)
         {
-            txtUserName.Enabled = true;
-            txtUserName.Text ="";
+            //txtUserName.Text = "";
             txtName.Text = "";
             txtEmail.Text = "";
             txtPhone.Text = "";
-            ddl_user.SelectedIndex = -1;
-            ddl_status.SelectedIndex = -1;
-            this.isEnable = false;
-            CheckEnable();
-            resetList();
+            ddlRole.SelectedIndex = -1;
+            ddlStatus.SelectedIndex = -1;
         }
 
         protected void Btn_update_Click(object sender, EventArgs e)
         {
             Member member = new Member();
-            //nếu trả về false là chưa tồn tại
-            if (member.exist(txtUserName.Text))
+            member.UserName = hfUserName.Value;
+            member.Name = txtName.Text;
+            member.Pass = txtPassword.Text;
+            member.Email = txtEmail.Text;
+            member.Phone = txtPhone.Text;
+            member.Role = Convert.ToInt32(ddlRole.SelectedValue);
+            member.Status = Convert.ToInt32(ddlStatus.SelectedValue);
+            if (member.update())
             {
-                member.UserName = txtUserName.Text;
-                member.Name = txtName.Text;
-                member.Pass = txtPassword.Text;
-                member.Email = txtEmail.Text;
-                member.Phone = txtPhone.Text;
-                member.Role = Convert.ToInt32(ddl_user.SelectedValue);
-                member.Status = Convert.ToInt32(ddl_status.SelectedValue);
-                //thêm vào trả về số dòng tác động , thành công 1(true) , thất bại 0(false)
-                if (member.update())
-                {
-                    Btn_cancel_Click(sender, e);
-                    //in ra hộp thoại thông báo.
-                    Response.Write("<script>alert('Thành Công') </script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('Thất Bại') </script>");
-                }
+                lblMessage.Text = "Cập Nhật Thành Công";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+                Btn_cancel_Click(sender, e);
             }
             else
             {
-                Response.Write("<script>alert('Không tồn Tại') </script>");
+                Response.Write("<script>alert('Thất Bại') </script>");
             }
         }
-
-
 
         protected void Btn_register_Click(object sender, EventArgs e)
         {
@@ -91,12 +132,13 @@ namespace FoodRau.Admin
                 member.Pass = txtPassword.Text;
                 member.Email = txtEmail.Text;
                 member.Phone = txtPhone.Text;
-                member.Role = Convert.ToInt32(ddl_user.SelectedValue);
-                member.Status = Convert.ToInt32(ddl_status.SelectedValue);
+                member.Role = Convert.ToInt32(ddlRole.SelectedValue);
+                member.Status = Convert.ToInt32(ddlStatus.SelectedValue);
                 if (member.add())
                 {
+                    lblMessage.Text = "Thêm Thành Công";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
                     Btn_cancel_Click(sender, e);
-                    Response.Write("<script>alert('Thành Công') </script>");
                 }
                 else
                 {
@@ -105,58 +147,17 @@ namespace FoodRau.Admin
             }
             else
             {
-                Response.Write("<script>alert('Tồn Tại') </script>");
+                lblMessage.Text = "Đã Tồn Tại";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
             }
         }
 
-
-        private void resetList()
+        [WebMethod]
+        public static bool setStatusdelete(string username)
         {
             Member member = new Member();
-            rptDSThanhVien.DataSource = member.getList();
-            rptDSThanhVien.DataBind();
+            member.UserName = username;
+            return member.delete();
         }
-
-        protected void rptDSThanhVien_OnItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == "c")
-            {
-                string username = e.CommandArgument.ToString();
-                Member mb = new Member();
-                if (mb.exist(username))
-                {
-                    Member m = mb.getItem(username);
-                    txtUserName.Enabled = false;
-                    txtUserName.Text = m.UserName;
-                    txtName.Text = m.Name;
-                    txtEmail.Text = m.Email;
-                    txtPhone.Text = m.Phone;
-                    ddl_user.SelectedValue = m.Role.ToString();
-                    ddl_status.SelectedValue = m.Status.ToString();
-                    this.isEnable = true;
-                    CheckEnable();
-                }
-                else
-                {
-                    Response.Write("<script>alert('Chưa Tồn Tại') </script>");
-                }
-            }
-            if (e.CommandName == "x")
-            {
-                Member member = new Member();
-                member.UserName = e.CommandArgument.ToString();
-                if (member.delete())
-                {
-                    //in ra hộp thoại thông báo.
-                    Response.Write("<script>alert('Thành Công') </script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('Thất Bại') </script>");
-                }
-                resetList();
-            }
-        }
-
     }
 }
