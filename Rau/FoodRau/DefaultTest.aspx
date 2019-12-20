@@ -65,7 +65,11 @@
 <br />
                 </ItemTemplate>
             </asp:DataList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RauConnectionString %>" SelectCommand="SELECT * FROM [food]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RauConnectionString %>" SelectCommand="SELECT * FROM [food] WHERE ([name] LIKE '%' + @name + '%')">
+                <SelectParameters>
+                    <asp:Parameter Name="name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
     </form>
 </body>

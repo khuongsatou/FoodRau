@@ -198,8 +198,42 @@ namespace FoodRau.HttpCode
         //kết bảng food và type
         public List<Food> getListFoodType()
         {
-            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] ,food.[username] ,food.[modified] FROM [dbo].[food],food_type Where type=type_id";
+            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] ,food.[username] ,food.[modified] FROM [dbo].[food],food_type Where type=type_id AND food.status = 1";
+          
             SqlParameter[] param = {};
+            List<Food> ft = new List<Food>();
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            if (dt !=null)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObjectFoodType(dr));
+                }
+            }
+            return ft;
+        }
+
+        public List<Food> getListFoodType(string key)
+        {
+            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] as status ,food.[username] ,food.[modified] as modified FROM [dbo].[food],food_type Where  type=type_id AND food.status = 1 ";
+            sQuery += "AND (([id] LIKE '%' + @id + '%')" +
+                " OR ([name] LIKE '%' + @name + '%') "+
+                " OR ([description] LIKE '%' + @description + '%')" +
+                " OR ([price] LIKE '%' + @price + '%') "+
+                " OR ([price_promo] LIKE '%' + @price_promo + '%') )";
+            SqlParameter[] param = {
+                new SqlParameter("@id",key),
+                new SqlParameter("@name",key),
+                new SqlParameter("@description",key),
+                new SqlParameter("@price",key),
+                new SqlParameter("@price_promo",key)
+               
+                //new SqlParameter("@unit",this._unit),
+                //new SqlParameter("@percent_promo",this._percent_promo),
+                ////new SqlParameter("@rating",this._rating),
+                //new SqlParameter("@sold",this._sold),
+                //new SqlParameter("@point",this._point)
+            };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
             foreach (DataRow dr in dt.Rows)
@@ -208,6 +242,7 @@ namespace FoodRau.HttpCode
             }
             return ft;
         }
+
         public Food getItem(int id)
         {
             string sQuery = "SELECT *  FROM [dbo].[food] WHERE [id]=@id";

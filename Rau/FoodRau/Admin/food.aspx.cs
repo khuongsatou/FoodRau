@@ -11,19 +11,16 @@ namespace FoodRau.Admin
 {
     public partial class food : System.Web.UI.Page
     {
-        private string hash = Guid.NewGuid().ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 btnUpdate.Visible = false;
                 btnThem.Visible = false;
-                resetDropDownType();
                 if (Request.QueryString["id"] != null)
                 {
                     btnUpdate.Visible = true;
-                    string hash = Request.QueryString["id"];
-                    int id = Convert.ToInt32(HttpUtility.UrlDecode(hash));
+                    int id = Convert.ToInt32(Request.QueryString["id"]);
                     Food fo = new Food();
                     if (fo.exist(id))
                     {
@@ -33,21 +30,25 @@ namespace FoodRau.Admin
                         txtPrice.Text = f.Price.ToString();
                         txtPrice_promo.Text = f.Price_promo.ToString();
                         txtUnit.Text = f.Unit.ToString();
-                        txtPercent_Promo.Text = f.Percent_promo.ToString();
+                        txtPercent_Promo.Text = (Convert.ToDouble(f.Percent_promo.ToString()) * 100).ToString();
                         txtRating.Text = f.Rating.ToString();
-                        txtPoint.Text = f.Point.ToString();
-                        txtSaveImage.Text = f.Img;
-                        txtSaveThumb.Text = f.Thumb;
-                        imgImage.ImageUrl = "~/Admin/img/" + f.Img;
-                        imgThumb.ImageUrl = "~/Admin/img/" + f.Thumb;
+                        txtPoint.Text =(Convert.ToDouble(f.Point.ToString())*100).ToString();
+                        hfSaveImage.Value = f.Img;
+                        hfSaveThumb.Value = f.Thumb;
+                        imgImage.ImageUrl = "~/Home/images/" + f.Img;
+                        imgThumb.ImageUrl = "~/Home/images/" + f.Thumb;
                         ddl_status.SelectedValue = f.Status.ToString();
                         selectedDropDown(f.Type);
-
+                    }
+                    else
+                    {
+                        Response.Redirect("lst_food.aspx");
                     }
 
                 }
                 else
                 {
+                    resetDropDownType();
                     btnThem.Visible = true;
                 }
 
@@ -57,46 +58,48 @@ namespace FoodRau.Admin
 
         private void resetDropDownType()
         {
-            //FoodType ft = new FoodType();
-            //ddListType.DataSource = ft.getList();
-            //ddListType.DataTextField = "type_name";
-            //ddListType.DataValueField = "type_id";
-            //ddListType.DataBind();
+            FoodType ft = new FoodType();
+            ddListType.DataSource = ft.getList();
+            ddListType.DataTextField = "type_name";
+            ddListType.DataValueField = "type_id";
+            ddListType.DataBind();
         }
 
         private void selectedDropDown(int value)
         {
-            //FoodType ft = new FoodType();
-            //ddListType.DataSource = ft.getList();
-            //ddListType.DataTextField = "type_name";
-            //ddListType.DataValueField = "type_id";
-            //ddListType.DataBind();
-            //ddListType.SelectedValue = value.ToString();
+            FoodType ft = new FoodType();
+            ddListType.DataSource = ft.getList();
+            ddListType.DataTextField = "type_name";
+            ddListType.DataValueField = "type_id";
+            ddListType.DataBind();
+            ddListType.SelectedValue = value.ToString();
         }
         protected void Btn_Them_Click(object sender, EventArgs e)
         {
             Food f = new Food();
-            //nếu trả về false là chưa tồn tại
             if (!f.exist(txtName.Text))
             {
                 f.Name = txtName.Text;
                 f.Type = Convert.ToInt32(ddListType.SelectedValue);
                 f.Description = txtDescription.Text;
                 f.Price = Convert.ToDecimal(txtPrice.Text);
-                f.Price_promo = Convert.ToDecimal(txtPrice_promo.Text);
+                f.Price_promo = Convert.ToDecimal(hfPrice_Promo.Value);
                 f.Unit = txtUnit.Text;
-                f.Percent_promo = Convert.ToDecimal(txtPercent_Promo.Text);
+                double percent = Convert.ToDouble(txtPercent_Promo.Text)/100;
+                f.Percent_promo = Convert.ToDecimal((percent));
                 f.Rating = Convert.ToInt32(txtRating.Text);
-                f.Point = Convert.ToDecimal(txtPoint.Text);
+                double point = Convert.ToDouble(txtPoint.Text)/100;
+                f.Point = Convert.ToDecimal((point));
                 f.Type = Convert.ToInt32(ddListType.SelectedValue);
                 f.Status = Convert.ToInt32(ddl_status.SelectedValue);
-                f.Img = txtSaveImage.Text;
-                f.Thumb = txtSaveThumb.Text;
+                f.Img = hfSaveImage.Value;
+                f.Thumb = hfSaveThumb.Value;
                 f.Username = "khuong";
-                f.Modified = DateTime.Now;
                 if (f.add())
                 {
-                    Response.Write("<script>alert('Thành Công') </script>");
+                    lblMessage.Text = "Thêm Thành Công";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+                    //Btn_cancel_Click(sender, e);
                 }
                 else
                 {
@@ -105,15 +108,9 @@ namespace FoodRau.Admin
             }
             else
             {
-                Response.Write("<script>alert('Tồn Tại') </script>");
+                lblMessage.Text = "Tồn Tại";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
             }
-        }
-        protected void Btn_Calc_Click(object sender, EventArgs e)
-        {
-            decimal price = Convert.ToDecimal(txtPrice.Text);
-            decimal percent = Convert.ToDecimal(txtPercent_Promo.Text);
-            //giá km = giá gốc + (giá * % khuyến mãi);
-            txtPrice_promo.Text = (price + (price * percent)).ToString();
         }
         protected void BtnUpThumb_Click(object sender, EventArgs e)
         {
@@ -123,14 +120,10 @@ namespace FoodRau.Admin
                 string extension = Path.GetExtension(fuThumb.FileName);
                 if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                 {
-                    //Lấy đường dẫn project server
-                    //tại sao lại có \\ thì đường dẫn nó có đạng C:\\FoodRau\\...
-                    string path = Server.MapPath("img\\");
-                    string imgName = hash + fuThumb.FileName;
-                    fuThumb.SaveAs(path + imgName);
-                    imgThumb.ImageUrl = "~/Admin/img/" + imgName;
-                    txtSaveThumb.Text = imgName;
-
+                    string hashNameImage = Guid.NewGuid().ToString() + fuThumb.FileName;
+                    fuThumb.SaveAs(Server.MapPath("..\\Home\\images\\") + hashNameImage);
+                    imgThumb.ImageUrl = "~/Home/images/" + hashNameImage;
+                    hfSaveThumb.Value = hashNameImage;
                     lblThongBaoThumb.Text = "Saved";
                     lblThongBaoThumb.ForeColor = Color.Blue;
                 }
@@ -154,14 +147,10 @@ namespace FoodRau.Admin
                 string extension = Path.GetExtension(fuImage.FileName);
                 if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                 {
-                    //Lấy đường dẫn project server
-                    //tại sao lại có \\ thì đường dẫn nó có đạng C:\\FoodRau\\...
-                    string path = Server.MapPath("img\\");
-                    string imgName = hash + fuImage.FileName;
-                    fuImage.SaveAs(path + imgName);
-                    imgImage.ImageUrl = "~/Admin/img/" + imgName;
-                    txtSaveImage.Text = imgName;
-
+                    string hashNameImage = Guid.NewGuid().ToString() + fuImage.FileName;
+                    fuImage.SaveAs(Server.MapPath("..\\Home\\images\\") + hashNameImage);
+                    imgImage.ImageUrl = "~/Home/images/" + hashNameImage;
+                    hfSaveImage.Value = hashNameImage;
                     lblThongBaoImage.Text = "Saved";
                     lblThongBaoImage.ForeColor = Color.Blue;
                 }
@@ -179,31 +168,30 @@ namespace FoodRau.Admin
         }
         protected void Btn_update_Click(object sender, EventArgs e)
         {
-            //xử lí thêm trường hợp tồn tại
             Food f = new Food();
             if (Request.QueryString["id"] != null)
             {
-                string hash = Request.QueryString["id"];
-                int id = Convert.ToInt32(HttpUtility.UrlDecode(hash));
-                f.Id = id;
+                f.Id =Convert.ToInt32(Request.QueryString["id"]);
                 f.Name = txtName.Text;
                 f.Type = Convert.ToInt32(ddListType.SelectedValue);
                 f.Description = txtDescription.Text;
                 f.Price = Convert.ToDecimal(txtPrice.Text);
-                f.Price_promo = Convert.ToDecimal(txtPrice_promo.Text);
+                f.Price_promo = Convert.ToDecimal(hfPrice_Promo.Value);
                 f.Unit = txtUnit.Text;
-                f.Percent_promo = Convert.ToDecimal(txtPercent_Promo.Text);
+                double percent = Convert.ToDouble(txtPercent_Promo.Text) / 100;
+                f.Percent_promo = Convert.ToDecimal((percent));
                 f.Rating = Convert.ToInt32(txtRating.Text);
-                f.Point = Convert.ToDecimal(txtPoint.Text);
+                double point = Convert.ToDouble(txtPoint.Text) / 100;
+                f.Point = Convert.ToDecimal((point));
                 f.Type = Convert.ToInt32(ddListType.SelectedValue);
                 f.Status = Convert.ToInt32(ddl_status.SelectedValue);
-                f.Img = txtSaveImage.Text;
-                f.Thumb = txtSaveThumb.Text;
+                f.Img = hfSaveImage.Value;
+                f.Thumb = hfSaveThumb.Value;
                 f.Username = "khuong";
-                f.Modified = DateTime.Now;
                 if (f.update())
                 {
-                    Response.Write("<script>alert('Thành Công') </script>");
+                    lblMessage.Text = "Cập nhật Thành Công";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
                 }
                 else
                 {

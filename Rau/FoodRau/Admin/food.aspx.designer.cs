@@ -69,15 +69,6 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// RangeValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator3;
-
-        /// <summary>
         /// txtRating control.
         /// </summary>
         /// <remarks>
@@ -213,6 +204,15 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.RangeValidator RangeValidator4;
 
         /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
         /// txtPrice_promo control.
         /// </summary>
         /// <remarks>
@@ -222,22 +222,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.TextBox txtPrice_promo;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// hfPrice_Promo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
-        /// btnCalc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalc;
+        protected global::System.Web.UI.WebControls.HiddenField hfPrice_Promo;
 
         /// <summary>
         /// imgThumb control.
@@ -285,13 +276,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Label lblThongBaoThumb;
 
         /// <summary>
-        /// txtSaveThumb control.
+        /// hfSaveThumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSaveThumb;
+        protected global::System.Web.UI.WebControls.HiddenField hfSaveThumb;
 
         /// <summary>
         /// fuImage control.
@@ -321,13 +312,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Label lblThongBaoImage;
 
         /// <summary>
-        /// txtSaveImage control.
+        /// hfSaveImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSaveImage;
+        protected global::System.Web.UI.WebControls.HiddenField hfSaveImage;
 
         /// <summary>
         /// btnThem control.
@@ -348,12 +339,21 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Button btnUpdate;
 
         /// <summary>
-        /// f_t control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary f_t;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
+        /// hfUserNameConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfUserNameConfirm;
     }
 }

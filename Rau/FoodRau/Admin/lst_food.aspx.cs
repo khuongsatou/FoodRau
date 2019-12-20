@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,48 +18,57 @@ namespace FoodRau.Admin
             //{
             //    Response.Redirect("~");
             //}
-            if (!Page.IsPostBack)
-            {
-                resetList();
-            }
         }
 
-        private void resetList()
+        [WebMethod]
+        public static string searchCode(string key, string page)
         {
             Food f = new Food();
-            List<Food> fl = new List<Food>();
-            fl.AddRange(f.getListFoodType());
-            rptDSSP.DataSource =fl;
-            rptDSSP.DataBind();
-        }
-
-
-
-        protected void rptDSSP_OnItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == "s")
+            List<Food> foods = f.getListFoodType();
+            if (key != null && key.Length > 0)
             {
-                string id = e.CommandArgument.ToString();
-                //mã hóa
-                string hash = Server.UrlEncode(id);
-                Response.Redirect("~/Admin/Food.aspx?id=" + hash);
+                foods = f.getListFoodType(key);
             }
-            //xóa
-            if (e.CommandName == "x")
+            int limit = 3;
+            int soTrang = foods.Count / limit + (foods.Count % limit == 0 ? 0 : 1);
+            int trang = Convert.ToInt32(page);
+            int from = (trang - 1) * limit;
+            int to = (trang * limit) - 1;
+            for (int i = foods.Count - 1; i >= 0; i--)
             {
-                Food f = new Food();
-                f.Id = Convert.ToInt32(e.CommandArgument.ToString());
-                if (f.delete())
+                if (i < from || to < i)
                 {
-                    //in ra hộp thoại thông báo.
-                    Response.Write("<script>alert('Thành Công') </script>");
+                    foods.RemoveAt(i);
+                }
+            }
+            int[] index = new int[soTrang];
+            int[] active = new int[soTrang];
+
+            for (int i = 0; i < soTrang; i++)
+            {
+                index[i] = i;
+                if (i + 1 == trang)
+                {
+                    active[i] = 1;
                 }
                 else
                 {
-                    Response.Write("<script>alert('Thất Bại') </script>");
+                    active[i] = 0;
                 }
-                resetList();
             }
+            Dictionary<string, object> json = new Dictionary<string, object>();
+            json.Add("obj", foods);
+            json.Add("record", index);
+            json.Add("active", active);
+            return new JavaScriptSerializer().Serialize(json);
+        }
+
+        [WebMethod]
+        public static bool setStatusdelete(string id)
+        {
+            Food f = new Food();
+            f.Id = Convert.ToInt32(id);
+            return f.delete();
         }
     }
 }

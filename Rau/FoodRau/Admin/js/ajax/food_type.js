@@ -130,7 +130,7 @@ function resetList(lst_json) {
         table += "<td>" + moment(obj[i].Modified).format('MM/DD/YYYY')+"</td>";
 
         table += "<td><a href='#chon'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png' onClick='Chon(" + "\"" + obj[i].Type_id + "\"" + ");'/></a>";
-        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Type_id + "\"" + ");'/></a></td>";
+        table += "<a href='#chon'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Type_id + "\"" + ");'/></a></td>";
         table += "</tr>";
     }
     $('.rptDS').html(table);

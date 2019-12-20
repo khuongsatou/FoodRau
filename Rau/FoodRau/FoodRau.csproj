@@ -81,6 +81,8 @@
     <Content Include="Admin\img\364713f2-8d14-4f32-9df2-861790a7478378385169_2552400081655310_1205933654581182464_n.jpg" />
     <Content Include="Admin\img\c.jpg" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
+    <Content Include="Admin\js\ajax\food.js" />
+    <Content Include="Admin\js\ajax\lst_food.js" />
     <Content Include="Admin\js\ajax\food_type.js" />
     <Content Include="Admin\js\ajax\member.js" />
     <Content Include="Admin\js\custom\moment.js" />
