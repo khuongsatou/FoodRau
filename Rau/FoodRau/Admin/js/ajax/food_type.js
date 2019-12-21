@@ -29,6 +29,7 @@ function search(page) {
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
             resetList(JSON.parse(response.d));
+            
         },
         error: function (error) {
             alert(error.d);

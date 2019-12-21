@@ -220,19 +220,24 @@ namespace FoodRau.HttpCode
                 " OR ([name] LIKE '%' + @name + '%') "+
                 " OR ([description] LIKE '%' + @description + '%')" +
                 " OR ([price] LIKE '%' + @price + '%') "+
+                " OR ([unit] LIKE '%' + @unit + '%') "+
+                " OR ([rating] LIKE '%' + @rating + '%') " +
+                " OR ([sold] LIKE '%' + @sold + '%') " +
+                " OR ([point] LIKE '%' + @point + '%') " +
+                " OR ([food_type].[type_name] LIKE '%' + @type_name + '%') " +
                 " OR ([price_promo] LIKE '%' + @price_promo + '%') )";
             SqlParameter[] param = {
                 new SqlParameter("@id",key),
                 new SqlParameter("@name",key),
                 new SqlParameter("@description",key),
                 new SqlParameter("@price",key),
-                new SqlParameter("@price_promo",key)
-               
-                //new SqlParameter("@unit",this._unit),
-                //new SqlParameter("@percent_promo",this._percent_promo),
-                ////new SqlParameter("@rating",this._rating),
-                //new SqlParameter("@sold",this._sold),
-                //new SqlParameter("@point",this._point)
+                new SqlParameter("@price_promo",key),
+                new SqlParameter("@unit",key),
+                new SqlParameter("@percent_promo",key),
+                new SqlParameter("@rating",key),
+                new SqlParameter("@sold",key),
+                new SqlParameter("@point",key),
+                new SqlParameter("@type_name",key)
             };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);

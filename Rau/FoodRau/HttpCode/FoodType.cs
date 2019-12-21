@@ -104,24 +104,32 @@ namespace FoodRau.HttpCode
             SqlParameter[] param = { };
             List<FoodType> ft = new List<FoodType>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            foreach (DataRow dr in dt.Rows)
+            if (dt !=null)
             {
-                ft.Add(convertToObject(dr));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObject(dr));
+                }
             }
             return ft;
+
         }
 
         public List<FoodType> getList(string key)
         {
-            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE  status =1 And ([type_name] LIKE '%' + @type_name + '%')";
+            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE  status =1 And ([type_name] LIKE '%' + @type_name + '%' OR [type_pos] LIKE '%' + @type_pos + '%')";
             SqlParameter[] param = {
-                new SqlParameter("@type_name",key)
+                new SqlParameter("@type_name",key),
+                new SqlParameter("@type_pos",key)
             };
             List<FoodType> ft = new List<FoodType>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            foreach (DataRow dr in dt.Rows)
+            if (dt !=null)
             {
-                ft.Add(convertToObject(dr));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObject(dr));
+                }
             }
             return ft;
         }

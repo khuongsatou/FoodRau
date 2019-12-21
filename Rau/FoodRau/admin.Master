@@ -62,7 +62,7 @@
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-users"></i>
                         <span>Quản Lí Thành Viên</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -76,7 +76,7 @@
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
+                        <i class="fab fa-product-hunt"></i>
                         <span>Quản Lí Sản Phẩm</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -84,6 +84,36 @@
                             <h6 class="collapse-header">Show:</h6>
                             <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/food_type.aspx">Loại Sản Phẩm</a>
                             <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_food.aspx">Sản Phẩm</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities1">
+                        <i class="fas fa-blog"></i>
+                        <span>Quản Lí Bài Viết</span>
+                    </a>
+                    <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Show:</h6>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_post.aspx">Bài viết</a>
+                           
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
+                        <i class="fas fa-money-bill"></i>
+                        <span>Quản Lí Khách Hàng</span>
+                    </a>
+                    <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Show:</h6>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/customer.aspx">Danh sách khách hàng</a>
+                           <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/order.aspx">Hóa Đơn</a>
                         </div>
                     </div>
                 </li>

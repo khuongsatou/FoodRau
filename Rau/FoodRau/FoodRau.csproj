@@ -70,6 +70,7 @@
     <Content Include="Admin\css\custom.css" />
     <Content Include="Admin\css\sb-admin-2.css" />
     <Content Include="Admin\css\sb-admin-2.min.css" />
+    <Content Include="Admin\customer.aspx" />
     <Content Include="Admin\food.aspx" />
     <Content Include="Admin\food_type.aspx" />
     <Content Include="Admin\icon\delete.png" />
@@ -84,6 +85,7 @@
     <Content Include="Admin\js\ajax\food.js" />
     <Content Include="Admin\js\ajax\lst_food.js" />
     <Content Include="Admin\js\ajax\food_type.js" />
+    <Content Include="Admin\js\ajax\lst_post.js" />
     <Content Include="Admin\js\ajax\member.js" />
     <Content Include="Admin\js\custom\moment.js" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
@@ -94,7 +96,10 @@
     <Content Include="Admin\js\sb-admin-2.min.js" />
     <Content Include="Admin\login.aspx" />
     <Content Include="Admin\lst_food.aspx" />
+    <Content Include="Admin\lst_post.aspx" />
     <Content Include="Admin\member.aspx" />
+    <Content Include="Admin\order.aspx" />
+    <Content Include="Admin\post.aspx" />
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.js" />
@@ -1782,10 +1787,8 @@
     <Content Include="Home\product-single.aspx" />
     <Content Include="Home\shop.aspx" />
     <Content Include="Home\wishlist.aspx" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.Master.cs">
@@ -1794,6 +1797,13 @@
     </Compile>
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\customer.aspx.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\customer.aspx.designer.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\food.aspx.cs">
       <DependentUpon>food.aspx</DependentUpon>
@@ -1823,12 +1833,33 @@
     <Compile Include="Admin\lst_food.aspx.designer.cs">
       <DependentUpon>lst_food.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\lst_post.aspx.cs">
+      <DependentUpon>lst_post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lst_post.aspx.designer.cs">
+      <DependentUpon>lst_post.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\member.aspx.cs">
       <DependentUpon>member.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\post.aspx.cs">
+      <DependentUpon>post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\post.aspx.designer.cs">
+      <DependentUpon>post.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1949,13 +1980,6 @@
     </Compile>
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
