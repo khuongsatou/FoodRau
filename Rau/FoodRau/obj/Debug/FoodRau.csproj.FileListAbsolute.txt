@@ -114,3 +114,6 @@ D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csproj.CopyComplete
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.dll
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.pdb
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKEditor.NET.dll
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.dll
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.pdb

@@ -69,6 +69,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Show:</h6>
                             <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/member.aspx">Danh Sách</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/profile.aspx">Hồ sơ của bạn</a>
                         </div>
                     </div>
                 </li>
@@ -92,13 +93,14 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities1">
                         <i class="fas fa-blog"></i>
-                        <span>Quản Lí Bài Viết</span>
+                        <span>Bài Viết</span>
                     </a>
                     <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Show:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_post.aspx">Bài viết</a>
-                           
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_post.aspx">Tất cả bài viết</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/post.aspx">Viết bài mới</a>
+                            
                         </div>
                     </div>
                 </li>
@@ -114,6 +116,21 @@
                             <h6 class="collapse-header">Show:</h6>
                             <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/customer.aspx">Danh sách khách hàng</a>
                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/order.aspx">Hóa Đơn</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<%=Page.ResolveUrl("~") %>Admin/#" data-toggle="collapse" data-target="#collapseUtilities3" aria-expanded="true" aria-controls="collapseUtilities3">
+                        <i class="far fa-sun"></i>
+                        <span>Setting</span>
+                    </a>
+                    <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Show:</h6>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/customer.aspx">Tổng quan</a>
+                           <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/order.aspx">Log</a>
                         </div>
                     </div>
                 </li>
@@ -392,6 +409,7 @@
         <script src="<%=Page.ResolveUrl("~") %>Admin/js/sb-admin-2.min.js"></script>
         
         <asp:ContentPlaceHolder ID="js" runat="server">
+            
         </asp:ContentPlaceHolder>
     </form>
 </body>

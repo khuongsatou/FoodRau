@@ -13,5 +13,12 @@ namespace FoodRau.Admin
         {
 
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            CKFinder.FileBrowser _f = new CKFinder.FileBrowser();
+            _f.BasePath = "ckfinder";
+            _f.SetupCKEditor(CKEditorControl1);
+        }
     }
 }

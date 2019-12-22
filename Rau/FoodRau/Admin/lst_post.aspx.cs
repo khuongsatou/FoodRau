@@ -23,22 +23,22 @@ namespace FoodRau.Admin
         [WebMethod]
         public static string searchCode(string key, string page)
         {
-            Food f = new Food();
-            List<Food> foods = f.getListFoodType();
+            Post p = new Post();
+            List<Post> posts = p.getList();
             if (key != null && key.Length > 0)
             {
-                foods = f.getListFoodType(key);
+                posts = p.getList(key);
             }
             int limit = 3;
-            int soTrang = foods.Count / limit + (foods.Count % limit == 0 ? 0 : 1);
+            int soTrang = posts.Count / limit + (posts.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;
             int to = (trang * limit) - 1;
-            for (int i = foods.Count - 1; i >= 0; i--)
+            for (int i = posts.Count - 1; i >= 0; i--)
             {
                 if (i < from || to < i)
                 {
-                    foods.RemoveAt(i);
+                    posts.RemoveAt(i);
                 }
             }
             int[] index = new int[soTrang];
@@ -57,7 +57,7 @@ namespace FoodRau.Admin
                 }
             }
             Dictionary<string, object> json = new Dictionary<string, object>();
-            json.Add("obj", foods);
+            json.Add("obj", posts);
             json.Add("record", index);
             json.Add("active", active);
             return new JavaScriptSerializer().Serialize(json);
@@ -66,9 +66,9 @@ namespace FoodRau.Admin
         [WebMethod]
         public static bool setStatusdelete(string id)
         {
-            Food f = new Food();
-            f.Id = Convert.ToInt32(id);
-            return f.delete();
+            Post p = new Post();
+            p.Post_id = Convert.ToInt32(id);
+            return p.delete();
         }
     }
 }

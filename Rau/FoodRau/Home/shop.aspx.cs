@@ -28,9 +28,9 @@ namespace FoodRau.Home
 
             //handle foodtype
             FoodType ft = new FoodType();
-            //List<FoodType> foodTypes = ft.getList();
+            List<FoodType> foodTypes = ft.getList();
 
-            //rptLoaiSP.DataSource = foodTypes;
+            rptLoaiSP.DataSource = foodTypes;
             rptLoaiSP.DataBind();
 
             //handle phan trang

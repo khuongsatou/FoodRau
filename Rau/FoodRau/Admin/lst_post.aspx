@@ -3,18 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-lg-12">
-            <hr />
-            <div class="col-lg-12">
-                <!-- DataTales Example -->
+    <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách bài viết</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample">
+             <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách</h6>
+                        
                         <div class="row">
                             <div class="col-md-3">
-                                <a class="form-control" href="<%=Page.ResolveUrl("~") %>Admin/food.aspx">Thêm Bài viết</a>
+                                <a class="form-control" href="<%=Page.ResolveUrl("~") %>Admin/food.aspx">Viết Bài Mới</a>
                             </div>
                         </div>
                     </div>
@@ -30,40 +33,18 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
+                                        <th>Tiêu Đề</th>
                                         <th>Mô Tả Ngắn</th>
-                                        <th>Mô Tả</th>
-                                        <th>Giá Khuyến Mãi</th>
-                                        <th>Hình Thumb </th>
-                                        <th>Hình ảnh Sản Phẩm</th>
-                                        <th>Đơn Vị Tính</th>
-                                        <th>Rating</th>
-                                        <th>Đã Bán</th>
-                                        <th>Điểm</th>
-                                        <th>Thuộc Loại</th>
-                                        <th>Trạng Thái</th>
-                                        <th>Người Lập</th>
-                                        <th>Ngày Cập Nhật</th>
+                                        <th>Chuyên Mục</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Mô Tả</th>
-                                        <th>Giá</th>
-                                        <th>Giá Khuyến Mãi</th>
-                                        <th>Hình Thumb </th>
-                                        <th>Hình ảnh Sản Phẩm</th>
-                                        <th>Đơn Vị Tính</th>
-                                        <th>Rating</th>
-                                        <th>Đã Bán</th>
-                                        <th>Điểm</th>
-                                        <th>Thuộc Loại</th>
-                                        <th>Trạng Thái</th>
-                                        <th>Người Lập</th>
-                                        <th>Ngày Cập Nhật</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Mô Tả Ngắn</th>
+                                        <th>Chuyên Mục</th>
                                         <th></th>
                                     </tr>
                                 </tfoot>
@@ -77,9 +58,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -101,4 +82,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
+    <script src="js/ajax/lst_post.js"></script>
 </asp:Content>

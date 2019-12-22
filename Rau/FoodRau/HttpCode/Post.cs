@@ -66,14 +66,51 @@ namespace FoodRau.HttpCode
 
 		public List<Post> getList()
 		{
-			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[status] ,[username] ,[modified] ,[created] FROM [dbo].[post] WHERE status=1";
+			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [post_id]=type_id  AND [post].status=1 ";
 			SqlParameter[] param = { };
 			List<Post> ft = new List<Post>();
 			DataTable dt = DataProvider.getDataTable(sQuery, param);
 			foreach (DataRow dr in dt.Rows)
 			{
-				ft.Add(convertToObject(dr));
+				ft.Add(convertToObjectTypeName(dr));
 			}
+			return ft;
+		}
+
+		public bool delete()
+		{
+			string sQuery = "UPDATE [dbo].[post] SET [status] = 0 WHERE [post_id] = @post_id";
+			SqlParameter[] param =
+			 {
+				new SqlParameter("@id",this._post_id)
+			};
+			return DataProvider.executeNonQuery(sQuery, param);
+		}
+
+		public List<Post> getList(string key)
+		{
+			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [post_id]=type_id  AND [post].status=1 ";
+			sQuery += " AND (([title] LIKE '%' + @title + '%')"
+				+ " OR ([short_des] LIKE '%' + @short_des + '%') "
+				+ " OR ([type_name] LIKE '%' + @type_name + '%') "
+				+ " OR ([post_id] LIKE '%' + @post_id + '%')) ";
+
+			SqlParameter[] param = {
+				new SqlParameter("@title",key),
+				new SqlParameter("@short_des",key),
+				new SqlParameter("@type_name",key),
+				new SqlParameter("@post_id",key)
+			};
+			List<Post> ft = new List<Post>();
+			DataTable dt = DataProvider.getDataTable(sQuery, param);
+			if (dt!=null)
+			{
+				foreach (DataRow dr in dt.Rows)
+				{
+					ft.Add(convertToObjectTypeName(dr));
+				}
+			}
+			
 			return ft;
 		}
 
@@ -105,14 +142,7 @@ namespace FoodRau.HttpCode
 			return ft;
 		}
 
-		public Post convertToObjectCount(DataRow dr)
-		{
-			Post p = new Post();
-			p.Type = Convert.ToInt32(dr["type"]);
-			p.Type_name = dr["type_name"].ToString();
-			p.Count =Convert.ToInt32(dr["SL"]);
-			return p;
-		}
+		
 
 		public Post getItem(int post_id)
 		{
@@ -139,6 +169,8 @@ namespace FoodRau.HttpCode
 			return ft;
 		}
 
+		
+
 
 		public Post convertToObject(DataRow dr)
 		{
@@ -152,6 +184,32 @@ namespace FoodRau.HttpCode
 			p.Username = dr["username"].ToString();
 			p.Modified = Convert.ToDateTime(dr["modified"]);
 			p.Created = Convert.ToDateTime(dr["created"]);
+			return p;
+		}
+
+		public Post convertToObjectCount(DataRow dr)
+		{
+			Post p = new Post();
+			p.Type = Convert.ToInt32(dr["type"]);
+			p.Type_name = dr["type_name"].ToString();
+			p.Count = Convert.ToInt32(dr["SL"]);
+			return p;
+		}
+
+		public Post convertToObjectTypeName(DataRow dr)
+		{
+			Post p = new Post();
+			p.Post_id = Convert.ToInt32(dr["post_id"]);
+			p.Title = dr["title"].ToString();
+			p.Short = dr["short_des"].ToString();
+			p.Des = dr["des"].ToString();
+			p.Img = dr["img"].ToString();
+			p.Status = Convert.ToInt32(dr["status"]);
+			p.Username = dr["username"].ToString();
+			p.Modified = Convert.ToDateTime(dr["modified"]);
+			p.Created = Convert.ToDateTime(dr["created"]);
+			p.Type_name = dr["type_name"].ToString();
+			p.Type = Convert.ToInt32(dr["type"]);
 			return p;
 		}
 

@@ -6,7 +6,7 @@
 function search(page) {
     var key = $('.txtSearch').val();
     $.ajax({
-        url: 'lst_food.aspx/searchCode',
+        url: 'lst_post.aspx/searchCode',
         type: "post",
         data: "{key:'" + key + "',page:'" + page + "'}",
         contentType: 'application/json;charset=utf-8',
@@ -24,24 +24,12 @@ function resetList(lst_json) {
     var table = "";
     for (i = 0; i < obj.length; i++) {
         table += "<tr>"
-        table += "<td>" + obj[i].Id + "</td>";
-        table += "<td>" + obj[i].Name + "</td>";
-        table += "<td>" + obj[i].Description + "</td>";
-        table += "<td>" + obj[i].Price + "</td>";
-        table += "<td>" + obj[i].Price_promo + "</td>";
-        table += "<td><img  alt='' width='50' height='50' src='/Home/images/" + obj[i].Thumb + "' /></td>";
-        table += "<td><img  alt='' width='50' height='50' src='/Home/images/" + obj[i].Img + "' /></td>";
-        table += "<td>" + obj[i].Unit + "</td>";
-        table += "<td>" + obj[i].Rating + "</td>";
-        table += "<td>" + obj[i].Sold + "</td>";
-        table += "<td>" + Number(obj[i].Point) * 100 + "</td>";
-        table += "<td>" + obj[i].TypeName + "</td>";
-        table += "<td><input type='checkbox'" + ((obj[i].Status > 0) ? 'checked' : '') + " disabled /></td>";
-        table += "<td>" + obj[i].Username + "</td>";
-        table += "<td>" + moment(obj[i].Modified).format('MM/DD/YYYY') + "</td>";
-
-        table += "<td><a href='food.aspx?id=" + obj[i].Id + "'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png'/></a>";
-        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Id + "\"" + ");'/></a></td>";
+        table += "<td>" + obj[i].Post_id + "</td>";
+        table += "<td><a href='/Home/blog-single.aspx?post_id=" + obj[i].Post_id + "'>" + obj[i].Title + "</a>";
+        table += "<td>" + obj[i].Short + "</td>";
+        table += "<td><a href='/Home/blog.aspx?type=" + obj[i].Type + "'>" + obj[i].Type_name + "</a>";
+        table += "<td><a href='lst_post.aspx?id=" + obj[i].Post_id + "'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png'/></a>";
+        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Post_id + "\"" + ");'/></a></td>";
         table += "</tr>";
     }
     $('.rptDS').html(table);
@@ -69,7 +57,7 @@ function xacNhanXoa() {
     var id = $('#cph_content_hfUserNameConfirm').val();
     $.ajax({
         type: 'post',
-        url: "lst_food.aspx/setStatusdelete",
+        url: "lst_post.aspx/setStatusdelete",
         data: "{id:'" + id + "'}",
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
