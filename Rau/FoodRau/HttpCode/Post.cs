@@ -63,10 +63,14 @@ namespace FoodRau.HttpCode
 		public string Type_name { get => _type_name; set => _type_name = value; }
 		public int Type { get => _type; set => _type = value; }
 		public int Count { get => _count; set => _count = value; }
+		
+
+
+
 
 		public List<Post> getList()
 		{
-			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [post_id]=type_id  AND [post].status=1 ";
+			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [type]=type_id  AND [post].status=1 ";
 			SqlParameter[] param = { };
 			List<Post> ft = new List<Post>();
 			DataTable dt = DataProvider.getDataTable(sQuery, param);
@@ -77,19 +81,56 @@ namespace FoodRau.HttpCode
 			return ft;
 		}
 
+		public bool add()
+		{
+			string sQuery = "INSERT INTO [dbo].[post] ([title] ,[short_des] ,[des] ,[type] ,[img] ,[status] ,[username] ,[modified] ,[created]) VALUES (@title,@short_des,@des,@type,@img,@status,@username,@modified,@created)";
+			SqlParameter[] param =
+			{
+				new SqlParameter("@title",this._title),
+				new SqlParameter("@short_des",this._short),
+				new SqlParameter("@des",this._des),
+				new SqlParameter("@type",this._type),
+				new SqlParameter("@img",this._img),
+				new SqlParameter("@status",this._status),
+				new SqlParameter("@username",this._username),
+				new SqlParameter("@modified",this._modified),
+				new SqlParameter("@created",this._created)
+			};
+			
+			return DataProvider.executeNonQuery(sQuery, param);
+		}
+		public bool update()
+		{
+			string sQuery = "UPDATE [dbo].[post] SET [title] = @title ,[short_des] = @short_des, [des] =@des,[type] = @type,[img] = @img , [status] = @status,[username] = @username,[modified] = @modified,[created] = @created WHERE post_id=@post_id";
+			SqlParameter[] param =
+			{
+				new SqlParameter("@post_id",this._post_id),
+				new SqlParameter("@title",this._title),
+				new SqlParameter("@short_des",this._short),
+				new SqlParameter("@des",this._des),
+				new SqlParameter("@type",this._type),
+				new SqlParameter("@img",this._img),
+				new SqlParameter("@status",this._status),
+				new SqlParameter("@username",this._username),
+				new SqlParameter("@modified",this._modified),
+				new SqlParameter("@created",this._created)
+			};
+			return DataProvider.executeNonQuery(sQuery, param);
+		}
+
 		public bool delete()
 		{
 			string sQuery = "UPDATE [dbo].[post] SET [status] = 0 WHERE [post_id] = @post_id";
 			SqlParameter[] param =
 			 {
-				new SqlParameter("@id",this._post_id)
+				new SqlParameter("@post_id",this._post_id)
 			};
 			return DataProvider.executeNonQuery(sQuery, param);
 		}
 
 		public List<Post> getList(string key)
 		{
-			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [post_id]=type_id  AND [post].status=1 ";
+			string sQuery = "SELECT [post_id] ,[title] ,[short_des] ,[des] ,[img] ,[post].[status] ,[post].[username] ,[post].[modified],type_name ,[created],type FROM [dbo].[post],food_type WHERE [type]=type_id  AND [post].status=1 ";
 			sQuery += " AND (([title] LIKE '%' + @title + '%')"
 				+ " OR ([short_des] LIKE '%' + @short_des + '%') "
 				+ " OR ([type_name] LIKE '%' + @type_name + '%') "

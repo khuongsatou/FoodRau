@@ -108,12 +108,11 @@ D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\vbc.exe.config
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\vbc.rsp
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\VBCSCompiler.exe
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\VBCSCompiler.exe.config
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKEditor.NET.dll
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.pdb
 D:\GitHub\FoodRau\Rau\FoodRau\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csproj.CopyComplete
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.dll
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.pdb
-D:\GitHub\FoodRau\Rau\FoodRau\bin\CKEditor.NET.dll
-D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.dll
-D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.pdb

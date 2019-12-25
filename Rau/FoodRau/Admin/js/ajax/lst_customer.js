@@ -6,7 +6,7 @@
 function search(page) {
     var key = $('.txtSearch').val();
     $.ajax({
-        url: 'lst_post.aspx/searchCode',
+        url: 'lst_customer.aspx/searchCode',
         type: "post",
         data: "{key:'" + key + "',page:'" + page + "'}",
         contentType: 'application/json;charset=utf-8',
@@ -24,12 +24,19 @@ function resetList(lst_json) {
     var table = "";
     for (i = 0; i < obj.length; i++) {
         table += "<tr>"
-        table += "<td>" + obj[i].Post_id + "</td>";
-        table += "<td><a href='/Home/blog-single.aspx?post_id=" + obj[i].Post_id + "'>" + obj[i].Title + "</a>";
-        table += "<td>" + obj[i].Short + "</td>";
-        table += "<td><a href='/Home/blog.aspx?type=" + obj[i].Type + "'>" + obj[i].Type_name + "</a>";
-        table += "<td><a href='post.aspx?post_id=" + obj[i].Post_id + "'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png'/></a>";
-        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Post_id + "\"" + ");'/></a></td>";
+        table += "<td>" + obj[i].Username + "</td>";
+        table += "<td>" + obj[i].Name + "</td>";
+        table += "<td>" + obj[i].Phone + "</td>";
+        table += "<td>" + obj[i].Email + "</td>";
+        table += "<td>" + obj[i].Address + "</td>";
+        table += "<td>" + obj[i].NumOrder + "</td>";
+        table += "<td>" + obj[i].NumSuccessfulOrder + "</td>";
+        table += "<td>" + obj[i].Sum + "</td>";
+        table += "<td><input type='checkbox'" + ((obj[i].Status > 0) ? 'checked' : '') + " disabled /></td>";
+        table += "<td>" + moment(obj[i].Created).format('MM/DD/YYYY') + "</td>";
+
+        table += "<td><a href='customer.aspx?username=" + obj[i].Username + "'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png'/></a>";
+        table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].Username + "\"" + ");'/></a></td>";
         table += "</tr>";
     }
     $('.rptDS').html(table);
@@ -54,11 +61,11 @@ function xoa(id) {
 }
 
 function xacNhanXoa() {
-    var id = $('#cph_content_hfUserNameConfirm').val();
+    var username = $('#cph_content_hfUserNameConfirm').val();
     $.ajax({
         type: 'post',
-        url: "lst_post.aspx/setStatusdelete",
-        data: "{id:'" + id + "'}",
+        url: "lst_customer.aspx/setStatusdelete",
+        data: "{username:'" + username + "'}",
         contentType: 'application/json;charset=utf-8',
         success: function (response) {
             if (response.d) {

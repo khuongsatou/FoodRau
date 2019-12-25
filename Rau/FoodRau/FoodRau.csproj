@@ -764,11 +764,14 @@
     <Content Include="Admin\img\364713f2-8d14-4f32-9df2-861790a7478378385169_2552400081655310_1205933654581182464_n.jpg" />
     <Content Include="Admin\img\c.jpg" />
     <Content Include="Admin\img\undraw_posting_photo.svg" />
+    <Content Include="Admin\js\ajax\customer.js" />
     <Content Include="Admin\js\ajax\food.js" />
+    <Content Include="Admin\js\ajax\lst_customer.js" />
     <Content Include="Admin\js\ajax\lst_food.js" />
     <Content Include="Admin\js\ajax\food_type.js" />
     <Content Include="Admin\js\ajax\lst_post.js" />
     <Content Include="Admin\js\ajax\member.js" />
+    <Content Include="Admin\js\ajax\post.js" />
     <Content Include="Admin\js\ajax\profile.js" />
     <Content Include="Admin\js\custom\moment.js" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
@@ -778,10 +781,12 @@
     <Content Include="Admin\js\sb-admin-2.js" />
     <Content Include="Admin\js\sb-admin-2.min.js" />
     <Content Include="Admin\login.aspx" />
+    <Content Include="Admin\lst_customer.aspx" />
     <Content Include="Admin\lst_food.aspx" />
+    <Content Include="Admin\lst_order.aspx" />
+    <Content Include="Admin\lst_order_detail.aspx" />
     <Content Include="Admin\lst_post.aspx" />
     <Content Include="Admin\member.aspx" />
-    <Content Include="Admin\order.aspx" />
     <Content Include="Admin\post.aspx" />
     <Content Include="Admin\profile.aspx" />
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -3080,6 +3085,7 @@
     <Content Include="Home\css\owl.theme.default.min.css" />
     <Content Include="Home\css\style.css" />
     <Content Include="Home\Default.aspx" />
+    <Content Include="Home\files\0ca.jpg" />
     <Content Include="Home\fonts\flaticon\backup.txt" />
     <Content Include="Home\fonts\flaticon\font\flaticon.css" />
     <Content Include="Home\fonts\flaticon\font\flaticon.html" />
@@ -3190,12 +3196,33 @@
     <Compile Include="Admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\lst_customer.aspx.cs">
+      <DependentUpon>lst_customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lst_customer.aspx.designer.cs">
+      <DependentUpon>lst_customer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\lst_food.aspx.cs">
       <DependentUpon>lst_food.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\lst_food.aspx.designer.cs">
       <DependentUpon>lst_food.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\lst_order.aspx.cs">
+      <DependentUpon>lst_order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lst_order.aspx.designer.cs">
+      <DependentUpon>lst_order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\lst_order_detail.aspx.cs">
+      <DependentUpon>lst_order_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lst_order_detail.aspx.designer.cs">
+      <DependentUpon>lst_order_detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\lst_post.aspx.cs">
       <DependentUpon>lst_post.aspx</DependentUpon>
@@ -3210,13 +3237,6 @@
     </Compile>
     <Compile Include="Admin\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\order.aspx.cs">
-      <DependentUpon>order.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\order.aspx.designer.cs">
-      <DependentUpon>order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\post.aspx.cs">
       <DependentUpon>post.aspx</DependentUpon>

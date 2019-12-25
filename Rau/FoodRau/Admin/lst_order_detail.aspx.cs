@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FoodRau.Admin
 {
-    public partial class order : System.Web.UI.Page
+    public partial class lst_order_detail : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

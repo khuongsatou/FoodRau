@@ -3,102 +3,85 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-lg-12">
-            <hr />
-            <div class="col-lg-12">
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách</h6>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a class="form-control" href="<%=Page.ResolveUrl("~") %>Admin/food.aspx">Thêm Bài viết</a>
-                            </div>
-                        </div>
+       <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Viết Bài mới</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample">
+            <div class="form-group row">
+                <div class="col-sm-12 mb-12 mb-sm-0">
+                    <asp:TextBox ID="txtUserName" Enabled="false" placeholder="Tên tài Khoản..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                    <asp:RequiredFieldValidator ValidationGroup="f_t" ForeColor="Red" ID="rfvName" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtUserName"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator runat="server" ValidationGroup="f_t" ID="revUserName" ErrorMessage="Không dấu và Phải từ 3 đến 20 kí tự" ValidationExpression="[\w]{3,20}" ControlToValidate="txtUserName" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <asp:TextBox ID="txtName" placeholder="Tên Khách hàng..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtName"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Tìm Kiếm</h6>
-                        <div class="form-group col-md-4">
-                            <input class="txtSearch form-control" onkeydown="if (event.keyCode == 13) return false;" type="text" onfocusout="search(1);" placeholder="Search..." />
-                        </div>
+                     <div class="form-group">
+                        <asp:TextBox ID="txtPhone" placeholder="Số điện Thoại..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtPhone"></asp:RequiredFieldValidator>
+                          <asp:RegularExpressionValidator ValidationGroup="f_t" ID="revPhone" runat="server" ErrorMessage="Sai định dạng" ControlToValidate="txtPhone" ValidationExpression="0[0-9]{9}" ForeColor="Red" SetFocusOnError="True"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable1">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Mô Tả Ngắn</th>
-                                        <th>Mô Tả</th>
-                                        <th>Giá Khuyến Mãi</th>
-                                        <th>Hình Thumb </th>
-                                        <th>Hình ảnh Sản Phẩm</th>
-                                        <th>Đơn Vị Tính</th>
-                                        <th>Rating</th>
-                                        <th>Đã Bán</th>
-                                        <th>Điểm</th>
-                                        <th>Thuộc Loại</th>
-                                        <th>Trạng Thái</th>
-                                        <th>Người Lập</th>
-                                        <th>Ngày Cập Nhật</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Mô Tả</th>
-                                        <th>Giá</th>
-                                        <th>Giá Khuyến Mãi</th>
-                                        <th>Hình Thumb </th>
-                                        <th>Hình ảnh Sản Phẩm</th>
-                                        <th>Đơn Vị Tính</th>
-                                        <th>Rating</th>
-                                        <th>Đã Bán</th>
-                                        <th>Điểm</th>
-                                        <th>Thuộc Loại</th>
-                                        <th>Trạng Thái</th>
-                                        <th>Người Lập</th>
-                                        <th>Ngày Cập Nhật</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                                <tbody class="rptDS">
-                                </tbody>
-                            </table>
-                            <div class="dataTables_paginate paging_simple_numbers">
-                                <ul class="record pagination">
-                                </ul>
-                            </div>
-                        </div>
+                    
+                    <div class="form-group">
+                        <asp:DropDownList CssClass="form-control form-control-user" ID="ddlStatus" runat="server">
+                                <asp:ListItem Value="-1">--Status--</asp:ListItem>
+                                <asp:ListItem Value="1">Hoạt động</asp:ListItem>
+                                <asp:ListItem Value="0">Không hoạt động</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator InitialValue="-1" ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator4" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="ddlStatus"></asp:RequiredFieldValidator>
                     </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="form-group">
+                        <asp:TextBox ID="txtEmail" placeholder="Email..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+                       <asp:RegularExpressionValidator ID="rev_email" runat="server" ErrorMessage="Sai định dạng" ValidationGroup="f_t" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red"></asp:RegularExpressionValidator>
+                    </div>
+                    <div class="form-group">
+                        <asp:TextBox ID="txtAddress" placeholder="Địa Chỉ..." runat="server" CssClass="form-control form-control-user"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator8" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtAddress"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </div>
+          
+           
+            <div class="row">
+                <div class="col-md-12">
+                  <%-- <asp:Button ValidationGroup="f_t" ID="btnThem" OnClick="BtnThem_Click" CssClass="btn btn-primary col-md-12" runat="server" Text="Thêm" />--%>
+                   <asp:Button ValidationGroup="f_t" ID="btnCapNhat" OnClick="BtnCapNhat_Click" CssClass="btn btn-primary col-md-12" runat="server" Text="Cập Nhật" />
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Thông báo</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <asp:Label ID="lblMessage" runat="server"></asp:Label>
-                    <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
-                </div>
-                <div class="modal-footer">
-                    <div class="btnConfỉrm btn btn-danger" onclick="xacNhanXoa();">
-                        Có
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Thông báo</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                                .Bạn có muốn quay về...
+                                <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary" href="lst_customer.aspx">Có</a>
+                                <a class="btnConfirm btn btn-danger" href='<%if (Request["username"] != null) Response.Write("customer.aspx?username=" + Request["username"]); else Response.Write("lst_customer.aspx"); %>'>Không</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
+    <script src="js/ajax/customer.js"></script>
 </asp:Content>

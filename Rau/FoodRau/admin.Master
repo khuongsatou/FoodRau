@@ -114,8 +114,8 @@
                     <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Show:</h6>
-                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/customer.aspx">Danh sách khách hàng</a>
-                           <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/order.aspx">Hóa Đơn</a>
+                            <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_customer.aspx">Danh sách khách hàng</a>
+                           <a class="collapse-item" href="<%=Page.ResolveUrl("~") %>Admin/lst_order.aspx">Hóa Đơn</a>
                         </div>
                     </div>
                 </li>
