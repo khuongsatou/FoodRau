@@ -14,10 +14,11 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         [WebMethod]
+        
         public static string searchCode(string key, string page)
         {
             Customer c = new Customer();

@@ -769,6 +769,7 @@
     <Content Include="Admin\js\ajax\lst_customer.js" />
     <Content Include="Admin\js\ajax\lst_food.js" />
     <Content Include="Admin\js\ajax\food_type.js" />
+    <Content Include="Admin\js\ajax\lst_order.js" />
     <Content Include="Admin\js\ajax\lst_post.js" />
     <Content Include="Admin\js\ajax\member.js" />
     <Content Include="Admin\js\ajax\post.js" />

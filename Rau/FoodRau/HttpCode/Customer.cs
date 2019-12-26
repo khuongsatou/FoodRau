@@ -8,7 +8,7 @@ using System.Web;
 namespace FoodRau.HttpCode
 {
     public class Customer
-    {
+	{
         private string _username;
         private string _password;
         private string _name;

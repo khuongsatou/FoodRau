@@ -116,3 +116,4 @@ D:\GitHub\FoodRau\Rau\FoodRau\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlat
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csproj.CopyComplete
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.dll
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.pdb
+D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache

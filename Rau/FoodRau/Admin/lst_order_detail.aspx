@@ -28,31 +28,23 @@
                             <table class="table table-bordered" id="dataTable1">
                                 <thead>
                                     <tr>
-                                        <th>Tên Tài Khoản</th>
-                                        <th>Tên</th>
-                                        <th>Số Điện Thoại</th>
-                                        <th>Email</th>
-                                        <th>Địa Chỉ</th>
-                                        <th>Số Order</th>
-                                        <th>Số Order Success</th>
-                                        <th>Tổng</th>
-                                        <th>Status</th>
-                                        <th>Ngày Tạo</th>
+                                        <th>Order_ID</th>
+                                        <th>Food_ID</th>
+                                        <th>Số Lượng</th>
+                                        <th>Đơn vị</th>
+                                        <th>Giá</th>
+                                        <th>Tổng giá</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Tên Tài Khoản</th>
-                                        <th>Tên</th>
-                                        <th>Số Điện Thoại</th>
-                                        <th>Email</th>
-                                        <th>Địa Chỉ</th>
-                                        <th>Số Order</th>
-                                        <th>Số Order Success</th>
-                                        <th>Tổng</th>
-                                        <th>Status</th>
-                                        <th>Ngày Tạo</th>
+                                        <th>Order_ID</th>
+                                        <th>Food_ID</th>
+                                        <th>Số Lượng</th>
+                                        <th>Đơn vị</th>
+                                        <th>Giá</th>
+                                        <th>Tổng giá</th>
                                         <th></th>
                                     </tr>
                                 </tfoot>

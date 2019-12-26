@@ -34,10 +34,10 @@
                                         <th>Địa Chỉ</th>
                                         <th>Số Lượng</th>
                                         <th>Tổng</th>
-                                        <th>Trạng Thái</th>
                                         <th>Người Lập</th>
-                                        <th>Ngày Cập Nhật</th>
+                                        <th>Trạng Thái</th>
                                         <th>Ngày Tạo</th>
+                                        <th>Ngày Cập Nhật</th>
                                         <th>Nhận Hộ</th>
                                         <th></th>
                                     </tr>
@@ -92,4 +92,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
+    <script src="js/ajax/lst_order.js"></script>
+    <script src="js/custom/moment.js"></script>
 </asp:Content>
