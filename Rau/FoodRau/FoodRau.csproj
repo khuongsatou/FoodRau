@@ -753,6 +753,7 @@
     <Content Include="Admin\css\sb-admin-2.css" />
     <Content Include="Admin\css\sb-admin-2.min.css" />
     <Content Include="Admin\customer.aspx" />
+    <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\food.aspx" />
     <Content Include="Admin\food_type.aspx" />
     <Content Include="Admin\icon\delete.png" />
@@ -770,6 +771,7 @@
     <Content Include="Admin\js\ajax\lst_food.js" />
     <Content Include="Admin\js\ajax\food_type.js" />
     <Content Include="Admin\js\ajax\lst_order.js" />
+    <Content Include="Admin\js\ajax\lst_order_detail.js" />
     <Content Include="Admin\js\ajax\lst_post.js" />
     <Content Include="Admin\js\ajax\member.js" />
     <Content Include="Admin\js\ajax\post.js" />
@@ -788,6 +790,7 @@
     <Content Include="Admin\lst_order_detail.aspx" />
     <Content Include="Admin\lst_post.aspx" />
     <Content Include="Admin\member.aspx" />
+    <Content Include="Admin\overview.aspx" />
     <Content Include="Admin\post.aspx" />
     <Content Include="Admin\profile.aspx" />
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -3060,7 +3063,6 @@
     <Content Include="ckfinder\userfiles\images\banner-doanhnghiep.jpg" />
     <Content Include="ckfinder\userfiles\_thumbs\Images\banner-doanhnghiep.jpg" />
     <Content Include="Default.aspx" />
-    <Content Include="DefaultTest.aspx" />
     <Content Include="Home\about.aspx" />
     <Content Include="Home\blog-single.aspx" />
     <Content Include="Home\blog.aspx" />
@@ -3152,7 +3154,6 @@
     <Content Include="Home\product-single.aspx" />
     <Content Include="Home\shop.aspx" />
     <Content Include="Home\wishlist.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="Uploads\Images\0ca.jpg" />
     <Content Include="Uploads\Images\13335887_886088774852781_2345389907493888017_n%281%29.jpg" />
     <Content Include="Uploads\Images\13335887_886088774852781_2345389907493888017_n.jpg" />
@@ -3175,6 +3176,13 @@
     </Compile>
     <Compile Include="Admin\customer.aspx.designer.cs">
       <DependentUpon>customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\food.aspx.cs">
       <DependentUpon>food.aspx</DependentUpon>
@@ -3239,6 +3247,13 @@
     <Compile Include="Admin\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\overview.aspx.cs">
+      <DependentUpon>overview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\overview.aspx.designer.cs">
+      <DependentUpon>overview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\post.aspx.cs">
       <DependentUpon>post.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3259,13 +3274,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultTest.aspx.cs">
-      <DependentUpon>DefaultTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DefaultTest.aspx.designer.cs">
-      <DependentUpon>DefaultTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.Master.cs">
       <DependentUpon>home.Master</DependentUpon>
@@ -3366,13 +3374,6 @@
     <Compile Include="HttpCode\Slider.cs" />
     <Compile Include="HttpCode\StringProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\vendor\bootstrap\js\bootstrap.bundle.js.map" />

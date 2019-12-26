@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FoodRau.Admin;
 
 namespace FoodRau.Admin
 {
@@ -40,7 +41,8 @@ namespace FoodRau.Admin
             {
                 posts = p.getList(key);
             }
-            int limit = 3;
+            
+            int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = posts.Count / limit + (posts.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;
@@ -82,16 +84,6 @@ namespace FoodRau.Admin
             return p.delete();
         }
 
-        //protected void Btn_cancel_Click(object sender, EventArgs e)
-        //{
-        //    txtUserName.Text = "";
-        //    txtName.Text = "";
-        //    txtAddress.Text = "";
-        //    txtEmail.Text = "";
-        //    txtPhone.Text = "";
-        //    ddlStatus.SelectedValue = "";
-        //}
-
         protected void BtnCapNhat_Click(object sender, EventArgs e)
         {
             Customer c = new Customer();
@@ -105,7 +97,7 @@ namespace FoodRau.Admin
             {
                 lblMessage.Text = "Cập Nhật Thành Công";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
-                //Btn_cancel_Click(sender, e);
+                
             }
             else
             {

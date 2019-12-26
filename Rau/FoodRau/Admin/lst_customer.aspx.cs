@@ -17,7 +17,7 @@ namespace FoodRau.Admin
             
         }
 
-        [WebMethod]
+        [WebMethod(EnableSession=true)]
         
         public static string searchCode(string key, string page)
         {
@@ -27,7 +27,7 @@ namespace FoodRau.Admin
             {
                 customers = c.getList(key);
             }
-            int limit = 3;
+            int limit =Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = customers.Count / limit + (customers.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;

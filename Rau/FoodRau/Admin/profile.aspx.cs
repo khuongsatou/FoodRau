@@ -28,7 +28,7 @@ namespace FoodRau.Admin
                     ddlStatus.Enabled = false;
                     ddlRole.SelectedValue = m.Role.ToString();
                     ddlRole.Enabled = false;
-                    //Response.Redirect("~");
+                   
                 }
             }
         }

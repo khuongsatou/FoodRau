@@ -29,7 +29,7 @@ namespace FoodRau.Admin
             {
                 foods = f.getListFoodType(key);
             }
-            int limit = 3;
+            int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = foods.Count / limit + (foods.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;

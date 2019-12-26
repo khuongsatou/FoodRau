@@ -27,7 +27,7 @@ namespace FoodRau.Admin
             {
                 orders = o.getList(key);
             }
-            int limit = 3;
+            int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = orders.Count / limit + (orders.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;

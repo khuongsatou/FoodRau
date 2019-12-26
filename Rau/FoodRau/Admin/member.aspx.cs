@@ -55,7 +55,7 @@ namespace FoodRau.Admin
             {
                 members = mb.getList(key);
             }
-            int limit = 10;
+            int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = members.Count / limit + (members.Count % limit == 0 ? 0 : 1);
             int trang = Convert.ToInt32(page);
             int from = (trang - 1) * limit;
