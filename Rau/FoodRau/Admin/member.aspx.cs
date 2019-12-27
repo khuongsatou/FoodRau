@@ -54,6 +54,8 @@ namespace FoodRau.Admin
         [WebMethod]
         public static string searchCode(string key, string page)
         {
+            //tui truyền qua key với page đó
+            //chỗ này ông ko hiểu gì.
             Member mb = new Member();
             List<Member> members = mb.getList();
             if (key != null && key.Length > 0)
@@ -87,6 +89,7 @@ namespace FoodRau.Admin
                     active[i] = 0;
                 }
             }
+            //nó như json android thôi.
             Dictionary<string, object> json = new Dictionary<string, object>();
             json.Add("obj", members);
             json.Add("record", index);

@@ -34,7 +34,7 @@ namespace FoodRau.Home
             rptLoaiSP.DataBind();
 
             //handle phan trang
-            int limit = 8;
+            int limit = Convert.ToInt32(new Setting().getObjectHome().Value);
             int soTrang = foods.Count / limit + (foods.Count % limit == 0 ? 0 : 1);
             int page = Request["page"] == null ? 1 : Convert.ToInt32(Request["page"]);
             int from = (page - 1) * limit;

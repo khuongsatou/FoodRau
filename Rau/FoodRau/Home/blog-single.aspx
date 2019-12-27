@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
     
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('../Uploads/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
@@ -36,7 +36,7 @@
             
             <div class="about-author d-flex p-4 bg-light">
               <div class="bio align-self-md-center mr-4">
-                <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+                <img src="../Uploads/images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
               </div>
               <div class="desc align-self-md-center">
                 <h3>Lance Smith</h3>
@@ -50,7 +50,7 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
+                    <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>John Doe</h3>
@@ -62,7 +62,7 @@
 
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
+                    <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>John Doe</h3>
@@ -74,7 +74,7 @@
                   <ul class="children">
                     <li class="comment">
                       <div class="vcard bio">
-                        <img src="images/person_1.jpg" alt="Image placeholder">
+                        <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                       </div>
                       <div class="comment-body">
                         <h3>John Doe</h3>
@@ -87,7 +87,7 @@
                       <ul class="children">
                         <li class="comment">
                           <div class="vcard bio">
-                            <img src="images/person_1.jpg" alt="Image placeholder">
+                            <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                           </div>
                           <div class="comment-body">
                             <h3>John Doe</h3>
@@ -99,7 +99,7 @@
                             <ul class="children">
                               <li class="comment">
                                 <div class="vcard bio">
-                                  <img src="images/person_1.jpg" alt="Image placeholder">
+                                  <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                                 </div>
                                 <div class="comment-body">
                                   <h3>John Doe</h3>
@@ -117,7 +117,7 @@
 
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
+                    <img src="../Uploads/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>John Doe</h3>
@@ -131,7 +131,7 @@
               
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
+                <div  class="p-5 bg-light">
                   <div class="form-group">
                     <label for="name">Name *</label>
                     <input type="text" class="form-control" id="name">
@@ -153,18 +153,18 @@
                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
                   </div>
 
-                </form>
+                </div>
               </div>
             </div>
           </div> <!-- .col-md-8 -->
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <div class="search-form">
                 <div class="form-group">
                   <span class="icon ion-ios-search"></span>
                   <input type="text" class="form-control" placeholder="Search...">
                 </div>
-              </form>
+              </div>
             </div>
             <div class="sidebar-box ftco-animate">
             	<h3 class="heading">Categories</h3>
@@ -182,7 +182,7 @@
                 <asp:Repeater ID="rptRecentBlog" runat="server">
                             <ItemTemplate>
                                 <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url('images/<%#Eval("Img") %>');"></a>
+                            <a class="blog-img mr-4" style="background-image: url('../Uploads/images/<%#Eval("Img") %>');"></a>
                             <div class="text">
                                 <h3 class="heading-1"><a href="blog-single.aspx?post_id=<%#Eval("Post_id") %>"><%#Eval("Title") %></a></h3>
                                 <div class="meta">

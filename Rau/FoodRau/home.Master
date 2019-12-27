@@ -38,11 +38,11 @@
                         <div class="row d-flex">
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">+ 1235 2355 98</span>
+                                <span class="text">+ 0356241963</span>
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                <span class="text">youremail@email.com</span>
+                                <span class="text">yoshi240499@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -73,9 +73,13 @@
                                 <a class="dropdown-item" href="checkout.aspx">Checkout</a>
                             </div>
                         </li>
+                        
                         <li class="nav-item"><a href="about.aspx" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="blog.aspx" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="contact.aspx" class="nav-link">Contact</a></li>
+
+                        <li class="nav-item">
+                            <asp:HyperLink CssClass="nav-link" ID="hlLogin" runat="server" NavigateUrl="~/Home/login.aspx">Login</asp:HyperLink></li>
                         <li class="nav-item cta cta-colored"><a href="cart.aspx" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
                     </ul>
@@ -199,6 +203,12 @@
         <script src="<%=Page.ResolveUrl("~") %>Home/js/bootstrap-datepicker.js"></script>
         <script src="<%=Page.ResolveUrl("~") %>Home/js/scrollax.min.js"></script>
         <script src="<%=Page.ResolveUrl("~") %>Home/js/main.js"></script>
+        <script>
+            //modal
+            function showModal() {
+                $("#myModal").modal('show');
+            }
+        </script>
         <asp:ContentPlaceHolder ID="cph_js" runat="server"></asp:ContentPlaceHolder>
     </form>
 </body>

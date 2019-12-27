@@ -104,6 +104,20 @@ namespace FoodRau.HttpCode
             return new Setting();
         }
 
+        public Setting getObjectHome()
+        {
+            string sQuery = "SELECT [id_setting] ,[name] ,[des] ,[value] ,[username] ,[modified] FROM [dbo].[setting] WHERE id_setting = 2";
+
+            SqlParameter[] param = {
+            };
+            DataTable dt = DataProvider.getDataTable(sQuery, param);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return convertToObject(dt.Rows[0]);
+            }
+            return new Setting();
+        }
+
         public Setting convertToObject(DataRow dr)
         {
             Setting obj = new Setting();

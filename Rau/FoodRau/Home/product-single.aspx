@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
 
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('../Uploads/images/bg_1.jpg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
@@ -52,10 +52,10 @@
                     </div>
 
                     <p class="pricing">
-                        <del>$<asp:Label CssClass="mr-2 price-dc" ID="lblPrice" runat="server" Text="Label"></asp:Label></del>
+                        <del><asp:Label CssClass="mr-2 price-dc" ID="lblPrice" runat="server" Text="Label"></asp:Label>VND</del>
                     </p>
                     <div class="price">
-                        $<asp:Label ID="lblPrice_promo" runat="server" Text="Label"></asp:Label>
+                       <asp:Label ID="lblPrice_promo" runat="server" Text="Label"></asp:Label>VND
                     </div>
                     <p>
                         <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
@@ -75,20 +75,11 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="input-group col-md-6 d-flex mb-3">
-                            <%--<span class="input-group-btn mr-2">
-                                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
-                                    <i class="ion-ios-remove"></i>
-                                </button>
-                            </span>--%>
+                      
                             Quatity:
                             <br />
                             <asp:TextBox CssClass="form-control input-number" name="quantity" ID="quantity" runat="server" TextMode="Number" Text="1" min="1" max="100" placeholder="quatity"></asp:TextBox>
-                           <%-- <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">--%>
-                           <%-- <span class="input-group-btn ml-2">
-                                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                                    <i class="ion-ios-add"></i>
-                                </button>
-                            </span>--%>
+                     
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-12">
@@ -103,7 +94,7 @@
                         <asp:HiddenField ID="hf_ID" runat="server" />
                         <asp:HiddenField ID="hf_Img" runat="server" />
                         <asp:Button ID="btnAddToCart" CssClass="btn btn-black py-3 px-5" runat="server" Text="Add to Cart" OnClick="BtnAddToCart_Click" />
-                        <%-- <a href="cart.aspx" class="btn btn-black py-3 px-5">Add to Cart</a>--%>
+                      
                     </p>
                 </div>
             </div>
@@ -125,9 +116,9 @@
                 <asp:Repeater ID="rptRelated" runat="server">
                     <ItemTemplate>
                         <div class="col-md-6 col-lg-3 ftco-animate">
-                            <div class="product">
+                            <div class="product" style="height:400px">
                                 <a href="product-single.aspx?id=<%#Eval("Id") %>" class="img-prod">
-                                    <img class="img-fluid" src='<%# "/Home/images/"+Eval("Thumb") %>' alt="Colorlib Template">
+                                    <img class="img-fluid" src='<%# "../Uploads/images/"+Eval("Thumb") %>' alt="Colorlib Template" style="height:250px;width:100%;">
                                     <span class="status"><%# (int)(Convert.ToDecimal(Eval("percent_promo"))*100)+"%" %></span>
                                     <div class="overlay"></div>
                                 </a>
@@ -136,7 +127,7 @@
 
                                     <div class="d-flex">
                                         <div class="pricing">
-                                            <p class="price"><span class="mr-2 price-dc">$<%# Eval("price") %></span><span class="price-sale">$<%# Eval("price_promo") %></span></p>
+                                            <p class="price"><span class="mr-2 price-dc"><%# Eval("price") %>VND</span><span class="price-sale"><%# Eval("price_promo") %>VND</span></p>
                                         </div>
                                     </div>
                                     <div class="bottom-area d-flex px-3">
@@ -162,40 +153,5 @@
     </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_js" runat="server">
-   <%-- <script>
-        $(document).ready(function () {
-
-            var quantitiy = 0;
-            $('.quantity-right-plus').click(function (e) {
-
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                $('#quantity').val(quantity + 1);
-
-
-                // Increment
-
-            });
-
-            $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                // Increment
-                if (quantity > 0) {
-                    $('#quantity').val(quantity - 1);
-                }
-            });
-
-        });
-	</script>--%>
+ 
 </asp:Content>

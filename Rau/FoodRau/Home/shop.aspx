@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_css" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('../Uploads/images/bg_1.jpg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
@@ -36,9 +36,9 @@
                 <asp:Repeater ID="rptSanPham" runat="server">
                     <ItemTemplate>
                         <div class="col-md-6 col-lg-3 ftco-animate">
-                            <div class="product">
+                            <div class="product" style="height:400px">
                                 <a href="product-single.aspx?id=<%#Eval("Id") %>" class="img-prod">
-                                    <img class="img-fluid" src='<%# "/Home/images/"+Eval("Thumb") %>' alt="Colorlib Template">
+                                    <img class="img-fluid" src='<%# "../Uploads/images/"+Eval("Thumb") %>' alt="Colorlib Template" style="width:100%;height:250px">
                                     <span class="status"><%# (int)(Convert.ToDecimal(Eval("percent_promo"))*100)+"%" %></span>
                                     <div class="overlay"></div>
                                 </a>
@@ -77,9 +77,7 @@
                                 <ItemTemplate>
                                    <li class="<%#((Convert.ToInt32(Eval("active")) == 1) ? "active" : "")  %>"><a href='?page=<%#Eval("index") %>'
                                        >
-                                      
                                        <%#Eval("index") %>
-                            
                                        </a></li> 
                                 </ItemTemplate>
                             </asp:Repeater>

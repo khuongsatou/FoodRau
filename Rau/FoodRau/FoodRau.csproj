@@ -2415,42 +2415,6 @@
     <Content Include="Home\fonts\ionicons\css\ionicons.min.css" />
     <Content Include="Home\fonts\ionicons\fonts\ionicons.svg" />
     <Content Include="Home\fonts\open-iconic\open-iconic.svg" />
-    <Content Include="Home\images\about.jpg" />
-    <Content Include="Home\images\bg_1.jpg" />
-    <Content Include="Home\images\bg_2.jpg" />
-    <Content Include="Home\images\bg_3.jpg" />
-    <Content Include="Home\images\category-1.jpg" />
-    <Content Include="Home\images\category-2.jpg" />
-    <Content Include="Home\images\category-3.jpg" />
-    <Content Include="Home\images\category-4.jpg" />
-    <Content Include="Home\images\category.jpg" />
-    <Content Include="Home\images\image_1.jpg" />
-    <Content Include="Home\images\image_2.jpg" />
-    <Content Include="Home\images\image_3.jpg" />
-    <Content Include="Home\images\image_4.jpg" />
-    <Content Include="Home\images\image_5.jpg" />
-    <Content Include="Home\images\image_6.jpg" />
-    <Content Include="Home\images\partner-1.png" />
-    <Content Include="Home\images\partner-2.png" />
-    <Content Include="Home\images\partner-3.png" />
-    <Content Include="Home\images\partner-4.png" />
-    <Content Include="Home\images\partner-5.png" />
-    <Content Include="Home\images\person_1.jpg" />
-    <Content Include="Home\images\person_2.jpg" />
-    <Content Include="Home\images\person_3.jpg" />
-    <Content Include="Home\images\person_4.jpg" />
-    <Content Include="Home\images\product-1.jpg" />
-    <Content Include="Home\images\product-10.jpg" />
-    <Content Include="Home\images\product-11.jpg" />
-    <Content Include="Home\images\product-12.jpg" />
-    <Content Include="Home\images\product-2.jpg" />
-    <Content Include="Home\images\product-3.jpg" />
-    <Content Include="Home\images\product-4.jpg" />
-    <Content Include="Home\images\product-5.jpg" />
-    <Content Include="Home\images\product-6.jpg" />
-    <Content Include="Home\images\product-7.jpg" />
-    <Content Include="Home\images\product-8.jpg" />
-    <Content Include="Home\images\product-9.jpg" />
     <Content Include="Home\index.aspx" />
     <Content Include="Home\js\aos.js" />
     <Content Include="Home\js\bootstrap-datepicker.js" />
@@ -2469,7 +2433,9 @@
     <Content Include="Home\js\popper.min.js" />
     <Content Include="Home\js\range.js" />
     <Content Include="Home\js\scrollax.min.js" />
+    <Content Include="Home\login.aspx" />
     <Content Include="Home\product-single.aspx" />
+    <Content Include="Home\register.aspx" />
     <Content Include="Home\shop.aspx" />
     <Content Include="Home\wishlist.aspx" />
     <Content Include="Uploads\Images\10.jpg" />
@@ -2656,12 +2622,26 @@
     <Compile Include="Home\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Home\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home\product-single.aspx.cs">
       <DependentUpon>product-single.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home\product-single.aspx.designer.cs">
       <DependentUpon>product-single.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\shop.aspx.cs">
       <DependentUpon>shop.aspx</DependentUpon>
@@ -2865,7 +2845,6 @@
     <Content Include="Home\fonts\open-iconic\open-iconic.otf" />
     <Content Include="Home\fonts\open-iconic\open-iconic.ttf" />
     <Content Include="Home\fonts\open-iconic\open-iconic.woff" />
-    <Content Include="Home\images\.DS_Store" />
     <Content Include="Home\js\.DS_Store" />
     <Content Include="home.Master" />
     <Content Include="ckeditor\.htaccess" />

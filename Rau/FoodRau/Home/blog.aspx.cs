@@ -35,7 +35,7 @@ namespace FoodRau.Home
                      posts = p.getList();
                 }
                 //handle phan trang
-                int limit = 5;
+                int limit = Convert.ToInt32(new Setting().getObjectHome().Value);
                 int soTrang = posts.Count / limit + (posts.Count % limit == 0 ? 0 : 1);
                 int page = Request["page"] == null ? 1 : Convert.ToInt32(Request["page"]);
                 int from = (page - 1) * limit;

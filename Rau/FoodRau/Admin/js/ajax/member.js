@@ -172,6 +172,8 @@ function resetList(lst_json) {
         table += "</tr>";
     }
     $('.rptDS').html(table);
+    //2 cái này là sao 
+    //ông nhớ phân trang nó có 1 cái để in vị trí paging. 1 cái để active khi nhấn vô.
     var index = lst_json["record"];
     var active = lst_json["active"];
     var result = "";

@@ -11,7 +11,10 @@ namespace FoodRau
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username_home"] != null)
+            {
+                hlLogin.Visible = false;
+            }
         }
     }
 }

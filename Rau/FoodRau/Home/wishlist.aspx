@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/home.Master" AutoEventWireup="true" CodeBehind="wishlist.aspx.cs" Inherits="FoodRau.Home.wishlist" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_css" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-        <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+        <div class="hero-wrap hero-bread" style="background-image: url('../Uploads/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Wishlist</span></p>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.aspx">Home</a></span> <span>Wishlist</span></p>
             <h1 class="mb-0 bread">My Wishlist</h1>
           </div>
         </div>
@@ -32,7 +32,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-1.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-1.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>
@@ -53,7 +53,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-2.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-2.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>
@@ -74,7 +74,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-3.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>
@@ -95,7 +95,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-4.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>
@@ -116,7 +116,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-5.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-5.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>
@@ -137,7 +137,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-6.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(../Uploads/images/product-6.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Bell Pepper</h3>

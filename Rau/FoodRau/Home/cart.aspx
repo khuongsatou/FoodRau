@@ -4,11 +4,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
 
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('../Uploads/images/bg_1.jpg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.aspx">Home</a></span> <span>Cart</span></p>
                     <h1 class="mb-0 bread">My Cart</h1>
                 </div>
             </div>
@@ -35,10 +35,14 @@
                                 <asp:Repeater ID="rptCart" runat="server">
                                     <ItemTemplate>
                                         <tr class="text-center">
-                                            <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                            <td class="product-remove">
+                                                
+                                                <asp:Button ID="btnRemove" CssClass="btn btn-danger" runat="server" Text="Xóa" />
+                                              <%--  <a href="#"><span class="ion-ios-close"></span></a>--%>
+                                            </td>
 
                                             <td class="image-prod">
-                                                <div class="img" style="background-image: url('images/<%#Eval("Img") %>');"></div>
+                                                <div class="img" style="background-image: url('../Uploads/images/<%#Eval("Img") %>');"></div>
                                             </td>
 
                                             <td class="product-name">
@@ -46,42 +50,20 @@
                                                 <p><%#Eval("Description") %></p>
                                             </td>
 
-                                            <td class="price">$<%#Eval("Price") %></td>
+                                            <td class="price"><%#Eval("Price") %>VND</td>
 
                                             <td class="quantity">
                                                 <div class="input-group mb-3">
-                                                    <%--<asp:TextBox CssClass="quantity form-control input-number" ID="txtQuatity" name="quantity" runat="server" min="1" max="100" Text="1" placeholder="Quatity.."></asp:TextBox>--%>
+                                                  
                                                     <input type="number" name="quantity" class="quantity form-control input-number" value="<%# Eval("Quan") %>" min="1" max="100">
                                                 </div>
                                             </td>
 
-                                            <td class="total">$<%#Eval("Price") %></td>
+                                            <td class="total"><%#Eval("Price") %>VND</td>
                                         </tr>
                                         <!-- END TR-->
                                     </ItemTemplate>
                                 </asp:Repeater>
-
-
-                                <%--  <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Bell Pepper</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
-						        </td>
-						        
-						        <td class="price">$15.70</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total">$15.70</td>
-						      </tr><!-- END TR-->--%>
                             </tbody>
                         </table>
                     </div>
@@ -89,45 +71,10 @@
             </div>
             <div class="row justify-content-end">
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Coupon Code</h3>
-                        <p>Enter your coupon code if you have one</p>
-                        <form action="#" class="info">
-                            <div class="form-group">
-                                <label for="">Coupon code</label>
-                                <input type="text" class="form-control text-left px-3" placeholder="">
-                            </div>
-                        </form>
-                    </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+                  
                 </div>
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Estimate shipping and tax</h3>
-                        <p>Enter your destination to get a shipping estimate</p>
-                        <div class="info">
-                            <div class="form-group">
-                                <label for="txtCusName">Name</label>
-                                <asp:TextBox ID="txtCusName" runat="server" CssClass="form-control text-left px-3"></asp:TextBox>
-                                <%--<input type="text" class="form-control text-left px-3" placeholder="">--%>
-                            </div>
-                            <div class="form-group">
-                                <label for="txtPhone">Phone</label>
-                                <asp:TextBox TextMode="Number" ID="txtPhone" runat="server" CssClass="form-control text-left px-3"></asp:TextBox>
-                                <%--<input type="text" class="form-control text-left px-3" placeholder="">--%>
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Address</label>
-                                <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control text-left px-3"></asp:TextBox>
-                                <%--<input type="text" class="form-control text-left px-3" placeholder="">--%>
-                            </div>
-                        </div>
-                    </div>
-                    <p>
-                        <%--<asp:Button ID="btnCheckOut" runat="server" Text="Button" />--%>
-
-                    </p>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
+                    
                 </div>
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
@@ -151,7 +98,7 @@
                         </p>
                     </div>
                     <p>
-                       <%-- <a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>--%>
+                      
                         <asp:Button ID="btnCheckOut" runat="server" CssClass="btn btn-primary py-3 px-4" Text="Proceed to Checkout" OnClick="BtnCheckOut_Click" />
                      </p>
                 </div>

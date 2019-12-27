@@ -29,8 +29,8 @@ namespace FoodRau.Home
                 lblPrice_promo.Text = f.Price_promo.ToString();
                 lblDescription.Text = f.Description.ToString();
                 lblUnit.Text = f.Unit.ToString();
-                imgReview.ImageUrl = "images/" + f.Img;
-                hlZoom.NavigateUrl = "images/" + f.Img;
+                imgReview.ImageUrl = "../Uploads/images/" + f.Img;
+                hlZoom.NavigateUrl = "../Uploads/images/" + f.Img;
 
                 List<Food> fLates = f.getList(f.Type);
                 //trường hợp lớn hơn 4 item thì remove các item còn lại

@@ -48,6 +48,16 @@ namespace FoodRau.HttpCode
             Created = DateTime.Now;
         }
 
+		public bool exist(string username)
+		{
+			string sQuery = "SELECT count(*) FROM customer WHERE username =@username";
+			SqlParameter[] param =
+			{
+				new SqlParameter("@username",username)
+			};
+			return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
+		}
+
 		public Customer getItem(string username)
 		{
 			string sQuery = "SELECT [username] ,[password] ,[name] ,[phone] ,[email] ,[address] ,[num_order] ,[num_successful_order] ,[sum] ,[status] ,[created] FROM [dbo].[customer] WHERE username=@username";
@@ -92,6 +102,7 @@ namespace FoodRau.HttpCode
 			SqlParameter[] param =
 			{
 				new SqlParameter("@username",this._username),
+				new SqlParameter("@password",StringProc.MD5Hash(this._password)),
 				new SqlParameter("@name",this._name),
 				new SqlParameter("@email",this._email),
 				new SqlParameter("@phone",this._phone),
@@ -174,6 +185,7 @@ namespace FoodRau.HttpCode
 		{
 			Customer c = new Customer();
 			c.Username = dr["username"].ToString();
+			c.Password = dr["password"].ToString();
 			c.Name = dr["name"].ToString();
 			c.Phone = dr["phone"].ToString();
 			c.Email = dr["email"].ToString();

@@ -18,9 +18,9 @@ namespace FoodRau.Home
                 Post p= new Post().getItem(Convert.ToInt32(Request["post_id"]));
                 lblTitle.Text = p.Title;
                 lblDes.Text = p.Des;
-                imgReview.ImageUrl = "images/"+p.Img;
+                imgReview.ImageUrl = "../Uploads/images/" + p.Img;
 
-                //categori
+                //category
                 rptLSP.DataSource = new Post().getListCount();
                 rptLSP.DataBind();
 
