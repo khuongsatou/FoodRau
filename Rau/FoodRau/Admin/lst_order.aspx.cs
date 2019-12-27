@@ -28,7 +28,7 @@ namespace FoodRau.Admin
             List<Order> orders = o.getList();
             if (key != null && key.Length > 0)
             {
-                orders = o.getList(key);
+                orders = o.getList(key.Trim());
             }
             int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = orders.Count / limit + (orders.Count % limit == 0 ? 0 : 1);

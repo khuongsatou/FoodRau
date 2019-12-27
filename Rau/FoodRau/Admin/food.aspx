@@ -57,7 +57,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12  mb-3 mb-sm-0">
-                            <asp:DropDownList ID="ddListType" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddListType" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="-1">--type--</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator InitialValue="-1" ValidationGroup="f_t" ForeColor="Red" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Chưa chọn" ControlToValidate="ddListType"></asp:RequiredFieldValidator>
                             <br />
                         </div>
 
@@ -132,7 +135,7 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                                <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Font-Bold="true"></asp:Label>
                                 .Bạn có muốn quay về...
                                 <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
                             </div>

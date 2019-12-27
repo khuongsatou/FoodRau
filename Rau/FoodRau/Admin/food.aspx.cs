@@ -63,10 +63,14 @@ namespace FoodRau.Admin
         private void resetDropDownType()
         {
             FoodType ft = new FoodType();
-            ddListType.DataSource = ft.getList();
-            ddListType.DataTextField = "type_name";
-            ddListType.DataValueField = "type_id";
-            ddListType.DataBind();
+            List<FoodType> foodTypes = ft.getList();
+            if (foodTypes.Count > 0)
+            {
+                ddListType.DataSource = foodTypes;
+                ddListType.DataTextField = "type_name";
+                ddListType.DataValueField = "type_id";
+                ddListType.DataBind();
+            }
         }
 
         private void selectedDropDown(int value)

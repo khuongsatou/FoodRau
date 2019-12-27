@@ -38,7 +38,7 @@ namespace FoodRau.HttpCode
             _type = 0;
             _rand = 0;
             _status = 0;
-            _username = "khuong";
+            _username = "";
             _modified = DateTime.Now;
         }
 

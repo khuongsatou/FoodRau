@@ -21,8 +21,8 @@ namespace FoodRau.HttpCode
             IdSetting = 0;
             Name = "";
             Des = "";
-            Value = "";
-            Username = "khuong";
+            Value = "1";
+            Username = "";
             Modified = DateTime.Now;
         }
         public Setting(int idSetting, string name, string des, string value, string username, DateTime modified)
@@ -61,12 +61,10 @@ namespace FoodRau.HttpCode
 
         public bool update()
         {
-            string sQuery = "UPDATE [dbo].[setting] SET [name] = @name,[des] = @des,[value] = @value,[username] = @username ,[modified] = @modified WHERE id_setting=@id_setting";
+            string sQuery = "UPDATE [dbo].[setting] SET [value] = @value,[username] = @username,[modified] = @modified WHERE id_setting=@id_setting";
             SqlParameter[] param =
             {
                 new SqlParameter("@id_setting",this.IdSetting),
-                new SqlParameter("@name",this.Name),
-                new SqlParameter("@des",this.Des),
                 new SqlParameter("@value",this.Value),
                 new SqlParameter("@username",this.Username),
                 new SqlParameter("@modified",this.Modified)
@@ -89,7 +87,6 @@ namespace FoodRau.HttpCode
                     objs.Add(convertToObject(dr));
                 }
             }
-
             return objs;
         }
 
@@ -100,7 +97,11 @@ namespace FoodRau.HttpCode
             SqlParameter[] param = {
             };
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            return convertToObject(dt.Rows[0]);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return convertToObject(dt.Rows[0]);
+            }
+            return new Setting();
         }
 
         public Setting convertToObject(DataRow dr)
@@ -114,8 +115,6 @@ namespace FoodRau.HttpCode
             obj.Modified = Convert.ToDateTime(dr["modified"]);
             return obj;
         }
-
-
 
     }
 }

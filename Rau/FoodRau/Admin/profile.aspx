@@ -98,7 +98,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                        <asp:Label ID="lblMessage" runat="server" Font-Bold="true" ForeColor="green"></asp:Label>
                         <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
                     </div>
                     <div class="modal-footer">
@@ -109,5 +109,4 @@
         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    <script src="js/ajax/profile.js"></script>
 </asp:Content>

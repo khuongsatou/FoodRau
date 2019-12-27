@@ -17,6 +17,20 @@
             </div>
         </div>
     </div>
+     <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample1">
+            <h6 class="m-0 font-weight-bold text-primary">Khác</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample1">
+            <div class="card-body">
+                Chào mừng bạn đã vào trang quản trị. Hãy Nhấp vào đây <strong><a href="Home/index.aspx">Home Rau</a></strong> Bạn có thể xem view trang chủ
+                 
+            </div>
+        </div>
+    </div>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">

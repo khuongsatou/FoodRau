@@ -86,6 +86,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    <script src="js/custom/moment.js"></script>
     <script src="js/ajax/lst_customer.js"></script>
 </asp:Content>

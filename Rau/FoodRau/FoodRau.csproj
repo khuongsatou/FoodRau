@@ -85,7 +85,6 @@
     <Content Include="Admin\icon\delete.png" />
     <Content Include="Admin\icon\edit.png" />
     <Content Include="Admin\icon\share.png" />
-    <Content Include="Admin\js\ajax\customer.js" />
     <Content Include="Admin\js\ajax\food.js" />
     <Content Include="Admin\js\ajax\lst_customer.js" />
     <Content Include="Admin\js\ajax\lst_food.js" />
@@ -94,8 +93,6 @@
     <Content Include="Admin\js\ajax\lst_order_detail.js" />
     <Content Include="Admin\js\ajax\lst_post.js" />
     <Content Include="Admin\js\ajax\member.js" />
-    <Content Include="Admin\js\ajax\post.js" />
-    <Content Include="Admin\js\ajax\profile.js" />
     <Content Include="Admin\js\custom\moment.js" />
     <Content Include="Admin\js\demo\chart-area-demo.js" />
     <Content Include="Admin\js\demo\chart-bar-demo.js" />

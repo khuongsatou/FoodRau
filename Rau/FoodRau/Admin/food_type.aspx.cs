@@ -77,7 +77,7 @@ namespace FoodRau.Admin
                 f.Type_img = hfImgReview.Value.Substring(lastIndex + 1).ToString();
              
                 f.Status = Convert.ToInt32(ddlStatus.SelectedValue);
-                f.Username = "khuong";
+                f.Username = Session["username"].ToString();
                 if (f.add())
                 {
                     lblMessage.Text = "Thêm Thành Công";

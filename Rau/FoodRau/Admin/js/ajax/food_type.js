@@ -153,7 +153,3 @@ function checkEnable(check) {
     $('.btnConfỉrm').hide();
 }
 
-//modal
-function showModal() {
-    $("#myModal").modal('show');
-}

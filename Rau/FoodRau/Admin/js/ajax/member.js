@@ -191,7 +191,6 @@ function checkEnable(check) {
     $('#cph_content_txtUserName').prop("disabled", check);
     $('#cph_content_btn_register').prop("disabled", check);
     $('#cph_content_btn_update').prop("disabled", !check);
-    //$('#cph_content_btn_cancel').prop("disabled", !check);
     $('.btnConfỉrm').hide();
 }
 

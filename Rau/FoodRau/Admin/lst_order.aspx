@@ -89,5 +89,4 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     <script src="js/ajax/lst_order.js"></script>
-    <script src="js/custom/moment.js"></script>
 </asp:Content>

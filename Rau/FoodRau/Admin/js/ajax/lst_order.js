@@ -36,7 +36,7 @@ function resetList(lst_json) {
         table += "<td>" + moment(obj[i].Created).format('MM/DD/YYYY') + "</td>";
         table += "<td>" + moment(obj[i].Modified).format('MM/DD/YYYY') + "</td>";
         table += "<td>" + obj[i].CusUserName + "</td>";
-        table += "<td><a href='lst_order.aspx?order_id=" + obj[i].OrderID + "'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/edit.png'/></a>";
+        table += "<td>";
         table += "<a href='#dataTable1'><img id='imgHinh' alt='' width='20' height='20' src='/Admin/icon/delete.png' onClick='xoa(" + "\"" + obj[i].OrderID + "\"" + ");'/></a></td>";
         table += "</tr>";
     }
@@ -81,9 +81,4 @@ function xacNhanXoa() {
             alert("error" + err.d);
         }
     });
-}
-
-//modal
-function showModal() {
-    $("#myModal").modal('show');
 }

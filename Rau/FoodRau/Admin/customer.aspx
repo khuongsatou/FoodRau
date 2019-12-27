@@ -55,7 +55,6 @@
            
             <div class="row">
                 <div class="col-md-12">
-                  <%-- <asp:Button ValidationGroup="f_t" ID="btnThem" OnClick="BtnThem_Click" CssClass="btn btn-primary col-md-12" runat="server" Text="Thêm" />--%>
                    <asp:Button ValidationGroup="f_t" ID="btnCapNhat" OnClick="BtnCapNhat_Click" CssClass="btn btn-primary col-md-12" runat="server" Text="Cập Nhật" />
                 </div>
             </div>
@@ -83,5 +82,4 @@
                 </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    <script src="js/ajax/customer.js"></script>
 </asp:Content>
