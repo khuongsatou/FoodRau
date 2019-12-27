@@ -20,27 +20,36 @@ namespace FoodRau.Admin
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-
-            Member mb = new Member();
+            Member obj = new Member();
             string us = txtUserName.Text;
             string pw = txtPassword.Text;
-            mb.UserName = us;
-            if (mb.exist(us))
+            obj.UserName = us;
+            if (obj.exist(us))
             {
-                if (mb.getItem(us).Pass == StringProc.MD5Hash(pw))
+                Member mb = obj.getItem(us);
+                if (mb.Pass == StringProc.MD5Hash(pw))
                 {
+                    if (mb.Role == 1)
+                    {
+                        Session["role"] = true;
+                    }
+                    else
+                    {
+                        Session["role"] = false;
+                    }
                     Session["username"] = us;
-                    Response.Write("<script>alert('Đăng Nhập Thành công');</script>");
                     Response.Redirect("~");
                 }
                 else
                 {
-                    Response.Write("<script>alert('Mật Khẩu Sai');</script>");
+                    lblMessage.Text = "Mật Khẩu Sai";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
                 }
             }
             else
             {
-                Response.Write("<script>alert('Tài Khoản Không Tồn Tại');</script>");
+                lblMessage.Text = "Tài Khoản Không tồn Tại";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
             }
         }
     }

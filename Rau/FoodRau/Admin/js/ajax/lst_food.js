@@ -29,8 +29,8 @@ function resetList(lst_json) {
         table += "<td>" + obj[i].Description  + "</td>";
         table += "<td>" + obj[i].Price   + "</td>";
         table += "<td>" + obj[i].Price_promo + "</td>";
-        table += "<td><img  alt='' width='50' height='50' src='/Home/images/" + obj[i].Thumb + "' /></td>";
-        table += "<td><img  alt='' width='50' height='50' src='/Home/images/" + obj[i].Img  + "' /></td>";
+        table += "<td><img  alt='' width='50' height='50' src='../Uploads/Images/" + obj[i].Thumb + "' /></td>";
+        table += "<td><img  alt='' width='50' height='50' src='../Uploads/Images/" + obj[i].Img  + "' /></td>";
         table += "<td>" + obj[i].Unit    + "</td>";
         table += "<td>" + obj[i].Rating   + "</td>";
         table += "<td>" + obj[i].Sold   + "</td>";
@@ -87,7 +87,3 @@ function xacNhanXoa() {
     });
 }
 
-//modal
-function showModal() {
-    $("#myModal").modal('show');
-}

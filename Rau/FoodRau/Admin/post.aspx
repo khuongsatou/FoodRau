@@ -48,8 +48,8 @@
                     <table>
                         <tr>
                            <td>
-                              <asp:Image ID="imgReview" CssClass="img" runat="server" ImageUrl="img/10.jpg" Width="300" Height="150" /></td>
-                            <asp:HiddenField ClientIDMode="Static" ID="hfImgReview" runat="server" Value="img/10.jpg" />
+                              <asp:Image ID="imgReview" CssClass="img" runat="server" ImageUrl="../Uploads/Images/10.jpg" Width="300" Height="150" /></td>
+                            <asp:HiddenField ClientIDMode="Static" ID="hfImgReview" runat="server" Value="../Uploads/Images/10.jpg" />
                             
                         </tr>
                         <tr>
@@ -98,10 +98,9 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    <script src="ckfinder/ckfinder.js"></script>
     <script src="js/ajax/post.js"></script>
+    <script src="../ckfinder/ckfinder.js"></script>
     <script>
-        
         var finder = new CKFinder();
         $(".cmdSelect").click(function () {
             finder.selectActionFunction = function (fileUrl) {

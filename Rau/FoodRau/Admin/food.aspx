@@ -88,14 +88,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <asp:Image ID="imgThumb" Height="150px" Width="150px" runat="server" ImageUrl="~/Admin/img/10.jpg" />
+                                    <asp:Image ID="imgThumb" CssClass="imgThumb" runat="server" ImageUrl="../Uploads/Images/10.jpg" Width="200" Height="200" />
+                                    <asp:HiddenField ClientIDMode="Static" ID="hfImgReviewThumb" runat="server" Value="../Uploads/Images/10.jpg" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <asp:Image ID="imgImage" Height="250px" Width="250px" runat="server" ImageUrl="~/Admin/img/10.jpg" />
+                                     <asp:Image ID="imgImage" CssClass="imgImg" runat="server" ImageUrl="../Uploads/Images/10.jpg" Height="250px" Width="300px" />
+                                     <asp:HiddenField ClientIDMode="Static" ID="hfImgReviewImg" runat="server" Value="../Uploads/Images/10.jpg" />
                                 </div>
                             </div>
                         </div>
@@ -103,37 +105,20 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <span class="col-sm-4">
-                                <asp:FileUpload ID="fuThumb" runat="server" />
-                            </span>
-                            <span class="col-sm-8">
-                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpThumb_Click" ValidationGroup="uploadThumb" ID="btnThumb" runat="server" Text="Upload Thumb" />
-                                <br />
-                                <asp:Label ID="lblThongBaoThumb" runat="server"></asp:Label>
-                                <asp:HiddenField ID="hfSaveThumb" runat="server" />
-
-                            </span>
+                           <input id="cmdSelectThumb" class="cmdSelectThumb btn btn-primary " type="button" value="Upload" />
+                 
                         </div>
                         <div class="col-sm-6">
-                            <span class="col-sm-4">
-                                <asp:FileUpload ID="fuImage" runat="server" />
-                            </span>
-                            <span class="col-sm-8">
-                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpImage_Click" ValidationGroup="uploadImage" ID="btnUpImage" runat="server" Text="Upload Image" />
-                                <br />
-                                <asp:Label ID="lblThongBaoImage" runat="server"></asp:Label>
-                                <asp:HiddenField ID="hfSaveImage" runat="server" />
-
-                            </span>
+                             <input id="cmdSelectImg" class="cmdSelectImg btn btn-primary " type="button" value="Upload" />
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-sm-12  mb-3 mb-sm-0">
-                            <asp:Button ValidationGroup="f_t" ID="btnThem" OnClick="Btn_Them_Click" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" OnClientClick="return Valid();" />
+                            <asp:Button ValidationGroup="f_t" ID="btnThem" OnClick="Btn_Them_Click" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Thêm" />
                         </div>
                         <div class="col-sm-12  mb-3 mb-sm-0">
-                            <asp:Button ValidationGroup="f_t" ID="btnUpdate" OnClick="Btn_update_Click" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Update" OnClientClick="return Valid();" />
+                            <asp:Button ValidationGroup="f_t" ID="btnUpdate" OnClick="Btn_update_Click" CssClass="btn btn-primary btn-user btn-block" runat="server" Text="Update" />
                         </div>
                         <hr>
                     </div>
@@ -164,5 +149,24 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     <script src="js/ajax/food.js"></script>
+    <script src="../ckfinder/ckfinder.js"></script>
+    <script>
+        var finder = new CKFinder();
+        $(".cmdSelectThumb").click(function () {
+            finder.selectActionFunction = function (fileUrl) {
+                $(".imgThumb").attr("src", fileUrl);
+                $(<%=hfImgReviewThumb.ClientID%>).val(fileUrl);
+            };
+            finder.popup();
+        });
+
+        $(".cmdSelectImg").click(function () {
+            finder.selectActionFunction = function (fileUrl) {
+                $(".imgImg").attr("src", fileUrl);
+                $(<%=hfImgReviewImg.ClientID%>).val(fileUrl);
+            };
+            finder.popup();
+        });
+    </script>
 </asp:Content>
 

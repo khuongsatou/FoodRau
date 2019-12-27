@@ -153,7 +153,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                        <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Font-Bold="true"></asp:Label>
                         <asp:HiddenField ID="hfUserNameConfirm" runat="server" />
                     </div>
                     <div class="modal-footer">

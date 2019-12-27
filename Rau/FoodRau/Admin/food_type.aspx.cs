@@ -14,13 +14,12 @@ namespace FoodRau.Admin
 {
     public partial class food_type : System.Web.UI.Page
     {
-        private static string hashNameImage = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["username"] != null)
-            //{
-            //    Response.Redirect("~");
-            //}
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Admin/login.aspx");
+            }
         }
 
         [WebMethod]
@@ -30,7 +29,7 @@ namespace FoodRau.Admin
             List<FoodType> foodTypes = f.getList();
             if (key != null && key.Length > 0)
             {
-                foodTypes = f.getList(key);
+                foodTypes = f.getList(key.Trim());
             }
             int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = foodTypes.Count / limit + (foodTypes.Count % limit == 0 ? 0 : 1);
@@ -65,34 +64,7 @@ namespace FoodRau.Admin
             json.Add("active", active);
             return new JavaScriptSerializer().Serialize(json);
         }
-        protected void BtnUpImg_Click(object sender, EventArgs e)
-        {
-            lblThongBao.Text = "";
-            if (fuImg.HasFile)
-            {
-                string extension = Path.GetExtension(fuImg.FileName);
-                if (extension == ".jpg" || extension == ".png" || extension == ".gif")
-                {
-                    hashNameImage = Guid.NewGuid().ToString() + fuImg.FileName;
-                    fuImg.SaveAs(Server.MapPath("..\\Home\\images\\") + hashNameImage);
-                    imgReview.ImageUrl = "~/Home/images/" + hashNameImage;
-                    hfNameImg.Value = hashNameImage;
-                    lblThongBao.Text = "Đã Lưu";
-                    lblThongBao.ForeColor = Color.Blue;
-                }
-                else
-                {
-                    lblThongBao.Text = "Hình ảnh phải là .jpg || .png || .gif";
-                    lblThongBao.ForeColor = Color.Red;
-                }
-            }
-            else
-            {
-                lblThongBao.Text = "Tìm 1 file mà chọn";
-                lblThongBao.ForeColor = Color.Red;
-            }
-
-        }
+        
 
         protected void BtnThem_Click(object sender, EventArgs e)
         {
@@ -101,7 +73,9 @@ namespace FoodRau.Admin
             {
                 f.Type_name = txtName.Text;
                 f.Type_post =Convert.ToInt32(txtPost.Text);
-                f.Type_img = hashNameImage;
+                int lastIndex = hfImgReview.Value.LastIndexOf("/");
+                f.Type_img = hfImgReview.Value.Substring(lastIndex + 1).ToString();
+             
                 f.Status = Convert.ToInt32(ddlStatus.SelectedValue);
                 f.Username = "khuong";
                 if (f.add())
@@ -130,7 +104,8 @@ namespace FoodRau.Admin
                 ft.Type_id = Convert.ToInt32(hfTypeID.Value);
                 ft.Type_name = txtName.Text;
                 ft.Type_post = Convert.ToInt32(txtPost.Text);
-                ft.Type_img = hfNameImg.Value;
+                int lastIndex = hfImgReview.Value.LastIndexOf("/");
+                ft.Type_img = hfImgReview.Value.Substring(lastIndex + 1).ToString();
                 ft.Status = Convert.ToInt32(ddlStatus.SelectedValue);
                 ft.Username = "khuong";
                 if (ft.update())
@@ -150,11 +125,10 @@ namespace FoodRau.Admin
         protected void Btn_cancel_Click(object sender, EventArgs e)
         {
             hfTypeID.Value = "";
-            hfNameImg.Value = "";
+            hfImgReview.Value = "";
             txtName.Text = "";
             txtPost.Text = "";
-            lblThongBao.Text = "";
-            imgReview.ImageUrl = "~/Admin/img/10.jpg";
+            imgReview.ImageUrl = "../Uploads/Images/10.jpg";
             ddlStatus.SelectedValue = "-1";
         }
 

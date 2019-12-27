@@ -171,11 +171,14 @@ namespace FoodRau.HttpCode
         {
             string sQuery = "SELECT *  FROM [dbo].[food] WHERE status =1 ";
             SqlParameter[] param = { };
-            List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            foreach (DataRow dr in dt.Rows)
+            List<Food> ft = new List<Food>();
+            if (dt != null)
             {
-                ft.Add(convertToObject(dr));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObject(dr));
+                }
             }
             return ft;
         }
@@ -188,9 +191,12 @@ namespace FoodRau.HttpCode
             };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            foreach (DataRow dr in dt.Rows)
+            if (dt!=null)
             {
-                ft.Add(convertToObject(dr));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObject(dr));
+                }
             }
             return ft;
         }
@@ -215,7 +221,7 @@ namespace FoodRau.HttpCode
 
         public List<Food> getListFoodType(string key)
         {
-            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] as status ,food.[username] ,food.[modified] as modified FROM [dbo].[food],food_type Where  type=type_id AND food.status = 1 ";
+            string sQuery = "SELECT food_type.type_name as type_name_f,[id] ,[name] ,[description] ,[price] ,[price_promo] ,[thumb] ,[img] ,[unit] ,[percent_promo] ,[rating] ,[sold] ,[point] ,[type] ,food.[status] as status ,food.[username] ,food.[modified],food.[username] as modified FROM [dbo].[food],food_type Where  type=type_id AND food.status = 1 ";
             sQuery += "AND (([id] LIKE '%' + @id + '%')" +
                 " OR ([name] LIKE '%' + @name + '%') "+
                 " OR ([description] LIKE '%' + @description + '%')" +
@@ -225,6 +231,7 @@ namespace FoodRau.HttpCode
                 " OR ([sold] LIKE '%' + @sold + '%') " +
                 " OR ([point] LIKE '%' + @point + '%') " +
                 " OR ([food_type].[type_name] LIKE '%' + @type_name + '%') " +
+                " OR ([food].[username] LIKE '%' + @username + '%') " +
                 " OR ([price_promo] LIKE '%' + @price_promo + '%') )";
             SqlParameter[] param = {
                 new SqlParameter("@id",key),
@@ -237,13 +244,18 @@ namespace FoodRau.HttpCode
                 new SqlParameter("@rating",key),
                 new SqlParameter("@sold",key),
                 new SqlParameter("@point",key),
+                new SqlParameter("@username",key),
                 new SqlParameter("@type_name",key)
             };
             List<Food> ft = new List<Food>();
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            foreach (DataRow dr in dt.Rows)
+            if (dt !=null)
             {
-                ft.Add(convertToObjectFoodType(dr));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ft.Add(convertToObjectFoodType(dr));
+                }
+
             }
             return ft;
         }
@@ -273,7 +285,6 @@ namespace FoodRau.HttpCode
             f.Sold = Convert.ToInt32(dr["sold"].ToString());
             f.Point = Convert.ToDecimal(dr["point"].ToString());
             f.Type = Convert.ToInt32(dr["type"].ToString());
-            
             f.Status = Convert.ToInt32(dr["status"].ToString());
             f.Username = dr["username"].ToString();
             f.Modified = Convert.ToDateTime(dr["modified"].ToString());

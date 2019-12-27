@@ -20,20 +20,16 @@ namespace FoodRau.HttpCode
 
         public Member()
         {
-            _role = 0;
+            UserName = "";
+            Pass = "";
+            Name = "";
+            Email = "";
+            Phone = "";
+            Role = 0;
             Status = 0;
         }
 
-        public Member(string userName, string pass, string name, string email, string phone, int role)
-        {
-            UserName = userName;
-            Pass = pass;
-            Name = name;
-            Email = email;
-            Phone = phone;
-            Role = role;
-        }
-
+       
         public string UserName { get => _userName; set => _userName = value; }
         public string Pass { get => _pass; set => _pass = value; }
         public string Name { get => _name; set => _name = value; }
@@ -47,13 +43,8 @@ namespace FoodRau.HttpCode
             string sQuery = "SELECT count(*) FROM member WHERE username =@username";
             SqlParameter[] param =
             {
-                //có 2 cách 1 là truyền đối tượng vào insert
-                //cách 1: nhưng phải set cho nó trước
-                //new SqlParameter("@username",member.UserName)
-                //đây là cách 2: lấy username đó tìm
                 new SqlParameter("@username",username)
             };
-            //trả về true(1) hoặc false(0)
             return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
 
@@ -64,7 +55,6 @@ namespace FoodRau.HttpCode
             {
                 new SqlParameter("@email",email)
             };
-            //trả về true(1) hoặc false(0)
             return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
 
@@ -75,7 +65,6 @@ namespace FoodRau.HttpCode
             {
                 new SqlParameter("@phone",sdt)
             };
-            //trả về true(1) hoặc false(0)
             return Convert.ToInt32(DataProvider.getDataTable(sQuery, param).Rows[0][0]) > 0;
         }
         
@@ -86,7 +75,6 @@ namespace FoodRau.HttpCode
             SqlParameter[] param =
             {
                 new SqlParameter("@username",this._userName),
-                //new SqlParameter("@pass",this._pass),
                 new SqlParameter("@pass",StringProc.MD5Hash(this._pass)),
                 new SqlParameter("@name",this._name),
                 new SqlParameter("@email",this._email),
@@ -94,7 +82,6 @@ namespace FoodRau.HttpCode
                 new SqlParameter("@role",this._role),
                 new SqlParameter("@status",this.Status)
             };
-            //trả về true(1) hoặc false(0)
             return DataProvider.executeNonQuery(sQuery, param);
         }
         public bool update()
@@ -127,13 +114,9 @@ namespace FoodRau.HttpCode
             string sQuery = "SELECT * FROM [dbo].[member] WHERE status = 1";
             SqlParameter[] param = {};
             List<Member> members = new List<Member>();
-            //lấy cái bảng
             DataTable dt = DataProvider.getDataTable(sQuery, param);
-            //lấy ra dòng
-            //loop qua từng cột
             foreach (DataRow dr in dt.Rows)
             {
-                //chuyển thành đối tượng và cho vào mảng để dẽ quản lí
                 members.Add(convertToObject(dr));
             }
             return members;
@@ -143,7 +126,7 @@ namespace FoodRau.HttpCode
         {
             string sQuery = "SELECT * FROM [member] WHERE ((([username] LIKE '%' + @username + '%') OR ([name] LIKE '%' + @name + '%') OR ([email] LIKE '%' + @email + '%') OR ([phone] LIKE '%' + @phone + '%')) AND status = 1)";
             SqlParameter[] param =
-             {
+            {
                 new SqlParameter("@username",key),
                 new SqlParameter("@name",key),
                 new SqlParameter("@email",key),
@@ -163,7 +146,6 @@ namespace FoodRau.HttpCode
             SqlParameter[] param = {
                 new SqlParameter("@username",username)
             };
-            //Lấy ra mảng 1 chiều
             return convertToObject(DataProvider.getDataTable(sQuery, param).Rows[0]);
         }
         private Member convertToObject(DataRow dr)

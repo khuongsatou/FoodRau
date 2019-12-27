@@ -14,10 +14,15 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["username"] != null)
-            //{
-            //    Response.Redirect("~");
-            //}
+           
+            if (!IsPostBack)
+            {
+                if (Session["username"] == null || !Convert.ToBoolean(Session["role"]))
+                {
+                    Response.Redirect("~/Admin/login.aspx");
+                }
+            }
+            
         }
 
 
@@ -53,7 +58,7 @@ namespace FoodRau.Admin
             List<Member> members = mb.getList();
             if (key != null && key.Length > 0)
             {
-                members = mb.getList(key);
+                members = mb.getList(key.Trim());
             }
             int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = members.Count / limit + (members.Count % limit == 0 ? 0 : 1);
@@ -92,7 +97,7 @@ namespace FoodRau.Admin
 
         protected void Btn_cancel_Click(object sender, EventArgs e)
         {
-            //txtUserName.Text = "";
+            txtUserName.Text = "";
             txtName.Text = "";
             txtEmail.Text = "";
             txtPhone.Text = "";

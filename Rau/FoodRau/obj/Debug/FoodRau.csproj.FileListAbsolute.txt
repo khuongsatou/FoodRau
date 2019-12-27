@@ -56,6 +56,7 @@ D:\GitHub\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache
 D:\GitHub\Rau\FoodRau\obj\Debug\FoodRau.csproj.CopyComplete
 D:\GitHub\Rau\FoodRau\obj\Debug\FoodRau.dll
 D:\GitHub\Rau\FoodRau\obj\Debug\FoodRau.pdb
+D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\FoodRau.dll.config
 D:\GitHub\FoodRau\Rau\FoodRau\bin\FoodRau.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\FoodRau.pdb
@@ -72,7 +73,6 @@ D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.Managed.Core.targets
 D:\GitHub\FoodRau\Rau\FoodRau\bin\roslyn\Microsoft.VisualBasic.Core.targets
@@ -113,7 +113,7 @@ D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\GitHub\FoodRau\Rau\FoodRau\bin\CKFinder.pdb
 D:\GitHub\FoodRau\Rau\FoodRau\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csproj.CopyComplete
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.dll
 D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.pdb
-D:\GitHub\FoodRau\Rau\FoodRau\obj\Debug\FoodRau.csprojAssemblyReference.cache

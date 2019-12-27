@@ -14,10 +14,10 @@ namespace FoodRau.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["username"] != null)
-            //{
-            //    Response.Redirect("~");
-            //}
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Admin/login.aspx");
+            }
         }
 
         [WebMethod]
@@ -27,7 +27,7 @@ namespace FoodRau.Admin
             List<Food> foods = f.getListFoodType();
             if (key != null && key.Length > 0)
             {
-                foods = f.getListFoodType(key);
+                foods = f.getListFoodType(key.Trim());
             }
             int limit = Convert.ToInt32(new Setting().getObjectAdmin().Value);
             int soTrang = foods.Count / limit + (foods.Count % limit == 0 ? 0 : 1);

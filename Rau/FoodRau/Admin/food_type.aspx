@@ -32,15 +32,7 @@
                                 <br />
                                 <asp:RegularExpressionValidator ForeColor="Red" runat="server" ValidationGroup="vsNotification" ID="RegularExpressionValidator1" ErrorMessage="từ 1 -> 3 kí tự" ValidationExpression="[0-9]{1,3}" ControlToValidate="txtPost"></asp:RegularExpressionValidator>
                             </div>
-                            <div class="col-sm-8">
-                                <asp:FileUpload ID="fuImg" runat="server" BorderStyle="None" />
-                            </div>
-                            <div class="col-sm-4">
-                                <asp:Button CssClass="btn btn-success" OnClick="BtnUpImg_Click" ValidationGroup="upload" ID="btnUpImg" runat="server" Text="UpLoad" />
-                                <br />
-                                <asp:Label ID="lblThongBao" runat="server" CssClass="lblThongBao text-danger"></asp:Label>
-                                <asp:HiddenField ID="hfNameImg" runat="server" />
-                            </div>
+              
                             <div class="col-sm-12">
                                 <br />
                                 <asp:DropDownList ID="ddlStatus" placeholder="Trạng Thái" runat="server" CssClass="form-control">
@@ -55,9 +47,22 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <div class="col-md-6">
-                                <asp:Image ID="imgReview" Height="350px" Width="350px" runat="server" ImageUrl="~/Admin/img/10.jpg" />
-                            </div>
+                             <div class="col-md-6">
+                    <table>
+                        <tr>
+                           <td>
+                             
+                              <asp:Image ID="imgReview" CssClass="img" runat="server" ImageUrl="../Uploads/Images/10.jpg" Width="300" Height="250" /></td>
+                            <asp:HiddenField ClientIDMode="Static" ID="hfImgReview" runat="server" Value="../Uploads/Images/10.jpg" />
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="cmdSelect" class="cmdSelect btn btn-primary " type="button" value="Upload" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -148,12 +153,16 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-    <!-- Page level plugins -->
-    <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<%=Page.ResolveUrl("~") %>Admin/js/demo/datatables-demo.js"></script>
-    <script src="<%=Page.ResolveUrl("~") %>Admin/js/custom/moment.js"></script>
     <script src="js/ajax/food_type.js"></script>
+    <script src="../ckfinder/ckfinder.js"></script>
+    <script>
+        var finder = new CKFinder();
+        $(".cmdSelect").click(function () {
+            finder.selectActionFunction = function (fileUrl) {
+                $(".img").attr("src", fileUrl);
+                $(<%=hfImgReview.ClientID%>).val(fileUrl);
+            };
+            finder.popup();
+        });
+    </script>
 </asp:Content>

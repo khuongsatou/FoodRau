@@ -117,8 +117,9 @@ namespace FoodRau.HttpCode
 
         public List<FoodType> getList(string key)
         {
-            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE  status =1 And ([type_name] LIKE '%' + @type_name + '%' OR [type_pos] LIKE '%' + @type_pos + '%')";
+            string sQuery = "SELECT *  FROM [dbo].[food_type] WHERE  status =1 And ([type_id] LIKE '%' + @type_id + '%' OR [type_name] LIKE '%' + @type_name + '%' OR [type_pos] LIKE '%' + @type_pos + '%')";
             SqlParameter[] param = {
+                new SqlParameter("@type_id",key),
                 new SqlParameter("@type_name",key),
                 new SqlParameter("@type_pos",key)
             };

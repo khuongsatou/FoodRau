@@ -9,32 +9,29 @@ namespace FoodRau
 {
     public partial class admin : System.Web.UI.MasterPage
     {
-        private bool checkExist = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             //nếu gán rồi
             
-            if (Session["username"] !=null)
+            if (Session["username"] ==null)
             {
-                lblLogin.Text = "Logout";
-                lblModal_title.Text = "Bạn có muốn thoát?";
-                lblModal_body.Text = "Nhấn vào \' Logout \' để thoát ?";
-                btnLogin.Visible = checkExist;
-                btnLogout.Visible = !checkExist;
-                lblUserName.Text = Session["username"].ToString();
+                Response.Redirect("~/Admin/login.aspx");
             }
             else
             {
-                lblLogin.Text = "Login";
-                lblModal_title.Text = "Bạn có muốn đăng nhập?";
-                lblModal_body.Text = "Nhấn vào \' Login \' để vào trang đăng nhập !";
-                btnLogin.Visible = !checkExist;
-                btnLogout.Visible = checkExist;
-                lblUserName.Text = "Unknown";
+                lblModal_title.Text = "Bạn có muốn thoát?";
+                lblModal_body.Text = "Nhấn vào \' Logout \' để thoát ?";
+                lblUserName.Text = Session["username"].ToString();
+                CheckVisible(Convert.ToBoolean(Session["role"]));
             }
         }
 
-     
+        private void CheckVisible(bool check)
+        {
+            hlMember.Visible =check;
+            hlSetting.Visible = check;
+            hlSettingNav.Visible = check;
+        }
 
         protected void BtnLogout_Click(object sender, EventArgs e)
         {

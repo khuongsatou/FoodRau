@@ -15,6 +15,11 @@ namespace FoodRau.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null || !Convert.ToBoolean(Session["role"]))
+            {
+                Response.Redirect("~/Admin/login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 Setting obj = new Setting();

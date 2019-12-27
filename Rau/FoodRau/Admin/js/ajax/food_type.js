@@ -11,9 +11,7 @@ function initValidator() {
 }
 
 function Valid() {
-    if ($('#cph_content_hfNameImg').val() == "") {
-        $('#cph_content_lblThongBao').text("Bạn Chưa Upload");
-    }
+   
     if (Page_ClientValidate('vsNotification')) {
         return !($('#cph_content_lblErrorName').text().length > 0 || $('#cph_content_hfNameImg').val() == "");
     }
@@ -108,7 +106,7 @@ function setValues(obj) {
     $('#cph_content_hfTypeID').val(obj.Type_id);
     $('#cph_content_txtName').val(obj.Type_name);
     $('#cph_content_txtPost').val(obj.Type_post);
-    $('#cph_content_imgReview').attr('src', "../Home/images/" + obj.Type_img);
+    $('#cph_content_imgReview').attr('src', "../Uploads/Images/" + obj.Type_img);
     $('#cph_content_hfNameImg').val(obj.Type_img);
     $('#cph_content_ddlStatus').val(obj.Status);
 }
@@ -126,7 +124,7 @@ function resetList(lst_json) {
         table += "<td>" + obj[i].Type_id    + "</td>";
         table += "<td>" + obj[i].Type_name  + "</td>";
         table += "<td>" + obj[i].Type_post  + "</td>";
-        table += "<td><img id='imgHinh' alt='' width='50' height='50' src='/Home/images/" + obj[i].Type_img + "' /></td>";
+        table += "<td><img id='imgHinh' alt='' width='50' height='50' src='../Uploads/Images/" + obj[i].Type_img + "' /></td>";
         table += "<td><input type='checkbox'" + ((obj[i].Status > 0) ? 'checked' : '') + " disabled /></td>";
         table += "<td>" + moment(obj[i].Modified).format('MM/DD/YYYY')+"</td>";
 

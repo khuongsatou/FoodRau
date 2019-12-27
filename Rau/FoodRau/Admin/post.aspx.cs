@@ -14,14 +14,14 @@ namespace FoodRau.Admin
 
         protected override void OnLoad(EventArgs e)
         {
-            CKFinder.FileBrowser _f = new CKFinder.FileBrowser();
-            _f.BasePath = "ckfinder";
-            _f.SetupCKEditor(CKEditorControl1);
             bool checkUpdate = false;
             if (!IsPostBack)
             {
                 if (Request["post_id"] != null)
                 {
+                    CKFinder.FileBrowser _f = new CKFinder.FileBrowser();
+                    _f.BasePath = "ckfinder";
+                    _f.SetupCKEditor(CKEditorControl1);
                     checkUpdate = true;
                     btnThem.Visible = !checkUpdate;
                     btnCapNhat.Visible = checkUpdate;
@@ -30,7 +30,7 @@ namespace FoodRau.Admin
                     txtTile.Text = p.Title;
                     txtShortDes.Text = p.Short;
                     CKEditorControl1.Text = p.Des;
-                    imgReview.ImageUrl = "~/Home/images/" + p.Img;
+                    imgReview.ImageUrl = "~/Uploads/Images/" + p.Img;
                     ddlStatus.SelectedValue = p.Status.ToString();
                     selectDropDown(p.Type);
                 }

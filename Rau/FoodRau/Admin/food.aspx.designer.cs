@@ -240,6 +240,15 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Image imgThumb;
 
         /// <summary>
+        /// hfImgReviewThumb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfImgReviewThumb;
+
+        /// <summary>
         /// imgImage control.
         /// </summary>
         /// <remarks>
@@ -249,76 +258,13 @@ namespace FoodRau.Admin
         protected global::System.Web.UI.WebControls.Image imgImage;
 
         /// <summary>
-        /// fuThumb control.
+        /// hfImgReviewImg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuThumb;
-
-        /// <summary>
-        /// btnThumb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnThumb;
-
-        /// <summary>
-        /// lblThongBaoThumb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblThongBaoThumb;
-
-        /// <summary>
-        /// hfSaveThumb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSaveThumb;
-
-        /// <summary>
-        /// fuImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuImage;
-
-        /// <summary>
-        /// btnUpImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpImage;
-
-        /// <summary>
-        /// lblThongBaoImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblThongBaoImage;
-
-        /// <summary>
-        /// hfSaveImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSaveImage;
+        protected global::System.Web.UI.WebControls.HiddenField hfImgReviewImg;
 
         /// <summary>
         /// btnThem control.

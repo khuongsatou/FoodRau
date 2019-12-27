@@ -1,51 +1,65 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="FoodRau.Admin.login" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="css" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cph_content" runat="server">
-    <div class="row">
-         <div class="col-lg-12">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                  </div>
-                    <%--//form--%>
-                  <div class="user">
-                    <div class="form-group">
-                      <asp:TextBox  CssClass="form-control form-control-user" ID="txtUserName" runat="server" ></asp:TextBox>
-                      
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="FoodRau.Admin.login" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Login</title>
+    <link href="<%=Page.ResolveUrl("~") %>Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <!-- Custom styles for this template-->
+    <link href="<%=Page.ResolveUrl("~") %>Admin/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="<%=Page.ResolveUrl("~") %>Admin/css/custom.css" rel="stylesheet" />
+    <!-- Bootstrap core JavaScript-->
+    <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="<%=Page.ResolveUrl("~") %>Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //modal
+        function showModal() {
+            $("#myModal").modal('show');
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                        </div>
+                        <div class="user">
+                            <div class="form-group">
+                                <asp:TextBox CssClass="form-control form-control-user" ID="txtUserName" runat="server" placeholder="Tên Tài Khoản.."></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtUserName" ForeColor="red"></asp:RequiredFieldValidator>
+                               
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox TextMode="Password" CssClass="form-control form-control-user" ID="txtPassword" runat="server" placeholder="Mật Khẩu.."></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Không được bỏ trống" ControlToValidate="txtPassword" ForeColor="red"></asp:RequiredFieldValidator>
+                            </div>
+                            <asp:Button CssClass="btn btn-primary btn-user btn-block" ID="btnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <asp:TextBox TextMode="Password" CssClass="form-control form-control-user" ID="txtPassword" runat="server" ></asp:TextBox>
-                    
-                    </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
-                    </div>
-                    <asp:Button CssClass="btn btn-primary btn-user btn-block" ID="btnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
-                   <%-- <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>--%>
-                    <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                    </a>
-                  </div>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="register.html">Create an Account!</a>
-                  </div>
                 </div>
-              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông báo</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="lblMessage" runat="server" ForeColor="red"></asp:Label>
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+            </div>
+        </div>
     </div>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
-</asp:Content>
+    </form>
+</body>
+</html>
